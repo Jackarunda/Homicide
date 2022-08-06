@@ -1,0 +1,5 @@
+"vertexlitgeneric" {
+    "$basetexture" "bubba\bubba_spam\spam_lid"
+    "$surfaceprop" "metalpanel"
+    "$model"   "1"
+}

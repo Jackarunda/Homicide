@@ -1,0 +1,12 @@
+VertexLitGeneric
+{
+	"$baseTexture" "models\weapons\v_models\jellyhead's_ar-15\SBR"
+	"$bumpmap"     "models\weapons\v_models\jellyhead's_ar-15\SBR_normal"
+	"$normalmapalphaenvmapmask" "1"
+	"$envmap" "env_cubemap"
+	"$phong" 		"1"
+	"$phongexponent" 	"36"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[1 0.75 3]"
+	"$phongalbedotint" "1"
+}

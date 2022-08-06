@@ -1,0 +1,12 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/mkx/jajon/Jason_body"
+	"$bumpmap" "models/mkx/jajon/Jason_body_normal"
+	"$model" 1
+	//"$phong" "1"
+	//"$phongexponent" "1"
+	//"$phongboost" ".01"
+	//"$phongfresnelranges" "[.10 .10 10]"
+	//"$phongtint" "[1 0.90 0.70]"
+	// "$halflambert" "1"
+}

@@ -1,0 +1,7 @@
+"Vertexlitgeneric"
+{
+	"$baseTexture" "models\weapons\v_models\jOW\11"
+         $translucent 1
+         $selfillum 1
+         $additive 1
+}

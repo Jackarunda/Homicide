@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\v_models\ftn_hatchet\uvmap"
+	"$bumpmap" "models\weapons\v_models\ftn_hatchet\uvmap_local"
+//	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+	"$halflambert" 	"1"
+	"$phongexponent" "65"
+	"$phongboost" "2"
+	"$phongfresnelranges"	"[.4 1.65 1.72 ]"
+	"$phongalbedotint" "1"
+}

@@ -1,0 +1,11 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models/weapons/v_models/Kar98/Ger_Kar98_rifle_Scope_4X_D"
+	"$bumpmap" "models/weapons/v_models/Kar98/Ger_Kar98_rifle_Scope_4X_N"
+	 "$phong" "1"
+	"$phongboost" "0.2"
+	"$phongfresnelranges" "[0.4 0.7 0.9]"
+	"$phongexponent" "10"
+	"$phongalbedotint" "1"
+	"$nocull" "1"
+}

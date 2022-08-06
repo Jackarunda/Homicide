@@ -1,0 +1,9 @@
+"Refract"
+{
+ 	"$refractamount" ".2"
+ 	"$bluramount" ".1"
+	"$scale" "[1 1]"
+	"$normalmap" "sprites/tex_jack_hmcd_scope_normal"
+	"$translucent" "1"
+	"$forcerefract" "1"
+}

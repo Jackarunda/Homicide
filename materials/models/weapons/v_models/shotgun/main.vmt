@@ -1,0 +1,20 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/weapons/v_models/shotgun/main"
+	"$bumpmap" "models/weapons/v_models/shotgun/main_normal"
+	"$nocull" "1"
+
+	"$normalmapalphaenvmapmask" "1"
+
+	"$phongexponenttexture" "models/weapons/v_models/shotgun/main_specular"
+	"$phong" 		"1"
+	"$phongexponent" 	"40"
+	"$phongboost" "0.75"
+	"$phongtint"             "[1 0.8 0.5]"
+	"$phongfresnelranges"        "[0.5 1 2.5]"
+	"$halflambert"            "1"
+
+	"$rimlight"               "1"
+	"$rimlightexponent"       "20" 
+	"$rimlightboost"          ".2"
+}

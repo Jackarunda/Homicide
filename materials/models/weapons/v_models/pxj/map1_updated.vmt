@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "Models\Weapons\V_Models\PXJ\flat_black"
+	"$bumpmap" "Models\Weapons\V_Models\PXJ\flat_normal"
+	
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost" "0.6"
+	"$phongfresnelranges" "[0.1 0.2 0.5]"
+}

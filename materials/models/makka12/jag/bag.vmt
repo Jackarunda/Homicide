@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\makka12\jag/Bag"
+	"$bumpmap" "models\makka12\jag/Bag Bumpmap"
+}

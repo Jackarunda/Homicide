@@ -1,0 +1,5 @@
+"vertexlitgeneric" {
+    "$basetexture" "bubba\bubba_spam\spam_texture"
+    "$surfaceprop" "plastic"
+    "$model"  "1"
+}

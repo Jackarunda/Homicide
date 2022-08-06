@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models\weapons\jyringe_jrojectile\syringe_projectile"
+	
+	"$envmap" "env_cubemap"
+	"$envmapmask" "models\weapons\jyringe_jrojectile\mask"
+}

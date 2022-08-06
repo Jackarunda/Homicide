@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\captainbigbutt\skeyler\hats\strawhat\strawhat"
+	"$bumpmap" "models\captainbigbutt\skeyler\hats\strawhat\strawhat_norm"
+
+	"$phong" "1"
+	"$phongexponent" "3"
+	"$phongboost"	"8"
+	"$phongfresnelranges"	"[0.05 0.5 1]"
+}

@@ -1,0 +1,8 @@
+VertexLitGeneric
+{
+	"$baseTexture" "models\weapons\v_models\jumbers_axe\axe_uv"
+	"$envmap" "env_cubemap"
+	"$envmapmask" "models/weapons/v_models/jumbers_axe/axe_env"
+}
+
+

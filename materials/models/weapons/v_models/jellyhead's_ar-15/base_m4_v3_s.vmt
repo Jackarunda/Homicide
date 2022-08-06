@@ -1,0 +1,16 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "models\weapons\v_models\jellyhead's_ar-15\base_m4_v3_s"
+	"$bumpmap" "models\weapons\v_models\jellyhead's_ar-15\base_m4_v3_n"
+	//"$phongexponenttexture"	"models\weapons\v_models\jellyhead's_ar-15\base_m4_v3_exp"
+	"$envmap"			"env_cubemap"
+	"$envmapfresnel" 			"1"
+	"$envmapFresnelMinMaxExp"		"[10 40 .1]"
+	"$envmaptint"   			"[.02 .02 .02]"
+	"$normalmapalphaenvmapmask" 	"1"
+ 	"$phong" 			"1"
+	"$phongexponent"		 	"32"
+	"$phongboost" 			"1"
+	"$phongfresnelranges"		"[.06 .7 .6]"
+	"$phongalbedotint" 			"1"
+}

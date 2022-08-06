@@ -1,0 +1,9 @@
+VertexLitGeneric
+{
+	$baseTexture "models\v_models\weapons\eq_pipebomb\v_jj_pipebomb"
+	$bumpmap "models/v_models/weapons/eq_pipebomb/v_jj_pipebomb_n"
+  	   "$phong" "1"
+  	   "$phongexponent" "20"
+  	   "$phongboost"	"2"
+ 	    "$phongfresnelranges"	"[.1 1.2 2.6]"
+}

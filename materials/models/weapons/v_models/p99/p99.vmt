@@ -1,0 +1,25 @@
+"Vertexlitgeneric"
+{
+	"$basetexture" "models/weapons/v_models/P99/P99"
+	"$bumpmap" "models/weapons/v_models/P99/P99_norm"
+	//"$normalmapalphaenvmapmask" "1"
+                "$normalmapalphaphongmask"    "1"	
+                //4Echo
+               // "$envmap" "env_cubemap"		
+               // "$envmaptint" "[.05 .05 .05]"
+	
+                "$phong" "1"
+                "$phongboost" ".96"                
+                "$phongtint" "[.8 .8 .9]"
+                "$phongexponenttexture" "models/weapons/v_models/P99/P99_exponent"
+	"$phongfresnelranges" "[1.6 3.4 5.77]"
+                
+                "$rimlight" 	"1"
+	"$rimlightexponent" 	"85"	
+	"$rimlightboost"	".35"
+	"$rimmask" 	"1"
+
+                "$selfillum" "1"
+                "$nocull" "1"
+
+}

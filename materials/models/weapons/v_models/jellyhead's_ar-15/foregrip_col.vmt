@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" 	"models/weapons/v_models/jellyhead's_ar-15/foregrip_col"
+	"$bumpmap" 	"models/weapons/v_models/jellyhead's_ar-15/foregrip_norm"
+	"$normalmapalphaenvmapmask" "1"
+	"$phong" 		"1"
+	"$phongexponent" 	"40"
+	"$phongboost" "0.2"
+	"$phongfresnelranges" "[1 3 6]"
+
+}
+

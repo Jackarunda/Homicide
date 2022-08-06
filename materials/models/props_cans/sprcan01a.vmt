@@ -1,0 +1,8 @@
+
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/props_cans/sprite"
+	
+}
+

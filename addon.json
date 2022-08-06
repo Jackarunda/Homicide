@@ -1,0 +1,10 @@
+{
+	"title"		: "Homicide",
+	"type"		: "gamemode",
+	"tags"		: [ "realism" ],
+	"ignore"	: [
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}

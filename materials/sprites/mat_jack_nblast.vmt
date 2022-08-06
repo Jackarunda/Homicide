@@ -1,0 +1,16 @@
+"Sprite"
+{
+	"$baseTexture" "sprites/tex_jack_nblast"
+	"$spriteorientation" "vp_parallel"
+	"$spriteorigin" "[ 0.50 0.50 ]"
+	"$spriterendermode" "3"
+	"Proxies"
+	{
+		"AnimatedTexture"
+		{
+			"animatedTextureVar" "$basetexture"
+			"animatedTextureFrameNumVar" "$frame"
+			"animatedTextureFrameRate" "20"
+		}
+	}
+}

@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+     "$basetexture" "models\weapons\v_models\jellyhead's_ar-15\SDiffuse"
+     "$bumpmap" "models\weapons\v_models\jellyhead's_ar-15\SNormals"
+
+     "$envmaptint" "[0.1 0.1 0.1]"
+     "$normalmapalphaenvmapmask" 1
+     "$envmapfresnel" "0.7"
+
+     "$phong" 1
+
+     "$phongboost" 6
+     "$phongfresnelranges" "[0.1 0.5 1.1]"
+     "$phongalbedotint" "1"
+     "$phongalbedoboost" "38"
+
+     "$rimlight" "1"
+     "$rimlightexponent" "88"
+     "$rimlightboost""1.8"
+     "$rimmask" "1"
+}

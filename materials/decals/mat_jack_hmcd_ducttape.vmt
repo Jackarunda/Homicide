@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{ 
+	"$translucent" 1
+	"$basetexture" "decals/tex_jack_hmcd_ducttape"
+	"$decal" 1
+	"$decalscale" 0.1
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[.25 .25 .25]"
+} 

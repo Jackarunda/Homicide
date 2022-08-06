@@ -1,0 +1,12 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "models\weapons\v_models\mr96\mr96"
+	"$bumpmap" "models\weapons\v_models\mr96\mr96_normal"
+	"$envmap" "env_cubemap"
+	"$basemapalphaenvmapmask" 1
+	"$envmaptint" "[.2 .2 .2]"
+	"$phong" 1
+	"$phongboost" 2
+	"$phongexponenttexture" "models\weapons\v_models\mr96\mr96_exponent"
+	"$phongfresnelranges" "[.5 1 0]"
+}

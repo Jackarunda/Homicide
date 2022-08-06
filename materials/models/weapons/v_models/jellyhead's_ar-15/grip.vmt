@@ -1,0 +1,23 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models\weapons\v_models\jellyhead's_ar-15\grip"
+	"$bumpmap"     "models\weapons\v_models\jellyhead's_ar-15\upper_normal"
+	"$normalmapalphaenvmapmask" "1"
+	
+	"$normalmapalphaphongmask"    "1"
+	
+	"$nocull" "1"
+	
+	"$phong" 		"1"
+	"$phongboost"		"0.3"
+	"$phongexponent" 	"40"
+	"$phongtint"		"[0.9 0.9 0.9]"
+	"$phongfresnelranges"	"[1 4 5]"
+	"$phongalbedotint" 	"1"
+	"$halflambert" 		"1"
+	
+	"$rimlight" 	"1"
+	"$rimlightexponent" 	"50"	
+	"$rimlightboost"	"0.5"
+	"$rimmask" 	"1"
+}

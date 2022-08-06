@@ -1,0 +1,11 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\v_models\Kar98\7_92_with_stripper_clip_DIFF_2"
+	"$bumpmap" "models\weapons\v_models\Kar98\7_92_with_stripper_clip_NORM"
+	 "$phong" "1"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[0.2 0.2 0.2]"
+	"$phongexponent" "1"
+
+
+}

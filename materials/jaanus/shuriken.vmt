@@ -1,0 +1,8 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "jaanus/shuriken"
+	"$envmap" "env_cubemap"
+	"$envmapmask" "jaanus/brass_mask"
+	"$envmapcontrast "1.0"
+	"$Model" "1"
+}
