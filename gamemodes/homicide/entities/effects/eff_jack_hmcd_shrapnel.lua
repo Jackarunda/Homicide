@@ -2,7 +2,7 @@
 	EFFECT:Init(data)
 ---------------------------------------------------------*/
 function EFFECT:Init(data)
-	local vOffset=data:GetOrigin()
+	local vOffset = data:GetOrigin()
 	
 	local Scayul=data:GetScale()
 	self.Scale=Scayul
@@ -21,7 +21,7 @@ function EFFECT:Init(data)
 	local Emitter=ParticleEmitter(vOffset)
 	for i=0,1000*Scayul do
 		local sprite="sprites/mat_jack_nsmokethick"
-		local particle=Emitter:Add(sprite,vOffset)
+		local particle = Emitter:Add(sprite,vOffset)
 		if(particle)then
 			particle:SetVelocity(20000*VectorRand()*Scayul)
 			particle:SetAirResistance(0)

@@ -1,4 +1,4 @@
-HMCD_Taunts=HMCD_Taunts or {}
+HMCD_Taunts = HMCD_Taunts or {}
 
 function GM:PlayerShouldTaunt(ply,actid)
 	return true
@@ -13,15 +13,15 @@ end
 
 local function addTaunt(cat, soundFile, sex, act) -- mechanical, why the hell was this a global function? You ass
 	if !HMCD_Taunts[cat] then
-		HMCD_Taunts[cat]={}
+		HMCD_Taunts[cat] = {}
 	end
 	if !HMCD_Taunts[cat][sex] then
-		HMCD_Taunts[cat][sex]={}
+		HMCD_Taunts[cat][sex] = {}
 	end
-	local t={}
-	t.sound=soundFile
-	t.sex=sex
-	t.category=cat
+	local t = {}
+	t.sound = soundFile
+	t.sex = sex
+	t.category = cat
 	if(act)then t.act=act else t.act=nil end
 	table.insert(HMCD_Taunts[cat][sex],t)
 end
@@ -355,13 +355,13 @@ concommand.Add("hmcd_taunt", function (ply, com, args, full)
 	if ply:Team() != 2 then return end
 
 	if #args < 1 then return end
-	local cat=args[1]:lower()
+	local cat = args[1]:lower()
 	if !HMCD_Taunts[cat] then return end -- if he's not TAUNTING THE CAT then return end
 
-	local sex=string.lower(ply.ModelSex or "male")
+	local sex = string.lower(ply.ModelSex or "male")
 	if !HMCD_Taunts[cat][sex] then return end
 
-	local taunt=table.Random(HMCD_Taunts[cat][sex]) -- random table cat taunt sex, sounds kinky
+	local taunt = table.Random(HMCD_Taunts[cat][sex]) -- random table cat taunt sex, sounds kinky
 	if((GAMEMODE.ZOMBIE)and(ply.Murderer))then
 		ply:EmitSound("npc/zombie/zombie_voice_idle"..math.random(14)..".wav",75,math.random(90,110))
 		if((math.random(1,2)==2)and(taunt.act))then taunt.act="zombie" end

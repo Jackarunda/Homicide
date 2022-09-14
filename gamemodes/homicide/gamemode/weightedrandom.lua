@@ -1,9 +1,9 @@
 
-local WRandom={}
-WRandom.__index=WRandom
+local WRandom = {}
+WRandom.__index = WRandom
 
 function WeightedRandom()
-	local tab={}
+	local tab = {}
 	setmetatable(tab,WRandom)
 	return tab
 end
@@ -68,16 +68,16 @@ function WRandom:Roll() -- now dis is some magic shit hier, son
 	return Killa,Gunna
 end
 
--- local murds=WeightedRandom()
+-- local murds = WeightedRandom()
 -- murds:Add(1 ^ 3, "jim")
 -- murds:Add(3 ^ 3, "john")
 -- murds:Add(6 ^ 3, "peter")
 
--- local tab={}
--- for i=0, 1000 do
--- 	local p=murds:Roll()
--- 	tab[p]=(tab[p] or 0)+1
+-- local tab = {}
+-- for i = 0, 1000 do
+-- 	local p = murds:Roll()
+-- 	tab[p] = (tab[p] or 0) + 1
 -- end
 -- for k,v in pairs(tab) do
--- 	print(k, math.Round(v/1000*10))
+-- 	print(k, math.Round(v / 1000 * 10))
 -- end

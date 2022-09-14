@@ -4,9 +4,9 @@ else
 	killicon.AddFont( "wep_jack_hmcd_revolver", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_revolver")
 end
-SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "Manurhin MR96"
-SWEP.Instructions	= "This is an inexpensive 6-round revolver firing .38-special.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts.\nCrouching helps stability.\nBullets can ricochet and penetrate."
+SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.PrintName		= translate.weaponrevolver
+SWEP.Instructions	= translate.weaponrevolverDesc
 SWEP.Primary.ClipSize			= 6
 SWEP.ViewModel		= "models/weapons/v_pist_jeagle.mdl"
 SWEP.WorldModel		= "models/weapons/w_357.mdl"

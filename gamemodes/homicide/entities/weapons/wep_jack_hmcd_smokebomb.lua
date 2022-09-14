@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=65
+	SWEP.ViewModelFOV = 65
 
-	SWEP.Slot=5
-	SWEP.SlotPos=1
+	SWEP.Slot = 5
+	SWEP.SlotPos = 1
 
 	killicon.AddFont("wep_jack_hmcd_smokebomb", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -26,11 +26,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/props_junk/jlare.mdl"
-SWEP.WorldModel="models/props_junk/jlare.mdl"
+SWEP.ViewModel = "models/props_junk/jlare.mdl"
+SWEP.WorldModel = "models/props_junk/jlare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_smokebomb");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Saltpeter Smoke Bomb"
-SWEP.Instructions	= "This is a home-cooked KNO3-sugar smoke bomb, useful for visual concealment while murdering people.\n\nLMB to light and throw.\nSmoke will fill a room and last a while."
+SWEP.PrintName = translate.weaponSmokeBomb
+SWEP.Instructions	= translate.weaponSmokeBombDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -62,12 +62,14 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.CarryWeight=800
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName = translate.weaponSmokeBomb
+	self.Instructions	= translate.weaponSmokeBombDesc
 end
 
 function SWEP:SetupDataTables()

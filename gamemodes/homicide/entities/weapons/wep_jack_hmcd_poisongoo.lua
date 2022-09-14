@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=65
+	SWEP.ViewModelFOV = 65
 
-	SWEP.Slot=3
-	SWEP.SlotPos=4
+	SWEP.Slot = 3
+	SWEP.SlotPos = 4
 
 	killicon.AddFont("wep_jack_hmcd_poisongoo", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -26,11 +26,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/Items/Flare.mdl"
-SWEP.WorldModel="models/Items/Flare.mdl"
+SWEP.ViewModel = "models/Items/Flare.mdl"
+SWEP.WorldModel = "models/Items/Flare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisongoo");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Curare Vial"
-SWEP.Instructions	= "This is a tiny vial home-prepared, highly concentrated alkaloid extract from various curare-bearing plant sources. It is a potent blood-poison, and can be applied to any cutting or penetrating instrument.\n\nLMB to open mennu"
+SWEP.PrintName = translate.weaponPoisonGoo
+SWEP.Instructions	= translate.weaponPoisonGooDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -62,13 +62,15 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.NoHolsterForce=true
 SWEP.LastMenuOpen=0
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName = translate.weaponPoisonGoo
+	self.Instructions	= translate.weaponPoisonGooDesc
 end
 
 function SWEP:SetupDataTables()
@@ -129,7 +131,7 @@ if(CLIENT)then
 		end
 		DermaPanel:SetPos(0,0)
 		DermaPanel:SetSize(210,35+#Poisonables*55)
-		DermaPanel:SetTitle("Poison Weapon")
+		DermaPanel:SetTitle(translate.weaponPoisonGooMenuTitle)
 		DermaPanel:SetVisible(true)
 		DermaPanel:SetDraggable(true)
 		DermaPanel:ShowCloseButton(true)
@@ -148,9 +150,9 @@ if(CLIENT)then
 			PButton:SetSize(190,50)
 			PButton:SetPos(5,-50+key*55)
 			if(wep.Poisonable)then
-				PButton:SetText("Poison "..wep:GetPrintName())
+				PButton:SetText(translate.weaponPoisonGooPoison..wep:GetPrintName())
 			elseif(wep.AmmoPoisonable)then
-				PButton:SetText("Poison "..wep.AmmoName)
+				PButton:SetText(translate.weaponPoisonGooPoison..wep.AmmoName)
 			end
 			PButton:SetVisible(true)
 			PButton.DoClick=function()

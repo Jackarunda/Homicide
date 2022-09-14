@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type="anim"
-ENT.Base="ent_jack_hmcd_loot_base"
+ENT.Type = "anim"
+ENT.Base = "ent_jack_hmcd_loot_base"
 ENT.PrintName		= "Hard Body Armor"
 ENT.ImpactSound="physics/body/body_medium_impact_soft5.wav"
 ENT.SecondSound="physics/metal/metal_canister_impact_hard3.wav"
@@ -15,7 +15,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys=self:GetPhysicsObject()
+		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:SetMass(50)
 			phys:Wake()

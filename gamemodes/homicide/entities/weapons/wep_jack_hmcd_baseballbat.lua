@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=40
+	SWEP.ViewModelFOV = 40
 
-	SWEP.Slot=1
-	SWEP.SlotPos=3
+	SWEP.Slot = 1
+	SWEP.SlotPos = 3
 
 	killicon.AddFont("wep_jack_hmcd_baseballbat", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,11 +30,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/weapons/v_knije_t.mdl"
-SWEP.WorldModel="models/weapons/w_knije_t.mdl"
+SWEP.ViewModel = "models/weapons/v_knije_t.mdl"
+SWEP.WorldModel = "models/weapons/w_knije_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_baseballbat");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Baseball Bat"
-SWEP.Instructions	= "This is a typical wooden baseball bat. Use it as you see fit (attack/defend etc). Can not be holstered.\nLBM to swing."
+SWEP.PrintName = translate.weaponBaseballBat
+SWEP.Instructions	= translate.weaponBaseballBatDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 
 SWEP.ENT="ent_jack_hmcd_baseballbat"
 SWEP.NoHolster=true
@@ -80,6 +80,8 @@ function SWEP:Initialize()
 	self:SetHoldType("melee2")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
+	self.PrintName = translate.weaponBaseballBat
+	self.Instructions	= translate.weaponBaseballBatDesc
 end
 
 function SWEP:SetupDataTables()

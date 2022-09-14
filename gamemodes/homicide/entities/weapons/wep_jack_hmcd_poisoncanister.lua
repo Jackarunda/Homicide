@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=65
+	SWEP.ViewModelFOV = 65
 
-	SWEP.Slot=3
-	SWEP.SlotPos=2
+	SWEP.Slot = 3
+	SWEP.SlotPos = 2
 
 	killicon.AddFont("wep_jack_hmcd_poisoncanister", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -26,11 +26,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/jordfood/jtun.mdl"
-SWEP.WorldModel="models/jordfood/jtun.mdl"
+SWEP.ViewModel = "models/jordfood/jtun.mdl"
+SWEP.WorldModel = "models/jordfood/jtun.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisoncanister");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Cyanide Canister"
-SWEP.Instructions	= "This is some black-market adsorbed hydrogen-cyanide gas re-sealed in an original WWII Nazi Zyklon-B canister. Once opened, the gas will contaminate a small area for a few minutes and poison all within.\n\nLMB to open and drop\nLeave the area immediately after opening."
+SWEP.PrintName = translate.weaponPoisonCan
+SWEP.Instructions	= translate.weaponPoisonCanDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -62,13 +62,15 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.DeathDroppable=false
 SWEP.CommandDroppable=false
 
 function SWEP:Initialize()
 	self:SetHoldType("slam")
+	self.PrintName = translate.weaponPoisonCan
+	self.Instructions	= translate.weaponPoisonCanDesc
 end
 
 function SWEP:SetupDataTables()

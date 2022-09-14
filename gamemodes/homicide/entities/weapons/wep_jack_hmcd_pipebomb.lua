@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
-	SWEP.ViewModelFOV=65
-	SWEP.Slot=4
-	SWEP.SlotPos=3
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
+	SWEP.ViewModelFOV = 65
+	SWEP.Slot = 4
+	SWEP.SlotPos = 3
 	killicon.AddFont("wep_jack_hmcd_molotov", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -21,11 +21,11 @@ elseif(CLIENT)then
 	end
 end
 SWEP.Base="weapon_base"
-SWEP.ViewModel="models/w_models/weapons/w_jj_pipebomb.mdl"
-SWEP.WorldModel="models/w_models/weapons/w_jj_pipebomb.mdl"
+SWEP.ViewModel = "models/w_models/weapons/w_jj_pipebomb.mdl"
+SWEP.WorldModel = "models/w_models/weapons/w_jj_pipebomb.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_pipebomb");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Pipe Bomb"
-SWEP.Instructions	= "This improvised explosive device is a heavy-gauge steel pipe filled with black powder and surrounded by nails. It has a simple short pyrotechnic fuze. This device achieves high detonation speed and shrapnel projection through tight containment of the black powder (a low explosive). It's still not as deadly or reliable as a proper grenade, though.\n\nLMB to light and throw."
+SWEP.PrintName = translate.weaponPipeBomb
+SWEP.Instructions	= translate.weaponPipeBombDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -55,7 +55,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.CommandDroppable=true
 SWEP.ENT="ent_jack_hmcd_pipebomb"
@@ -65,6 +65,8 @@ SWEP.CarryWeight=1200
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
+	self.PrintName = translate.weaponPipeBomb
+	self.Instructions	= translate.weaponPipeBombDesc
 end
 function SWEP:SetupDataTables()
 	--

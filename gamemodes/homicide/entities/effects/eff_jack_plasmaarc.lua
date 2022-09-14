@@ -13,7 +13,7 @@ function EFFECT:Init(data)
     self.EndTime=CurTime()+self.Delay
     self.Entity:SetRenderBoundsWS(self.StartPos,self.EndPos)
 
-    local dlightend=DynamicLight( 0 )
+    local dlightend = DynamicLight( 0 )
     dlightend.Pos=self.EndPos
     dlightend.Size=1000*self.Scayul
     dlightend.Decay=2000

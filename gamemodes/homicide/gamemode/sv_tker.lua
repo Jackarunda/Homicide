@@ -1,5 +1,5 @@
-local PlayerMeta=FindMetaTable("Player")
-local EntityMeta=FindMetaTable("Entity")
+local PlayerMeta = FindMetaTable("Player")
+local EntityMeta = FindMetaTable("Entity")
 
 util.AddNetworkString("hmcd_tker")
 
@@ -43,9 +43,9 @@ function PlayerMeta:KickForTeamKilling()
 		GAMEMODE.SHITLIST[SteamID]=0 -- reset guilt
 		self:Ban(3,true)
 		print("PLAYER BANNED FOR 3 MINUTES:",Name,SteamID)
-		for key,playah in pairs(player.GetAll())do playah:PrintMessage(HUD_PRINTTALK,Name.." has been temporarily banned for repeatedly attacking or killing innocents.") end
+		for key,playah in pairs(player.GetAll())do playah:PrintMessage(HUD_PRINTTALK,Name..translate.tempBan) end
 	elseif(self:Alive())then
-		for key,playah in pairs(player.GetAll())do playah:PrintMessage(HUD_PRINTCENTER,Name.." can't be banned because is listen server host.") end
+		for key,playah in pairs(player.GetAll())do playah:PrintMessage(HUD_PRINTCENTER,Name..translate.whyIsTheHostKillingPeopleOhNo) end
 		self:SetVelocity(VectorRand()*9000)
 		self:Kill()
 	end

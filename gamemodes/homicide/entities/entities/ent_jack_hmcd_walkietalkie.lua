@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type="anim"
-ENT.Base="ent_jack_hmcd_loot_base"
+ENT.Type = "anim"
+ENT.Base = "ent_jack_hmcd_loot_base"
 ENT.PrintName		= "Walkie Talkie"
 ENT.SWEP="wep_jack_hmcd_walkietalkie"
 ENT.ImpactSound="physics/metal/weapon_impact_soft3.wav"
@@ -13,7 +13,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys=self:GetPhysicsObject()
+		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:SetMass(10)
 			phys:Wake()
@@ -28,7 +28,7 @@ if(SERVER)then
 			ply:GetWeapon(self.SWEP).HmcdSpawned=self.HmcdSpawned
 			self:Remove()
 			ply:SelectWeapon(SWEP)
-			if((ply.Murderer)and(ply:HasWeapon(self.SWEP)))then ply:PrintMessage(HUD_PRINTTALK,"You hide the additional walkie talkie.") end
+			if((ply.Murderer)and(ply:HasWeapon(self.SWEP)))then ply:PrintMessage(HUD_PRINTTALK,translate.weaponWalkieTalkieHide) end
 		end
 	end
 elseif(CLIENT)then

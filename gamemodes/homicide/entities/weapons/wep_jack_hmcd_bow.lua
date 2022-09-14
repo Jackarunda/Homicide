@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
-	SWEP.ViewModelFOV=75
-	SWEP.Slot=2
-	SWEP.SlotPos=2
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
+	SWEP.ViewModelFOV = 75
+	SWEP.Slot = 2
+	SWEP.SlotPos = 2
 	killicon.AddFont("wep_jack_hmcd_bow", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -21,11 +21,11 @@ elseif(CLIENT)then
 	end
 end
 SWEP.Base="weapon_base"
-SWEP.ViewModel="models/weapons/v_snij_awp.mdl"
-SWEP.WorldModel="models/weapons/w_snij_awp.mdl"
+SWEP.ViewModel = "models/weapons/v_snij_awp.mdl"
+SWEP.WorldModel = "models/weapons/w_snij_awp.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_bow");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Hunting Bow"
-SWEP.Instructions	= "This is a modern aluminum-fiberglass compound bow with a draw force of 290 newtons, used (with broadhead arrows) to take medium-sized north-american game.\n\nRMB to draw/aim.\nLMB to fire."
+SWEP.PrintName = translate.weaponBow
+SWEP.Instructions	= translate.weaponBowDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -55,7 +55,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.NextCheck=0
 SWEP.ENT="ent_jack_hmcd_bow"
@@ -72,6 +72,8 @@ SWEP.CarryWeight=3500
 function SWEP:Initialize()
 	self:SetHoldType("ar2")
 	self:SetAiming(0)
+	self.PrintName = translate.weaponBow
+	self.Instructions	= translate.weaponBowDesc
 end
 function SWEP:SetupDataTables()
 	self:NetworkVar("Int",0,"Aiming")

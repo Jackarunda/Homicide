@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=65
+	SWEP.ViewModelFOV = 65
 
-	SWEP.Slot=2
-	SWEP.SlotPos=1
+	SWEP.Slot = 2
+	SWEP.SlotPos = 1
 
 	killicon.AddFont("wep_jack_hmcd_shuriken", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,11 +30,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/jaanus/w_shuriken.mdl"
-SWEP.WorldModel="models/jaanus/w_shuriken.mdl"
+SWEP.ViewModel = "models/jaanus/w_shuriken.mdl"
+SWEP.WorldModel = "models/jaanus/w_shuriken.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_shuriken");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Six-Pointed Hira Shuriken"
-SWEP.Instructions	= "This is a heavy steel star with six sharp tips. Throw it to hurt people from afar. Does not do as much damage as a knife stab, but it's something.\n\nHold LMB to throw.\nYou will auto-recover the shuriken after some time."
+SWEP.PrintName = translate.weaponShuriken
+SWEP.Instructions	= translate.weaponShurikenDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -66,13 +66,15 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.Poisonable=true
 SWEP.CarryWeight=300
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
+	self.PrintName = translate.weaponShuriken
+	self.Instructions	= translate.weaponShurikenDesc
 end
 
 function SWEP:SetupDataTables()
@@ -107,18 +109,18 @@ function SWEP:ThrowStar(force)
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	if(CLIENT)then return end
 	sound.Play("weapons/slam/throw.wav",self:GetPos(),55,math.random(90,110))
-	local ent=ents.Create("ent_jack_hmcd_shuriken")
+	local ent = ents.Create("ent_jack_hmcd_shuriken")
 	ent.HmcdSpawned=self.HmcdSpawned
 	ent:SetOwner(self.Owner)
 	ent:SetPos(self.Owner:GetShootPos())
-	local knife_ang=self.Owner:EyeAngles()
+	local knife_ang = self.Owner:EyeAngles()
 	knife_ang:RotateAroundAxis(knife_ang:Up(), -90)
 	ent:SetAngles(knife_ang)
 	ent.Poisoned=self.Poisoned
 	ent.Thrown=true
 	ent:Spawn()
 
-	local phys=ent:GetPhysicsObject()
+	local phys = ent:GetPhysicsObject()
 	phys:SetVelocity(self.Owner:GetVelocity()+self.Owner:GetAimVector()*(1500))
 	phys:AddAngleVelocity(Vector(0, 0, 3500))
 

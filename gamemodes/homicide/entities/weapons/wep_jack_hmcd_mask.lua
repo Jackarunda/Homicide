@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=55
+	SWEP.ViewModelFOV = 55
 
-	SWEP.Slot=5
-	SWEP.SlotPos=3
+	SWEP.Slot = 5
+	SWEP.SlotPos = 3
 
 	killicon.AddFont("wep_jack_hmcd_mask", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,11 +30,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/props_c17/SuitCase_Passenger_Physics.mdl"
-SWEP.WorldModel="models/props_c17/SuitCase_Passenger_Physics.mdl"
+SWEP.ViewModel = "models/props_c17/SuitCase_Passenger_Physics.mdl"
+SWEP.WorldModel = "models/props_c17/SuitCase_Passenger_Physics.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_mask");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Psycho Disguise"
-SWEP.Instructions	= "This disguise will completely hide your true identity and probably terrify people. Use it to prevent being identified during a murder. \nLMB to equip \nRMB to unequip"
+SWEP.PrintName = translate.weaponMask
+SWEP.Instructions	= translate.weaponMaskDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 
 SWEP.DownAmt=0
 SWEP.HomicideSWEP=true
@@ -77,6 +77,8 @@ SWEP.DeathDroppable=false
 function SWEP:Initialize()
 	self:SetHoldType("normal")
 	self.DownAmt=20
+	self.PrintName = translate.weaponMask
+	self.Instructions	= translate.weaponMaskDesc
 end
 
 function SWEP:SetupDataTables()

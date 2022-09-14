@@ -1,19 +1,19 @@
 util.AddNetworkString("spectating_status")
 
-local PlayerMeta=FindMetaTable("Player")
+local PlayerMeta = FindMetaTable("Player")
 
 function PlayerMeta:CSpectate(mode, spectatee) 
-	mode=mode || OBS_MODE_IN_EYE
+	mode = mode || OBS_MODE_IN_EYE
 	self:Spectate(mode)
 	if IsValid(spectatee) then
 		self:SpectateEntity(spectatee)
-		self.Spectatee=spectatee
+		self.Spectatee = spectatee
 	else
-		self.Spectatee=nil
+		self.Spectatee = nil
 	end
 	self:Extinguish()
-	self.SpectateMode=mode
-	self.Spectating=true
+	self.SpectateMode = mode
+	self.Spectating = true
 	net.Start("spectating_status")
 	net.WriteInt(self.SpectateMode or -1, 8)
 	net.WriteEntity(self.Spectatee or Entity(-1))
@@ -22,9 +22,9 @@ end
 
 function PlayerMeta:UnCSpectate(mode, spectatee) 
 	self:UnSpectate()
-	self.SpectateMode=nil
-	self.Spectatee=nil
-	self.Spectating=false
+	self.SpectateMode = nil
+	self.Spectatee = nil
+	self.Spectating = false
 	net.Start("spectating_status")
 	net.WriteInt(-1, 8)
 	net.WriteEntity(Entity(-1))
@@ -44,28 +44,28 @@ function PlayerMeta:GetCSpectateMode()
 end
 
 function GM:SpectateNext(ply, direction)
-	direction=direction or 1
+	direction = direction or 1
 
-	local players={}
-	local index=1
+	local players = {}
+	local index = 1
 	for k, v in pairs(team.GetPlayers(2)) do
 		if v:Alive() then
 			table.insert(players, v)
 			if v == ply:GetCSpectatee() then
-				index=#players
+				index = #players
 			end
 		end
 	end
 	if #players > 0 then
-		index=index+direction
+		index = index + direction
 		if index > #players then
-			index=1
+			index = 1
 		end
 		if index < 1 then
-			index=#players
+			index = #players
 		end
 
-		local ent=players[index]
+		local ent = players[index]
 		if IsValid(ent) then
 			ply:CSpectate(OBS_MODE_IN_EYE, ent)
 		else
@@ -88,14 +88,14 @@ function GM:ChooseSpectatee(ply)
 	--  || !IsValid(ply:GetCSpectatee()) || (ply:GetCSpectatee():IsPlayer() && !ply:GetCSpectatee():Alive()) then
 
 	-- 	// recalculate spectating
-	-- 	local players=team.GetPlayers(2)
+	-- 	local players = team.GetPlayers(2)
 	-- 	for k,v in pairs(players) do
 	-- 		if !(v:Alive()) then
-	-- 			players[k]=nil
+	-- 			players[k] = nil
 	-- 		end
 	-- 	end
 
-	-- 	local ent=table.Random(players)
+	-- 	local ent = table.Random(players)
 	-- 	if IsValid(ent) then
 	-- 		ply:CSpectate(OBS_MODE_IN_EYE, ent)
 	-- 	elseif IsValid(ply:IsCSpectating()) then
@@ -111,9 +111,9 @@ function GM:ChooseSpectatee(ply)
 
 		local direction 
 		if ply:KeyPressed(IN_ATTACK) then
-			direction=1
+			direction = 1
 		elseif ply:KeyPressed(IN_ATTACK2) then
-			direction=-1
+			direction = -1
 		end
 
 		if direction then

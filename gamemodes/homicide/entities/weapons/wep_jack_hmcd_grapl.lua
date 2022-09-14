@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
-	SWEP.ViewModelFOV=65
-	SWEP.Slot=2
-	SWEP.SlotPos=1
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
+	SWEP.ViewModelFOV = 65
+	SWEP.Slot = 2
+	SWEP.SlotPos = 1
 	killicon.AddFont("wep_jack_hmcd_grapl", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -20,10 +20,10 @@ elseif(CLIENT)then
 		--
 	end
 end
-SWEP.PrintName	= "Grappling Hook"
+SWEP.PrintName	= translate.weaponGrapl
 -- This was imported from BFS2114
 --SWEP.Author		= "Jackarunda :3"
-SWEP.Instructions	= "This is a heavy steel grappling hook with an attached rope. Use it to reach high/far places or safely descend from high places. \n\nLMB to swing/throw\nLMB to pull rope taut\nLMB to pull rope in\nRMB to let rope out\nR to release rope"
+SWEP.Instructions	= translate.weaponGraplDesc
 SWEP.Base="weapon_base"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_grapl");SWEP.BounceWeaponIcon=false end
 SWEP.ViewModel="models/weapons/c_models/c_grappling_hook/c_grappling_hook.mdl"
@@ -55,7 +55,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= true
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 
 SWEP.JustThrew=false
@@ -87,6 +87,8 @@ function SWEP:Initialize()
 	self:SetCurrentState("Hidden")
 	self:SetHidden(100)
 	self:SetShouldHideWorldModel(false)
+	self.PrintName	= translate.weaponGrapl
+	self.Instructions	= translate.weaponGraplDesc
 end
 function SWEP:OnDrop()
 	if(self:GetCurrentState()!="Nothing")then

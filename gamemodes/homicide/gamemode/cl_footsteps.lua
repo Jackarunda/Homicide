@@ -1,30 +1,30 @@
-local FootSteps={}
+local FootSteps = {}
 if FootStepsG then
-	FootSteps=FootStepsG
+	FootSteps = FootStepsG
 end
-FootStepsG=FootSteps
+FootStepsG = FootSteps
 
 function GM:FootStepsInit()
 	
 end
 
-local footMat=Material( "thieves/footprint" )
--- local CircleMat=Material( "Decals/burn02a" )
-local maxDistance=500 ^ 2
+local footMat = Material( "thieves/footprint" )
+-- local CircleMat = Material( "Decals/burn02a" )
+local maxDistance = 500 ^ 2
 local function renderfoot(self)
 	cam.Start3D(EyePos(), EyeAngles())
 	render.SetMaterial( footMat )
-	local pos=EyePos()
-	local lifeTime=20
+	local pos = EyePos()
+	local lifeTime = 20
 	for k, footstep in pairs(FootSteps) do
-		if footstep.curtime+lifeTime > CurTime() then
-			if (footstep.pos-EyePos()):LengthSqr() < maxDistance then
+		if footstep.curtime + lifeTime > CurTime() then
+			if (footstep.pos - EyePos()):LengthSqr() < maxDistance then
 				local FSCol,Ambient=footstep.col,render.GetLightColor(footstep.pos)
 				FSCol=Color(FSCol.r*Ambient.x,FSCol.g*Ambient.y,FSCol.b*Ambient.z,200)
-				render.DrawQuadEasy( footstep.pos+footstep.normal*0.01, footstep.normal, 10, 20, FSCol, footstep.angle ) 
+				render.DrawQuadEasy( footstep.pos + footstep.normal * 0.01, footstep.normal, 10, 20, FSCol, footstep.angle ) 
 			end
 		else
-			FootSteps[k]=nil
+			FootSteps[k] = nil
 		end
 	end
 	cam.End3D()
@@ -33,7 +33,7 @@ end
 function GM:DrawFootprints()
 
 
-	local errored, retval=pcall(renderfoot, self)
+	local errored, retval = pcall(renderfoot, self)
 
 	if ( !errored ) then
 		DebugInfo(4, tostring(retval))
@@ -44,33 +44,33 @@ end
 
 function GM:AddFootstep(ply, pos, ang)
 	if(ply==LocalPlayer())then return end -- don't confuse the murderer
-	ang.p=0
-	ang.r=0
-	local fpos=pos
+	ang.p = 0
+	ang.r = 0
+	local fpos = pos
 	if ply.LastFoot then
-		fpos=fpos+ang:Right()*5
+		fpos = fpos + ang:Right() * 5
 	else
-		fpos=fpos+ang:Right()*-5
+		fpos = fpos + ang:Right() * -5
 	end
-	ply.LastFoot=!ply.LastFoot
+	ply.LastFoot = !ply.LastFoot
 
-	local trace={}
-	trace.start=fpos
-	trace.endpos=trace.start+Vector(0,0,-10)
-	trace.filter=ply
-	local tr=util.TraceLine(trace)
+	local trace = {}
+	trace.start = fpos
+	trace.endpos = trace.start + Vector(0,0,-10)
+	trace.filter = ply
+	local tr = util.TraceLine(trace)
 
 	if tr.Hit then
 
-		local tbl={}
-		tbl.pos=tr.HitPos
-		tbl.plypos=fpos
-		tbl.foot=foot
-		tbl.curtime=CurTime()
-		tbl.angle=ang.y
-		tbl.normal=tr.HitNormal
-		local col=ply:GetPlayerColor()
-		tbl.col=Color(col.x*255, col.y*255, col.z*255)
+		local tbl = {}
+		tbl.pos = tr.HitPos
+		tbl.plypos = fpos
+		tbl.foot = foot
+		tbl.curtime = CurTime()
+		tbl.angle = ang.y
+		tbl.normal = tr.HitNormal
+		local col = ply:GetPlayerColor()
+		tbl.col = Color(col.x * 255, col.y * 255, col.z * 255)
 		table.insert(FootSteps, tbl)
 	end
 end
@@ -94,9 +94,9 @@ function GM:ClearFootsteps()
 end
 
 net.Receive("add_footstep", function ()
-	local ply=net.ReadEntity()
-	local pos=net.ReadVector()
-	local ang=net.ReadAngle()
+	local ply = net.ReadEntity()
+	local pos = net.ReadVector()
+	local ang = net.ReadAngle()
 
 	if !IsValid(ply) then return end
 

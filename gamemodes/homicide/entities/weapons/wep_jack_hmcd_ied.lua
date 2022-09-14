@@ -2,13 +2,13 @@ if(SERVER)then
 	AddCSLuaFile()
 	util.AddNetworkString("hmcd_splodetype")
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=65
+	SWEP.ViewModelFOV = 65
 
-	SWEP.Slot=4
-	SWEP.SlotPos=1
+	SWEP.Slot = 4
+	SWEP.SlotPos = 1
 
 	killicon.AddFont("wep_jack_hmcd_ied", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -21,10 +21,10 @@ elseif(CLIENT)then
 	end
 	
 	local function drawTextShadow(t,f,x,y,c,px,py)
-		color_black.a=c.a
-		draw.SimpleText(t,f,x+1,y+1,color_black,px,py)
+		color_black.a = c.a
+		draw.SimpleText(t,f,x + 1,y + 1,color_black,px,py)
 		draw.SimpleText(t,f,x,y,c,px,py)
-		color_black.a=255
+		color_black.a = 255
 	end
 	
 	net.Receive("hmcd_splodetype",function()
@@ -37,12 +37,12 @@ elseif(CLIENT)then
 			local Ent,TrPos,TrNorm=HMCD_WhomILookinAt(self.Owner,.2,55)
 			if((IsValid(Ent))and((Ent:GetClass()=="prop_physics")or(Ent:GetClass()=="prop_physics_multiplayer")or(Ent:GetClass()=="prop_ragdoll")))then
 				local W,H=ScrW(),ScrH()
-				drawTextShadow("[LMB] rig IED", "MersRadialSmall",W/2,H/2,color_white,TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
+				drawTextShadow(translate.weaponIEDRig, "MersRadialSmall",W/2,H/2,color_white,TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
 				if(Ent.SplodeType)then
 					if(Ent.SplodeType==2)then
-						drawTextShadow("will produce lethal fragments", "MersRadialSmall",W/2,H/2+25,Color(0,255,255,150),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
+						drawTextShadow(translate.weaponIEDFragments, "MersRadialSmall",W/2,H/2+25,Color(0,255,255,150),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
 					elseif(Ent.SplodeType==3)then
-						drawTextShadow("will burst into flames", "MersRadialSmall",W/2,H/2+25,Color(0,255,255,150),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
+						drawTextShadow(translate.weaponIEDFire, "MersRadialSmall",W/2,H/2+25,Color(0,255,255,150),TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
 					end
 				end
 			end
@@ -52,11 +52,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/props_junk/cardboard_jox004a.mdl"
-SWEP.WorldModel="models/props_junk/cardboard_jox004a.mdl"
+SWEP.ViewModel = "models/props_junk/cardboard_jox004a.mdl"
+SWEP.WorldModel = "models/props_junk/cardboard_jox004a.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_ied");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Ammonal Explosive Kit"
-SWEP.Instructions	= "This is a tiny box of ammonal, a blasting cap, a battery-powered detonator and RF remote. Use it to create a murderous IED trap.\n\nPress LMB to discreetly hide an explosive charge in/on an object.\nRMB to create a fragile, obvious standalone bomb.\nOnce rigged, press LBM to detonate.\nExplosive will either fragment or blow down doors, depending on choice of prop."
+SWEP.PrintName = translate.weaponIED
+SWEP.Instructions	= translate.weaponIEDDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -88,13 +88,15 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 SWEP.HomicideSWEP=true
 SWEP.CarryWeight=2000
 
 function SWEP:Initialize()
 	self:SetRigged(false)
 	self:SetHoldType("normal")
+	self.PrintName = translate.weaponIED
+	self.Instructions	= translate.weaponIEDDesc
 end
 
 function SWEP:SetupDataTables()

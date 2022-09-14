@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type="anim"
-ENT.Base="ent_jack_hmcd_loot_base"
+ENT.Type = "anim"
+ENT.Base = "ent_jack_hmcd_loot_base"
 ENT.PrintName		= "Light"
 ENT.ImpactSound="physics/metal/weapon_impact_soft3.wav"
 if(SERVER)then
@@ -13,7 +13,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys=self:GetPhysicsObject()
+		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:SetMass(15)
 			phys:Wake()
@@ -27,7 +27,7 @@ if(SERVER)then
 	end
 	function ENT:PickUp(ply)
 		if(not(ply.HasFlashlight)or(ply.Murderer))then -- the murderer can destroy lights
-			if((ply.Murderer)and(ply.HasFlashlight))then ply:PrintMessage(HUD_PRINTTALK,"You hide the additional flashlight.") end
+			if((ply.Murderer)and(ply.HasFlashlight))then ply:PrintMessage(HUD_PRINTTALK,translate.additionalFlashlight) end
 			ply.HasFlashlight=true -- he can also pretend that he can't pick one up
 			self:EmitSound("snd_jack_hmcd_flashlight.wav",65,100) -- all for the sake of plausible deniability
 			self:Remove() -- so people can't use anything to prove innocence

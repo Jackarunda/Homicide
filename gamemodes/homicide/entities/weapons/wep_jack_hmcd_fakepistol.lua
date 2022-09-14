@@ -5,9 +5,9 @@ else
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_fakepistol")
 	SWEP.BounceWeaponIcon=false
 end
-SWEP.Base="weapon_base"
-SWEP.PrintName		= "Fake Pistol"
-SWEP.Instructions	= "This is an empty, black-spraypainted airsoft gun. Use it to trick innocents and lure them to their doom, either by pretending to be the gunman or pressing LMB to drop as bait."
+SWEP.Base = "weapon_base"
+SWEP.PrintName		= translate.weaponFakePistol
+SWEP.Instructions	= translate.weaponFakePistolDesc
 SWEP.Slot			= 5
 SWEP.SlotPos		= 3
 SWEP.DrawAmmo		= false
@@ -42,9 +42,9 @@ SWEP.Primary.Force				= 0
 SWEP.Primary.TakeAmmoPerBullet	= false
 SWEP.Primary.Automatic			= false
 SWEP.Primary.Ammo				= "none"
-SWEP.Primary.ReloadTime=0
+SWEP.Primary.ReloadTime = 0
 SWEP.ReloadFinishedSound		= Sound("Weapon_Crossbow.BoltElectrify")
-SWEP.ReloadSound=Sound("Weapon_357.Reload")
+SWEP.ReloadSound = Sound("Weapon_357.Reload")
 
 SWEP.Secondary.Sound				= ""
 SWEP.Secondary.Damage				= 0
@@ -81,6 +81,8 @@ function SWEP:Initialize()
 	self:SetSprinting(0)
 	self:SetReady(true)
 	self:SetColor(Color(50,50,50,255))
+	self.PrintName		= translate.weaponFakePistol
+	self.Instructions	= translate.weaponFakePistolDesc
 end
 
 function SWEP:SetupDataTables()
@@ -90,7 +92,7 @@ function SWEP:SetupDataTables()
 end
 
 function SWEP:BulletCallback(att, tr, dmg)
-	return {effects=true, damage=true}
+	return {effects = true, damage = true}
 end
 
 function SWEP:PrimaryAttack()

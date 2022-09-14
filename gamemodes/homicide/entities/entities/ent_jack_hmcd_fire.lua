@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type="anim"
-ENT.Base="base_anim"
+ENT.Type = "anim"
+ENT.Base = "base_anim"
 ENT.PrintName		= "Fire"
 if(SERVER)then
 	function ENT:Initialize()
@@ -11,7 +11,7 @@ if(SERVER)then
 		self.Entity:SetCollisionBounds( Vector( -20, -20, -10 ), Vector( 20, 20, 10 ) )
 		self.Entity:PhysicsInitBox( Vector( -20, -20, -10 ), Vector( 20, 20, 10 ) )
 		
-		local phys=self.Entity:GetPhysicsObject()
+		local phys = self.Entity:GetPhysicsObject()
 		if (phys:IsValid()) then
 			phys:EnableCollisions( false )		
 		end

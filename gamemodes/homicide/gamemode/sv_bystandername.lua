@@ -1,4 +1,4 @@
-GM.BystanderNameParts={
+GM.BystanderNameParts = {
 	male={
 		"James",
 		"John",
@@ -605,8 +605,8 @@ GM.BystanderNameParts={
 	}
 }
 
-local PlayerMeta=FindMetaTable("Player")
-local EntityMeta=FindMetaTable("Entity")
+local PlayerMeta = FindMetaTable("Player")
+local EntityMeta = FindMetaTable("Entity")
 
 // adds a name to the bystander parts generation table
 function GM:AddBystanderNamePart(name,gender)
@@ -628,12 +628,12 @@ function GM:GenerateName(gender,words)
 		return "error"
 	end
 	local name
-	for i=1, words do
-		local word=self.BystanderNameParts[gender][math.random(#self.BystanderNameParts[gender])]
+	for i = 1, words do
+		local word = self.BystanderNameParts[gender][math.random(#self.BystanderNameParts[gender])]
 		if !name then
-			name=word
+			name = word
 		else
-			name=name .. " " .. word
+			name = name .. " " .. word
 		end
 	end
 	return name
@@ -641,21 +641,27 @@ end
 
 local function SetCustomIdentity(ply,name,args)
 	local Name,Maudel,R,G,B,ProperName,Upper,Core,Lower,Clothes,Accessory=args[1],args[2],tonumber(args[3]),tonumber(args[4]),tonumber(args[5]),"",tonumber(args[6]),tonumber(args[7]),tonumber(args[8]),args[9],args[10]
+	if (!Name) then
+		Name = "Bystander"
+	end
+	if (!Accessory) then
+		Accessory = "none"
+	end
 	Name,Accessory=string.Replace(Name,"_"," "),string.Replace(Accessory,"_"," ")
-	if not((Name)and(Maudel)and(R)and(B)and(G)and(Upper)and(Core)and(Lower)and(Clothes)and(Accessory))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: wrong identity file format (need ten lines: name, model, red, green, blue, upper body, core, lower body, clothing, accessory)") return end
+	if not((Name)and(Maudel)and(R)and(B)and(G)and(Upper)and(Core)and(Lower)and(Clothes)and(Accessory))then ply:PrintMessage(HUD_PRINTTALK,translate.identWrongFormat) return end
 	ProperName=string.gsub(Name,"[^%a%d ]","",1e10) -- alphanumeric characters and spaces only
 	ProperName=string.Trim(ProperName) -- no leading or trailing whitespace
-	if not(string.len(ProperName)>0)then ply:PrintMessage(HUD_PRINTTALK,"Homicide: couldn't parse custom name (example: My Custom Name)") return end
-	if((ProperName=="Traitor")or(ProperName=="Murderer"))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: 'traitor' and 'murderer' are reserved names.") return end
-	if not(table.HasValue(HMCD_ValidModels,Maudel))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid requested model (example: male01)") return end
-	if not(((R>=0)and(R<=1))and((G>=0)and(G<=1))and((B>=0)and(B<=1)))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid color values (sample: 1 .5 .2)") return end
+	if not(string.len(ProperName)>0)then ply:PrintMessage(HUD_PRINTTALK,translate.identCustName) return end
+	if((ProperName==translate.traitor)or(ProperName==translate.murderer))then ply:PrintMessage(HUD_PRINTTALK,translate.identTraitorMurderer) return end
+	if not(table.HasValue(HMCD_ValidModels,Maudel))then ply:PrintMessage(HUD_PRINTTALK,translate.identModel) return end
+	if not(((R>=0)and(R<=1))and((G>=0)and(G<=1))and((B>=0)and(B<=1)))then ply:PrintMessage(HUD_PRINTTALK,translate.identColor) return end
 	--if((Stature<95)or(Stature>105))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid stature parameter! Must be between 95 and 105") return end
-	if((Upper<80)or(Upper>130))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid upper-body parameter! Must be between 80 and 130") return end
-	if((Core<75)or(Core>120))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid core-body parameter! Must be between 75 and 120") return end
-	if((Lower<80)or(Lower>130))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid lower-body parameter! Must be between 80 and 130") return end
-	if not(table.HasValue(HMCD_ValidClothes,Clothes))then ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid clothing type! Must be either normal, casual, striped, plaid, formal, young or cold!") return end
+	if((Upper<80)or(Upper>130))then ply:PrintMessage(HUD_PRINTTALK,translate.identUpper) return end
+	if((Core<75)or(Core>120))then ply:PrintMessage(HUD_PRINTTALK,translate.identCore) return end
+	if((Lower<80)or(Lower>130))then ply:PrintMessage(HUD_PRINTTALK,translate.identLower) return end
+	if not(table.HasValue(HMCD_ValidClothes,Clothes))then ply:PrintMessage(HUD_PRINTTALK,translate.identClothes) return end
 	if not(HMCD_Accessories[Accessory])then
-		ply:PrintMessage(HUD_PRINTTALK,"Homicide: invalid accessory! Must be one of the following:")
+		ply:PrintMessage(HUD_PRINTTALK,translate.identAccessory)
 		local Str=""
 		for key,item in pairs(HMCD_Accessories)do Str=Str..key..", " end
 		ply:PrintMessage(HUD_PRINTTALK,Str)
@@ -670,7 +676,7 @@ local function SetCustomIdentity(ply,name,args)
 	ply.CustomClothes=Clothes
 	ply.CustomAccessory=Accessory
 	--ply.CustomStature=Stature
-	ply:PrintMessage(HUD_PRINTTALK,"Custom identity set: "..ProperName.." "..Maudel.." color "..tostring(R).." "..tostring(G).." "..tostring(B).." upperbody "..tostring(Upper).." core "..tostring(Core).." lowerbody "..tostring(Lower).." wearing "..Clothes.." clothes+"..Accessory)
+	ply:PrintMessage(HUD_PRINTTALK,translate.identSuccess1..ProperName.." "..Maudel..translate.identSuccess2..tostring(R).." "..tostring(G).." "..tostring(B)..translate.identSuccess3..tostring(Upper)..translate.identSuccess4..tostring(Core)..translate.identSuccess5..tostring(Lower)..translate.identSuccess6..Clothes..translate.identSuccess7..Accessory)
 end
 concommand.Add("homicide_identity",SetCustomIdentity)
 
@@ -681,22 +687,22 @@ end
 concommand.Add("homicide_appearance_menu",OpenAppearanceMenu)
 
 function EntityMeta:GenerateBystanderName()
-	local words=1
-	local name=GAMEMODE:GenerateName(self.ModelSex,words)
+	local words = 1
+	local name = GAMEMODE:GenerateName(self.ModelSex,words)
 	if(self.CustomName)then name=self.CustomName end
 	self:SetNWString("bystanderName", name)
-	self.BystanderName=name
+	self.BystanderName = name
 end
 
 function EntityMeta:SetBystanderName(name)
 	self:SetNWString("bystanderName", name)
-	self.BystanderName=name
+	self.BystanderName = name
 end
 
 function EntityMeta:GetBystanderName()
-	local name=self:GetNWString("bystanderName")
+	local name = self:GetNWString("bystanderName")
 	if !name || name == "" then
-		return "Bystander"
+		return translate.bystander
 	end
 	return name
 end
@@ -705,10 +711,10 @@ concommand.Add("mu_print_players", function (admin, com, args)
 	if !admin:IsAdmin() then return end
 
 	for k, ply in pairs(player.GetAll()) do
-		local c=ChatText()
+		local c = ChatText()
 		c:Add(ply:Nick())
-		local col=ply:GetPlayerColor()
-		c:Add(" " .. ply:GetBystanderName(), Color(col.x*255, col.y*255, col.z*255))
+		local col = ply:GetPlayerColor()
+		c:Add(" " .. ply:GetBystanderName(), Color(col.x * 255, col.y * 255, col.z * 255))
 		c:Add(" " .. ply:SteamID())
 		c:Add(" " .. team.GetName(ply:Team()), team.GetColor(ply:Team()))
 		c:Send(admin)

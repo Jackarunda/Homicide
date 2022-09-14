@@ -1,32 +1,32 @@
-local PANEL={}
-local PlayerVoicePanels={}
+local PANEL = {}
+local PlayerVoicePanels = {}
 
 function PANEL:Init()
 
-	self.LabelName=vgui.Create( "DLabel", self )
+	self.LabelName = vgui.Create( "DLabel", self )
 	self.LabelName:SetFont( "GModNotify" )
 	self.LabelName:Dock( FILL )
 	self.LabelName:DockMargin( 8, 0, 0, 0 )
 	self.LabelName:SetTextColor( Color( 255, 255, 255, 255 ) )
 
-	self.Avatar=vgui.Create( "AvatarImage", self )
+	self.Avatar = vgui.Create( "AvatarImage", self )
 	self.Avatar:Dock( LEFT );
 	self.Avatar:SetSize( 32, 32 )
 
-	self.ColorBlock=vgui.Create("DPanel", self)
+	self.ColorBlock = vgui.Create("DPanel", self)
 	self.ColorBlock:Dock(LEFT)
 	self.ColorBlock:SetSize(32,32)
 	function self.ColorBlock:Paint(w, h)
 		if IsValid(self.Player) && self.Player:IsPlayer() then
-			local col=self.Player:GetPlayerColor()
-			surface.SetDrawColor(Color(col.x*255, col.y*255, col.z*255))
+			local col = self.Player:GetPlayerColor()
+			surface.SetDrawColor(Color(col.x * 255, col.y * 255, col.z * 255))
 			surface.DrawRect(0, 0, w, h)
 		end
 	end
 
-	self.Color=color_transparent
+	self.Color = color_transparent
 
-	self:SetSize( 250, 32+8 )
+	self:SetSize( 250, 32 + 8 )
 	self:DockPadding( 4, 4, 4, 4 )
 	self:DockMargin( 2, 2, 2, 2 )
 	self:Dock( BOTTOM )
@@ -35,12 +35,12 @@ end
 
 function PANEL:Setup( ply )
 
-	self.ply=ply
+	self.ply = ply
 
 	self:CheckBystanderState()	
 
 	self.Avatar:SetPlayer( ply )
-	self.ColorBlock.Player=ply
+	self.ColorBlock.Player = ply
 	
 	self:InvalidateLayout()
 
@@ -48,16 +48,16 @@ end
 
 function PANEL:CheckBystanderState(state)
 	if IsValid(self.ply) then
-		local newBystanderState=false
-		local client=LocalPlayer()
+		local newBystanderState = false
+		local client = LocalPlayer()
 		if !IsValid(client) then
-			newBystanderState=true
+			newBystanderState = true
 		else
 			if client:Team() == 2 && client:Alive() then
-				newBystanderState=true
+				newBystanderState = true
 			else
 				if self.ply:Team() == 2 && self.ply:Alive() then
-					newBystanderState=true
+					newBystanderState = true
 				end
 			end
 		end
@@ -66,23 +66,23 @@ function PANEL:CheckBystanderState(state)
 			self:SetBystanderState(newBystanderState)
 		end
 		if newBystanderState then
-			local col=self.ply:GetPlayerColor()
+			local col = self.ply:GetPlayerColor()
 			if col != self.PrevColor then
-				local color=Color(col.x*255, col.y*255, col.z*255)
-				self.Color=color
+				local color = Color(col.x * 255, col.y * 255, col.z * 255)
+				self.Color = color
 				self.LabelName:SetTextColor(color)
 			end
-			self.PrevColor=col
+			self.PrevColor = col
 		end
 	end
 end
 
 function PANEL:SetBystanderState(state)
-	local col=self.ply:GetPlayerColor()
-	local color=Color(col.x*255, col.y*255, col.z*255)
-	self.Color=color
+	local col = self.ply:GetPlayerColor()
+	local color = Color(col.x * 255, col.y * 255, col.z * 255)
+	self.Color = color
 
-	self.Bystander=state
+	self.Bystander = state
 	if state then
 		self.LabelName:SetText(self.ply:GetBystanderName())
 		self.LabelName:SetTextColor(color)
@@ -99,7 +99,7 @@ end
 function PANEL:Paint( w, h )
 
 	if ( !IsValid( self.ply ) ) then return end
-	draw.RoundedBox( 4, 0, 0, w, h, Color( 0, self.ply:VoiceVolume()*255, 0, 240 ) )
+	draw.RoundedBox( 4, 0, 0, w, h, Color( 0, self.ply:VoiceVolume() * 255, 0, 240 ) )
 
 end
 
@@ -118,13 +118,13 @@ function PANEL:FadeOut( anim, delta, data )
 	
 		if ( IsValid( PlayerVoicePanels[ self.ply ] ) ) then
 			PlayerVoicePanels[ self.ply ]:Remove()
-			PlayerVoicePanels[ self.ply ]=nil
+			PlayerVoicePanels[ self.ply ] = nil
 			return
 		end
 		
 	return end
 			
-	self:SetAlpha( 255-(255*delta) )
+	self:SetAlpha( 255 - (255 * delta) )
 
 end
 
@@ -144,7 +144,7 @@ function GM:PlayerStartVoice( ply )
 
 		if ( PlayerVoicePanels[ ply ].fadeAnim ) then
 			PlayerVoicePanels[ ply ].fadeAnim:Stop()
-			PlayerVoicePanels[ ply ].fadeAnim=nil
+			PlayerVoicePanels[ ply ].fadeAnim = nil
 		end
 
 		PlayerVoicePanels[ ply ]:SetAlpha( 255 )
@@ -155,10 +155,10 @@ function GM:PlayerStartVoice( ply )
 
 	if ( !IsValid( ply ) ) then return end
 
-	local pnl=g_VoicePanelList:Add( "VoiceNotifyMurder" )
+	local pnl = g_VoicePanelList:Add( "VoiceNotifyMurder" )
 	pnl:Setup( ply )
 	
-	PlayerVoicePanels[ ply ]=pnl
+	PlayerVoicePanels[ ply ] = pnl
 	
 end
 
@@ -184,7 +184,7 @@ function GM:PlayerEndVoice( ply )
 
 		if ( PlayerVoicePanels[ ply ].fadeAnim ) then return end
 
-		PlayerVoicePanels[ ply ].fadeAnim=Derma_Anim( "FadeOut", PlayerVoicePanels[ ply ], PlayerVoicePanels[ ply ].FadeOut )
+		PlayerVoicePanels[ ply ].fadeAnim = Derma_Anim( "FadeOut", PlayerVoicePanels[ ply ], PlayerVoicePanels[ ply ].FadeOut )
 		PlayerVoicePanels[ ply ].fadeAnim:Start( 2 )
 
 	end
@@ -194,11 +194,11 @@ end
 
 local function CreateVoiceVGUI()
 
-	g_VoicePanelList=vgui.Create( "DPanel" )
+	g_VoicePanelList = vgui.Create( "DPanel" )
 
 	g_VoicePanelList:ParentToHUD()
-	g_VoicePanelList:SetPos( ScrW()-300, 100 )
-	g_VoicePanelList:SetSize( 250, ScrH()-200 )
+	g_VoicePanelList:SetPos( ScrW() - 300, 100 )
+	g_VoicePanelList:SetSize( 250, ScrH() - 200 )
 	g_VoicePanelList:SetDrawBackground( false )
 
 end

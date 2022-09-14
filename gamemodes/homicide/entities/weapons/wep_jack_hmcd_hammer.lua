@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=50
+	SWEP.ViewModelFOV = 50
 
-	SWEP.Slot=1
-	SWEP.SlotPos=5
+	SWEP.Slot = 1
+	SWEP.SlotPos = 5
 
 	killicon.AddFont("wep_jack_hmcd_hammer", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -36,11 +36,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/weapons/v_jjife_t.mdl"
-SWEP.WorldModel="models/weapons/w_jjife_t.mdl"
+SWEP.ViewModel = "models/weapons/v_jjife_t.mdl"
+SWEP.WorldModel = "models/weapons/w_jjife_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_hammer");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Claw Hammer"
-SWEP.Instructions	= "This is a typical clawed carpentry hammer. Use it to put nails into things and build structures. You can also attack with it.\n\nLBM to attack.\nRMB to nail.\nYou can only nail a thin soft-material item that is closely overlapping another surface.\nNails are stronger than duct tape."
+SWEP.PrintName = translate.weaponHammer
+SWEP.Instructions	= translate.weaponHammerDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -74,7 +74,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 
 SWEP.ENT="ent_jack_hmcd_hammer"
 SWEP.DownAmt=0
@@ -90,6 +90,8 @@ end
 function SWEP:Initialize()
 	self:SetHoldType("melee")
 	self.DownAmt=20
+	self.PrintName = translate.weaponHammer
+	self.Instructions	= translate.weaponHammerDesc
 end
 
 function SWEP:SetupDataTables()
@@ -185,7 +187,7 @@ function SWEP:SecondaryAttack()
 							self:TakePrimaryAmmo(3)
 							sound.Play("snd_jack_hmcd_hammerhit.wav",Tr.HitPos,65,math.random(90,110))
 							self:SprayDecals()
-							self.Owner:PrintMessage(HUD_PRINTCENTER,"Door Sealed")
+							self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponDoorSealed)
 							umsg.Start("HMCD_AmmoShow",self.Owner)
 							umsg.End()
 							self.Owner:ViewPunch(Angle(3,0,0))
@@ -196,14 +198,14 @@ function SWEP:SecondaryAttack()
 								if(IsValid(self))then self:DoBFSAnimation("idle") end
 							end)
 						else
-							self.Owner:PrintMessage(HUD_PRINTCENTER,"Need at least 3 nails to seal door.")
+							self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponHammerNailsNeeded)
 						end
 					else
 						local Strength=HMCD_BindObjects(Tr.Entity,Tr.HitPos,NewEnt,NewTr.HitPos,1.5)
 						self:TakePrimaryAmmo(1)
 						sound.Play("snd_jack_hmcd_hammerhit.wav",Tr.HitPos,65,math.random(90,110))
 						util.Decal("hmcd_jackanail",Tr.HitPos+Tr.HitNormal,Tr.HitPos-Tr.HitNormal)
-						self.Owner:PrintMessage(HUD_PRINTCENTER,"Bond strength: "..tostring(Strength))
+						self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponBondStrength..tostring(Strength))
 						umsg.Start("HMCD_AmmoShow",self.Owner)
 						umsg.End()
 						self.Owner:ViewPunch(Angle(3,0,0))

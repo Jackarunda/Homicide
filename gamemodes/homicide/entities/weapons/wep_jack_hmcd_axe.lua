@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=40
+	SWEP.ViewModelFOV = 40
 
-	SWEP.Slot=1
-	SWEP.SlotPos=3
+	SWEP.Slot = 1
+	SWEP.SlotPos = 3
 
 	killicon.AddFont("wep_jack_hmcd_axe", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,11 +30,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/weapons/j_knife_t.mdl"
-SWEP.WorldModel="models/props/cs_militia/axe.mdl"
+SWEP.ViewModel = "models/weapons/j_knife_t.mdl"
+SWEP.WorldModel = "models/props/cs_militia/axe.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_axe");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Woodcutting Axe"
-SWEP.Instructions	= "This is a typical woodcutter's axe with a sharp steel head. Murder the innocent like the a true psycopath.\n\nLBM to swing.\nCan also bust down doors and destroy fortifications."
+SWEP.PrintName = translate.weaponAxe
+SWEP.Instructions	= translate.weaponAxeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 
 SWEP.ENT="ent_jack_hmcd_axe"
 SWEP.NoHolster=true
@@ -81,6 +81,8 @@ function SWEP:Initialize()
 	self:SetHoldType("melee2")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
+	self.PrintName = translate.weaponAxe
+	self.Instructions	= translate.weaponAxeDesc
 end
 
 function SWEP:SetupDataTables()
@@ -164,7 +166,7 @@ function SWEP:AttackFront()
 			sound.Play("snd_jack_hmcd_axehit.wav",HitPos-vector_up,65,Pi)
 			sound.Play("Canister.ImpactHard",HitPos,65,math.random(90,110))
 			util.Decal("Blood",HitPos+HitNorm,HitPos-HitNorm)
-			local edata=EffectData()
+			local edata = EffectData()
 			edata:SetStart(self.Owner:GetShootPos())
 			edata:SetOrigin(HitPos)
 			edata:SetNormal(HitNorm)

@@ -4,9 +4,9 @@ else
 	killicon.AddFont( "wep_jack_hmcd_rifle", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_suppressedrifle")
 end
-SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "Suppressed Mauser Kar98k"
-SWEP.Instructions	= "This is an old bolt-action hunting rifle with a scope, suppressor and a five-round internal magazine, firing 7.92x57mm.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts.\nCrouching helps stability.\nBullets can ricochet and penetrate."
+SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.PrintName		= translate.weaponsuppressedrifle
+SWEP.Instructions	= translate.weaponsuppressedrifleDesc
 SWEP.Primary.ClipSize			= 5
 SWEP.ViewModel		= "models/weapons/v_snip_jwp.mdl"
 SWEP.WorldModel		= "models/weapons/w_snip_jwp.mdl"

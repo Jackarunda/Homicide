@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo=false
-	SWEP.DrawCrosshair=false
+	SWEP.DrawAmmo = false
+	SWEP.DrawCrosshair = false
 
-	SWEP.ViewModelFOV=55
+	SWEP.ViewModelFOV = 55
 
-	SWEP.Slot=4
-	SWEP.SlotPos=5
+	SWEP.Slot = 4
+	SWEP.SlotPos = 5
 
 	killicon.AddFont("wep_jack_hmcd_ducttape", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -36,11 +36,11 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel="models/props_phx/wheels/drugster_front.mdl"
-SWEP.WorldModel="models/props_phx/wheels/drugster_front.mdl"
+SWEP.ViewModel = "models/props_phx/wheels/drugster_front.mdl"
+SWEP.WorldModel = "models/props_phx/wheels/drugster_front.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_ducttape");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Duct Tape"
-SWEP.Instructions	= "This is a roll of normal aluminum-colored waterproof polyethylene-coated vinyl-cloth adhesive tape. Use it to stick things together.\n\nLMB to stick.\nYou can only put tape on a seam or close gap between two objects."
+SWEP.PrintName = translate.weaponDuctTape
+SWEP.Instructions	= translate.weaponDuctTapeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -74,7 +74,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo        ="none"
+SWEP.Secondary.Ammo         = "none"
 
 SWEP.ENT="ent_jack_hmcd_ducttape"
 SWEP.DownAmt=0
@@ -86,6 +86,8 @@ SWEP.CarryWeight=400
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
+	self.PrintName = translate.weaponDuctTape
+	self.Instructions	= translate.weaponDuctTapeDesc
 end
 
 function SWEP:SetupDataTables()
@@ -132,7 +134,7 @@ function SWEP:PrimaryAttack()
 				self.Owner:SetAnimation(PLAYER_ATTACK1)
 				self.Owner:ViewPunch(Angle(3,0,0))
 				self:SprayDecals()
-				self.Owner:PrintMessage(HUD_PRINTCENTER,"Door Sealed")
+				self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponDoorSealed)
 				timer.Simple(.1,function() if(self.TapeAmount<=0)then self:Remove() end end)
 			else
 				local Strength=HMCD_BindObjects(TrOne.Entity,TrOne.HitPos,TrTwo.Entity,TrTwo.HitPos)
@@ -143,7 +145,7 @@ function SWEP:PrimaryAttack()
 				self.Owner:ViewPunch(Angle(3,0,0))
 				util.Decal("hmcd_jackatape",TrOne.HitPos+TrOne.HitNormal,TrOne.HitPos-TrOne.HitNormal)
 				util.Decal("hmcd_jackatape",TrTwo.HitPos+TrTwo.HitNormal,TrTwo.HitPos-TrTwo.HitNormal)
-				self.Owner:PrintMessage(HUD_PRINTCENTER,"Bond strength: "..tostring(Strength))
+				self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponDuctTapeBondStrength..tostring(Strength))
 				timer.Simple(.1,function() if(self.TapeAmount<=0)then self:Remove() end end)
 			end
 		end
@@ -194,7 +196,7 @@ function SWEP:Think()
 end
 
 function SWEP:Reload()
-	if(SERVER)then self.Owner:PrintMessage(HUD_PRINTCENTER,tostring(self.TapeAmount or 100).."% of roll remaining") end
+	if(SERVER)then self.Owner:PrintMessage(HUD_PRINTCENTER,tostring(self.TapeAmount or 100)..translate.weaponDuctTapeRemaining) end
 end
 
 function SWEP:OnDrop()

@@ -9,16 +9,16 @@ function SWEP:SCKInitialize()
 	// other initialize code goes here
 	if CLIENT then
 		// Create a new table for every weapon instance
-		self.VElements=table.FullCopy( self.VElements )
-		self.WElements=table.FullCopy( self.WElements )
-		self.ViewModelBoneMods=table.FullCopy( self.ViewModelBoneMods )
+		self.VElements = table.FullCopy( self.VElements )
+		self.WElements = table.FullCopy( self.WElements )
+		self.ViewModelBoneMods = table.FullCopy( self.ViewModelBoneMods )
 		
 		self:CreateModels(self.VElements) // create viewmodels
 		self:CreateModels(self.WElements) // create worldmodels
 		
 		// init view model bone build function
 		if((IsValid(self.Owner))and(self.Owner.GetViewModel))then
-			local vm=self.Owner:GetViewModel()
+			local vm = self.Owner:GetViewModel()
 			local Wep=self.Owner:GetActiveWeapon()
 			if((IsValid(vm))and not(self.Owner:IsNPC()))then
 				self:ResetBonePositions(vm)
@@ -40,7 +40,7 @@ function SWEP:SCKInitialize()
 end
 function SWEP:SCKHolster()
 	if CLIENT and((IsValid(self.Owner))and(self.Owner.GetViewModel))then
-		local vm=self.Owner:GetViewModel()
+		local vm = self.Owner:GetViewModel()
 		if((IsValid(vm))and not(self.Owner:IsNPC()))then
 			self:ResetBonePositions(vm)
 			--vm:SetColor(Color(255,255,255,255))
@@ -52,10 +52,10 @@ function SWEP:SCKOnRemove()
 	self:SCKHolster()
 end
 if CLIENT then
-	SWEP.vRenderOrder=nil
+	SWEP.vRenderOrder = nil
 	function SWEP:SCKViewModelDrawn()
 		if(self.Owner:IsNPC())then return end
-		local vm=self.Owner:GetViewModel()
+		local vm = self.Owner:GetViewModel()
 		if !IsValid(vm) then return end
 		
 		if (!self.VElements) then return end
@@ -64,7 +64,7 @@ if CLIENT then
 		if (!self.vRenderOrder) then
 			
 			// we build a render order because sprites need to be drawn after models
-			self.vRenderOrder={}
+			self.vRenderOrder = {}
 			for k, v in pairs( self.VElements ) do
 				if (v.type == "Model") then
 					table.insert(self.vRenderOrder, 1, k)
@@ -76,27 +76,27 @@ if CLIENT then
 		end
 		for k, name in ipairs( self.vRenderOrder ) do
 		
-			local v=self.VElements[name]
-			if (!v) then self.vRenderOrder=nil break end
+			local v = self.VElements[name]
+			if (!v) then self.vRenderOrder = nil break end
 			if (v.hide) then continue end
 			
-			local model=v.modelEnt
-			local sprite=v.spriteMaterial
+			local model = v.modelEnt
+			local sprite = v.spriteMaterial
 			
 			if (!v.bone) then continue end
 			
-			local pos, ang=self:GetBoneOrientation( self.VElements, v, vm )
+			local pos, ang = self:GetBoneOrientation( self.VElements, v, vm )
 			
 			if (!pos) then continue end
 			
 			if (v.type == "Model" and IsValid(model)) then
-				model:SetRenderOrigin(pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z )
+				model:SetRenderOrigin(pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z )
 				ang:RotateAroundAxis(ang:Up(), v.angle.y)
 				ang:RotateAroundAxis(ang:Right(), v.angle.p)
 				ang:RotateAroundAxis(ang:Forward(), v.angle.r)
 				model:SetRenderAngles(ang)
 				//model:SetModelScale(v.size)
-				local matrix=Matrix()
+				local matrix = Matrix()
 				matrix:Scale(v.size)
 				model:EnableMatrix( "RenderMultiply", matrix )
 				
@@ -136,13 +136,13 @@ if CLIENT then
 				
 			elseif (v.type == "Sprite" and sprite) then
 				
-				local drawpos=pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z
+				local drawpos = pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z
 				render.SetMaterial(sprite)
 				render.DrawSprite(drawpos, v.size.x, v.size.y, v.color)
 				
 			elseif (v.type == "Quad" and v.draw_func) then
 				
-				local drawpos=pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z
+				local drawpos = pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z
 				ang:RotateAroundAxis(ang:Up(), v.angle.y)
 				ang:RotateAroundAxis(ang:Right(), v.angle.p)
 				ang:RotateAroundAxis(ang:Forward(), v.angle.r)
@@ -155,7 +155,7 @@ if CLIENT then
 		end
 		
 	end
-	SWEP.wRenderOrder=nil
+	SWEP.wRenderOrder = nil
 	function SWEP:SCKDrawWorldModel()
 
 		if (self.ShowWorldModel == nil or self.ShowWorldModel) then
@@ -167,7 +167,7 @@ if CLIENT then
 		if((self.GetShouldHideWorldModel)and(self:GetShouldHideWorldModel()))then return end
 		
 		if (!self.wRenderOrder) then
-			self.wRenderOrder={}
+			self.wRenderOrder = {}
 			for k, v in pairs( self.WElements ) do
 				if (v.type == "Model") then
 					table.insert(self.wRenderOrder, 1, k)
@@ -178,39 +178,39 @@ if CLIENT then
 		end
 		
 		if (IsValid(self.Owner)) then
-			bone_ent=self.Owner
+			bone_ent = self.Owner
 		else
 			// when the weapon is dropped
-			bone_ent=self
+			bone_ent = self
 		end
 		
 		for k, name in pairs( self.wRenderOrder ) do
 		
-			local v=self.WElements[name]
-			if (!v) then self.wRenderOrder=nil break end
+			local v = self.WElements[name]
+			if (!v) then self.wRenderOrder = nil break end
 			if (v.hide) then continue end
 			
 			local pos, ang
 			
 			if (v.bone) then
-				pos, ang=self:GetBoneOrientation( self.WElements, v, bone_ent )
+				pos, ang = self:GetBoneOrientation( self.WElements, v, bone_ent )
 			else
-				pos, ang=self:GetBoneOrientation( self.WElements, v, bone_ent, "ValveBiped.Bip01_R_Hand" )
+				pos, ang = self:GetBoneOrientation( self.WElements, v, bone_ent, "ValveBiped.Bip01_R_Hand" )
 			end
 			
 			if (!pos) then continue end
 			
-			local model=v.modelEnt
-			local sprite=v.spriteMaterial
+			local model = v.modelEnt
+			local sprite = v.spriteMaterial
 			
 			if (v.type == "Model" and IsValid(model)) then
-				model:SetRenderOrigin(pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z )
+				model:SetRenderOrigin(pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z )
 				ang:RotateAroundAxis(ang:Up(), v.angle.y)
 				ang:RotateAroundAxis(ang:Right(), v.angle.p)
 				ang:RotateAroundAxis(ang:Forward(), v.angle.r)
 				model:SetRenderAngles(ang)
 				//model:SetModelScale(v.size)
-				local matrix=Matrix()
+				local matrix = Matrix()
 				matrix:Scale(v.size)
 				model:EnableMatrix( "RenderMultiply", matrix )
 				
@@ -250,13 +250,13 @@ if CLIENT then
 				
 			elseif (v.type == "Sprite" and sprite) then
 				
-				local drawpos=pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z
+				local drawpos = pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z
 				render.SetMaterial(sprite)
 				render.DrawSprite(drawpos, v.size.x, v.size.y, v.color)
 				
 			elseif (v.type == "Quad" and v.draw_func) then
 				
-				local drawpos=pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z
+				local drawpos = pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z
 				ang:RotateAroundAxis(ang:Up(), v.angle.y)
 				ang:RotateAroundAxis(ang:Right(), v.angle.p)
 				ang:RotateAroundAxis(ang:Forward(), v.angle.r)
@@ -278,27 +278,27 @@ if CLIENT then
 	function SWEP:GetBoneOrientation( basetab, tab, ent, bone_override )
 		local bone, pos, ang
 		if (tab.rel and tab.rel != "") then
-			local v=basetab[tab.rel]
+			local v = basetab[tab.rel]
 			if (!v) then return end
 			// Technically, if there exists an element with the same name as a bone
 			// you can get in an infinite loop. Let's just hope nobody's that stupid.
-			pos, ang=self:GetBoneOrientation( basetab, v, ent )
+			pos, ang = self:GetBoneOrientation( basetab, v, ent )
 			if (!pos) then return end
-			pos=pos+ang:Forward()*v.pos.x+ang:Right()*v.pos.y+ang:Up()*v.pos.z
+			pos = pos + ang:Forward() * v.pos.x + ang:Right() * v.pos.y + ang:Up() * v.pos.z
 			ang:RotateAroundAxis(ang:Up(), v.angle.y)
 			ang:RotateAroundAxis(ang:Right(), v.angle.p)
 			ang:RotateAroundAxis(ang:Forward(), v.angle.r)
 		else
-			bone=ent:LookupBone(bone_override or tab.bone)
+			bone = ent:LookupBone(bone_override or tab.bone)
 			if (!bone) then return end
-			pos, ang=Vector(0,0,0), Angle(0,0,0)
-			local m=ent:GetBoneMatrix(bone)
+			pos, ang = Vector(0,0,0), Angle(0,0,0)
+			local m = ent:GetBoneMatrix(bone)
 			if (m) then
-				pos, ang=m:GetTranslation(), m:GetAngles()
+				pos, ang = m:GetTranslation(), m:GetAngles()
 			end
 			if (IsValid(self.Owner) and self.Owner:IsPlayer() and 
 				ent == self.Owner:GetViewModel() and self.ViewModelFlip) then
-				ang.r=-ang.r // Fixes mirrored models
+				ang.r = -ang.r // Fixes mirrored models
 			end
 		end
 		return pos,ang
@@ -310,7 +310,7 @@ if CLIENT then
 			if (v.type == "Model" and v.model and v.model != "" and (!IsValid(v.modelEnt) or v.createdModel != v.model) and 
 					string.find(v.model, ".mdl") and file.Exists (v.model, "GAME") ) then
 				
-				v.modelEnt=ClientsideModel(v.model, RENDER_GROUP_VIEW_MODEL_OPAQUE)
+				v.modelEnt = ClientsideModel(v.model, RENDER_GROUP_VIEW_MODEL_OPAQUE)
 				
 				if (IsValid(v.modelEnt)) then
 					v.modelEnt:SetRenderOrigin(self:GetPos())
@@ -318,29 +318,29 @@ if CLIENT then
 					v.modelEnt:SetParent(self)
 					v.modelEnt:DrawShadow(true)
 					v.modelEnt:SetNoDraw(true)
-					v.createdModel=v.model
+					v.createdModel = v.model
 				else
-					v.modelEnt=nil
+					v.modelEnt = nil
 				end
 				
 			elseif (v.type == "Sprite" and v.sprite and v.sprite != "" and (!v.spriteMaterial or v.createdSprite != v.sprite) 
 				and file.Exists ("materials/"..v.sprite..".vmt", "GAME")) then
 				
-				local name=v.sprite.."-"
-				local params={ ["$basetexture"]=v.sprite }
+				local name = v.sprite.."-"
+				local params = { ["$basetexture"] = v.sprite }
 				// make sure we create a unique name based on the selected options
-				local tocheck={ "nocull", "additive", "vertexalpha", "vertexcolor", "ignorez" }
+				local tocheck = { "nocull", "additive", "vertexalpha", "vertexcolor", "ignorez" }
 				for i, j in pairs( tocheck ) do
 					if (v[j]) then
-						params["$"..j]=1
-						name=name.."1"
+						params["$"..j] = 1
+						name = name.."1"
 					else
-						name=name.."0"
+						name = name.."0"
 					end
 				end
 
-				v.createdSprite=v.sprite
-				v.spriteMaterial=CreateMaterial(name,"UnlitGeneric",params)
+				v.createdSprite = v.sprite
+				v.spriteMaterial = CreateMaterial(name,"UnlitGeneric",params)
 				
 			end
 		end
@@ -348,7 +348,7 @@ if CLIENT then
 	end
 	
 	local allbones
-	local hasGarryFixedBoneScalingYet=false
+	local hasGarryFixedBoneScalingYet = false
 
 	function SWEP:UpdateBonePositions(vm)
 		
@@ -358,44 +358,44 @@ if CLIENT then
 			
 			// !! WORKAROUND !! //
 			// We need to check all model names :/
-			local loopthrough=self.ViewModelBoneMods
+			local loopthrough = self.ViewModelBoneMods
 			if (!hasGarryFixedBoneScalingYet) then
-				allbones={}
+				allbones = {}
 				for i=0, vm:GetBoneCount() do
-					local bonename=vm:GetBoneName(i)
+					local bonename = vm:GetBoneName(i)
 					if (self.ViewModelBoneMods[bonename]) then 
-						allbones[bonename]=self.ViewModelBoneMods[bonename]
+						allbones[bonename] = self.ViewModelBoneMods[bonename]
 					else
-						allbones[bonename]={ 
-							scale=Vector(1,1,1),
-							pos=Vector(0,0,0),
-							angle=Angle(0,0,0)
+						allbones[bonename] = { 
+							scale = Vector(1,1,1),
+							pos = Vector(0,0,0),
+							angle = Angle(0,0,0)
 						}
 					end
 				end
 				
-				loopthrough=allbones
+				loopthrough = allbones
 			end
 			// !! ----------- !! //
 			
 			for k, v in pairs( loopthrough ) do
-				local bone=vm:LookupBone(k)
+				local bone = vm:LookupBone(k)
 				if (!bone) then continue end
 				
 				// !! WORKAROUND !! //
-				local s=Vector(v.scale.x,v.scale.y,v.scale.z)
-				local p=Vector(v.pos.x,v.pos.y,v.pos.z)
-				local ms=Vector(1,1,1)
+				local s = Vector(v.scale.x,v.scale.y,v.scale.z)
+				local p = Vector(v.pos.x,v.pos.y,v.pos.z)
+				local ms = Vector(1,1,1)
 				if (!hasGarryFixedBoneScalingYet) then
-					local cur=vm:GetBoneParent(bone)
+					local cur = vm:GetBoneParent(bone)
 					while(cur >= 0) do
-						local pscale=loopthrough[vm:GetBoneName(cur)].scale
-						ms=ms*pscale
-						cur=vm:GetBoneParent(cur)
+						local pscale = loopthrough[vm:GetBoneName(cur)].scale
+						ms = ms * pscale
+						cur = vm:GetBoneParent(cur)
 					end
 				end
 				
-				s=s*ms
+				s = s * ms
 				// !! ----------- !! //
 				
 				if vm:GetManipulateBoneScale(bone) != s then

@@ -4,9 +4,9 @@ else
 	killicon.AddFont( "wep_jack_hmcd_assaultrifle", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_assaultrifle")
 end
-SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "AR-15"
-SWEP.Instructions	= "An absurdly powerful weapon, this aluminum/polymer 5.56x45mm semi-automatic home-assembled 30-round-capacity rifle is the quintessence of an armed American citizenry in the early 21st century.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts.\nCrouching helps stability.\nBullets can ricochet and penetrate."
+SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.PrintName		= translate.weaponassaultrifle
+SWEP.Instructions	= translate.weaponassaultrifleDesc
 SWEP.Primary.ClipSize			= 30
 SWEP.ViewModel		= "models/weapons/v_rif_j4a1.mdl"
 SWEP.WorldModel		= "models/weapons/w_rif_m4a1.mdl"

@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type="anim"
-ENT.Base="base_anim"
+ENT.Type = "anim"
+ENT.Base = "base_anim"
 ENT.PrintName		= "Loot"
 ENT.Author			= ""
 ENT.Contact			= ""
@@ -17,7 +17,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys=self:GetPhysicsObject()
+		local phys = self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:SetMass(20)
 			phys:Wake()
@@ -28,7 +28,7 @@ if(SERVER)then
 		if((GAMEMODE.ZOMBIE)and(ply.Murderer))then return end
 		if(self.ContactPoisoned)then
 			if(ply.Murderer)then
-				ply:PrintMessage(HUD_PRINTTALK,"This is poisoned!")
+				ply:PrintMessage(HUD_PRINTTALK,translate.poisoned)
 				return
 			else
 				self.ContactPoisoned=false

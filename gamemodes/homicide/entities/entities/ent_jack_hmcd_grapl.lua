@@ -3,7 +3,7 @@ ENT.PrintName		= "Grappling Hook"
 -- This was imported from BFS2114
 ENT.Author			= "Jackarunda"
 ENT.Category			= ""
-ENT.Information        ="BLOOIE-SCHLANG"
+ENT.Information         = "BLOOIE-SCHLANG"
 ENT.Spawnable			= false
 ENT.AdminSpawnable		= false
 AddCSLuaFile()

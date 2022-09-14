@@ -23,12 +23,12 @@ SWEP.BobScale=3
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
-SWEP.Instructions	= "These are your zombified hands. They're no energy sword, but they still pack a wallop.\n\nLMB clobber.\nRMB to direct fellow zombies.\nRELOAD to recall fellow zombies."
+SWEP.Instructions	= translate.weaponZombHandsDesc
 
 SWEP.Spawnable			= false
 SWEP.AdminOnly		= true
 
-SWEP.HoldType="normal"
+SWEP.HoldType = "normal"
 
 SWEP.ViewModel	= Model("models/Weapons/v_zombiearms.mdl")
 SWEP.WorldModel	= "models/weapons/w_crowbar.mdl"
@@ -69,6 +69,8 @@ function SWEP:Initialize()
 		end)
 	end
 	--]]
+	self.PrintName			= translate and translate.hands or "Hands"
+	self.Instructions	= translate.weaponZombHandsDesc
 end
 
 function SWEP:Deploy()
@@ -178,7 +180,7 @@ function SWEP:AttackFront()
 			SelfForce=5
 			self:PlayHitSound()
 			util.Decal("Blood",HitPos+HitNorm,HitPos-HitNorm)
-			local edata=EffectData()
+			local edata = EffectData()
 			edata:SetStart(self.Owner:GetShootPos())
 			edata:SetOrigin(HitPos)
 			edata:SetNormal(HitNorm)

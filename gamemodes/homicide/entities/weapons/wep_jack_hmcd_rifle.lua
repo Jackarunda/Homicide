@@ -4,9 +4,9 @@ else
 	killicon.AddFont( "wep_jack_hmcd_rifle", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_rifle")
 end
-SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "Mauser Kar98k"
-SWEP.Instructions	= "This is an old bolt-action hunting rifle with a scope with a five-round internal magazine, firing 7.92x57mm.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts.\nCrouching helps stability.\nBullets can ricochet and penetrate."
+SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.PrintName		= translate.weaponrifle
+SWEP.Instructions	= translate.weaponrifleDesc
 SWEP.Primary.ClipSize			= 5
 SWEP.ViewModel		= "models/weapons/v_snip_jwp.mdl"
 SWEP.WorldModel		= "models/weapons/w_snip_jwp.mdl"
