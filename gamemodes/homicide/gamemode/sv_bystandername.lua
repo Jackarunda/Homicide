@@ -1,4 +1,4 @@
-GM.BystanderNameParts = {
+GM.BystanderNameParts={
 	male={
 		"James",
 		"John",
@@ -605,8 +605,8 @@ GM.BystanderNameParts = {
 	}
 }
 
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
 // adds a name to the bystander parts generation table
 function GM:AddBystanderNamePart(name,gender)
@@ -628,12 +628,12 @@ function GM:GenerateName(gender,words)
 		return "error"
 	end
 	local name
-	for i = 1, words do
-		local word = self.BystanderNameParts[gender][math.random(#self.BystanderNameParts[gender])]
+	for i=1, words do
+		local word=self.BystanderNameParts[gender][math.random(#self.BystanderNameParts[gender])]
 		if !name then
-			name = word
+			name=word
 		else
-			name = name .. " " .. word
+			name=name .. " " .. word
 		end
 	end
 	return name
@@ -642,10 +642,10 @@ end
 local function SetCustomIdentity(ply,name,args)
 	local Name,Maudel,R,G,B,ProperName,Upper,Core,Lower,Clothes,Accessory=args[1],args[2],tonumber(args[3]),tonumber(args[4]),tonumber(args[5]),"",tonumber(args[6]),tonumber(args[7]),tonumber(args[8]),args[9],args[10]
 	if (!Name) then
-		Name = "Bystander"
+		Name="Bystander"
 	end
 	if (!Accessory) then
-		Accessory = "none"
+		Accessory="none"
 	end
 	Name,Accessory=string.Replace(Name,"_"," "),string.Replace(Accessory,"_"," ")
 	if not((Name)and(Maudel)and(R)and(B)and(G)and(Upper)and(Core)and(Lower)and(Clothes)and(Accessory))then ply:PrintMessage(HUD_PRINTTALK,translate.identWrongFormat) return end
@@ -687,20 +687,20 @@ end
 concommand.Add("homicide_appearance_menu",OpenAppearanceMenu)
 
 function EntityMeta:GenerateBystanderName()
-	local words = 1
-	local name = GAMEMODE:GenerateName(self.ModelSex,words)
+	local words=1
+	local name=GAMEMODE:GenerateName(self.ModelSex,words)
 	if(self.CustomName)then name=self.CustomName end
 	self:SetNWString("bystanderName", name)
-	self.BystanderName = name
+	self.BystanderName=name
 end
 
 function EntityMeta:SetBystanderName(name)
 	self:SetNWString("bystanderName", name)
-	self.BystanderName = name
+	self.BystanderName=name
 end
 
 function EntityMeta:GetBystanderName()
-	local name = self:GetNWString("bystanderName")
+	local name=self:GetNWString("bystanderName")
 	if !name || name == "" then
 		return translate.bystander
 	end
@@ -711,9 +711,9 @@ concommand.Add("mu_print_players", function (admin, com, args)
 	if !admin:IsAdmin() then return end
 
 	for k, ply in pairs(player.GetAll()) do
-		local c = ChatText()
+		local c=ChatText()
 		c:Add(ply:Nick())
-		local col = ply:GetPlayerColor()
+		local col=ply:GetPlayerColor()
 		c:Add(" " .. ply:GetBystanderName(), Color(col.x * 255, col.y * 255, col.z * 255))
 		c:Add(" " .. ply:SteamID())
 		c:Add(" " .. team.GetName(ply:Team()), team.GetColor(ply:Team()))

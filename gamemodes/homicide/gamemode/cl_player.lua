@@ -1,5 +1,5 @@
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
 net.Receive("hmcd_playersilent",function()
 	local Ply=net.ReadEntity()
@@ -200,7 +200,7 @@ function EntityMeta:GetPlayerColor()
 end
 
 function EntityMeta:GetBystanderName()
-	local name = self:GetNWString("bystanderName")
+	local name=self:GetNWString("bystanderName")
 	if !name || name == "" then
 		return translate.bystander
 	end

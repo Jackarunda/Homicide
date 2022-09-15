@@ -1,12 +1,12 @@
 util.AddNetworkString("chattext_msg")
 
-local meta = {}
-meta.__index = meta
+local meta={}
+meta.__index=meta
 
 function meta:Add(string, color)
-	local t = {}
-	t.text = string
-	t.color = color or self.default_color or color_white
+	local t={}
+	t.text=string
+	t.color=color or self.default_color or color_white
 	table.insert(self.msgs, t)
 	return self
 end
@@ -24,7 +24,7 @@ function meta:AddParts(msgs)
 end
 
 function meta:SetDefaultColor(color)
-	self.default_color = color
+	self.default_color=color
 	return self
 end
 
@@ -50,7 +50,7 @@ function meta:NetConstructMsg()
 		net.WriteUInt(1,8)
 		net.WriteString(msg.text)
 		if !msg.color then
-			msg.color = self.default_color or color_white
+			msg.color=self.default_color or color_white
 		end
 		net.WriteVector(Vector(msg.color.r, msg.color.g, msg.color.b))
 	end
@@ -59,20 +59,20 @@ function meta:NetConstructMsg()
 end
 
 function ChatText(msgs)
-	local t = {}
-	t.msgs = msgs or {}
+	local t={}
+	t.msgs=msgs or {}
 	setmetatable(t, meta)
 	return t
 end
 
--- local t = ChatText()
+-- local t=ChatText()
 -- t:Add("pants down", Color(255,0,0))
 -- t:Add(" pants up")
 -- t:SendAll()
 
 util.AddNetworkString("msg_clients")
 
-local meta = table.Copy(meta)
+local meta=table.Copy(meta)
 
 function meta:NetConstructMsg()
 	net.Start("msg_clients")
@@ -95,8 +95,8 @@ function meta:Print()
 end
 
 function MsgClients(msgs)
-	local t = {}
-	t.msgs = msgs or {}
+	local t={}
+	t.msgs=msgs or {}
 	setmetatable(t, meta)
 	return t
 end

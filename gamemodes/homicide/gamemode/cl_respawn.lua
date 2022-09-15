@@ -1,7 +1,7 @@
 
 function GM:RenderDeathOverlay()
-	local client = LocalPlayer()
-	local sw, sh = ScrW(), ScrH()
+	local client=LocalPlayer()
+	local sw, sh=ScrW(), ScrH()
 
 	if((GAMEMODE.SpectateTime>CurTime())and(false))then
 
@@ -16,7 +16,7 @@ function GM:RenderDeathOverlay()
 		// render body
 		cam.Start3D( EyePos(), EyeAngles() )
 		cam.IgnoreZ(true)
-		local ent = client:GetRagdollEntity()
+		local ent=client:GetRagdollEntity()
 		if IsValid(ent) then
 			ent:DrawModel()
 		end
@@ -25,11 +25,11 @@ function GM:RenderDeathOverlay()
 	end
 end
 
-GM.DeathEndTime = 0
-GM.SpectateTime = 0
+GM.DeathEndTime=0
+GM.SpectateTime=0
 usermessage.Hook("rp_death",function (um)
-	GAMEMODE.DeathEndTime = CurTime() + um:ReadLong()
-	GAMEMODE.SpectateTime = CurTime() + um:ReadLong()
+	GAMEMODE.DeathEndTime=CurTime() + um:ReadLong()
+	GAMEMODE.SpectateTime=CurTime() + um:ReadLong()
 end)
 
 function GM:RenderRespawnText()

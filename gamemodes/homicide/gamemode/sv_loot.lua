@@ -1,5 +1,5 @@
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
 local AmmoTypes={
 	"AirboatGun","AlyxGun","357","Pistol","Buckshot","AR2","SMG1","XBowBolt","AirboatGun" -- nails twice as likely
@@ -158,7 +158,7 @@ function GM:LootThink()
 		LootDelay=math.Clamp(LootDelay-#player.GetAll()*.3,1,10)
 		LootDelay=LootDelay/self.LOOT_SPAWN_MUL
 		if !self.LastSpawnLoot || self.LastSpawnLoot < CurTime() then
-			self.LastSpawnLoot = CurTime() + LootDelay
+			self.LastSpawnLoot=CurTime() + LootDelay
 			local Amt=0
 			for key,exist in pairs(ents.GetAll())do
 				if(exist.IsLoot)then Amt=Amt+1 end

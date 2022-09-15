@@ -18,7 +18,7 @@ include("cl_adminpanel.lua")
 include("cl_flashlight.lua")
 include("cl_fixemitters.lua")
 
-GM.Debug = CreateClientConVar( "hmcd_debug", 0, true, true )
+GM.Debug=CreateClientConVar( "hmcd_debug", 0, true, true )
 GM.HeroPlayer=nil
 GM.VillainPlayer=nil
 GM.PlayerAwardStats={}
@@ -30,16 +30,16 @@ function GM:Initialize()
 end
 
 net.Receive("hmcd_mode", function (len)
-	GAMEMODE.SHTF = tobool(net.ReadBit())
-	GAMEMODE.PUSSY = tobool(net.ReadBit())
-	GAMEMODE.ISLAM = tobool(net.ReadBit())
-	GAMEMODE.EPIC = tobool(net.ReadBit())
-	GAMEMODE.DEATHMATCH = tobool(net.ReadBit())
-	GAMEMODE.ZOMBIE = tobool(net.ReadBit())
+	GAMEMODE.SHTF=tobool(net.ReadBit())
+	GAMEMODE.PUSSY=tobool(net.ReadBit())
+	GAMEMODE.ISLAM=tobool(net.ReadBit())
+	GAMEMODE.EPIC=tobool(net.ReadBit())
+	GAMEMODE.DEATHMATCH=tobool(net.ReadBit())
+	GAMEMODE.ZOMBIE=tobool(net.ReadBit())
 end)
 
-GM.FogEmitters = {}
-if GAMEMODE then GM.FogEmitters = GAMEMODE.FogEmitters end
+GM.FogEmitters={}
+if GAMEMODE then GM.FogEmitters=GAMEMODE.FogEmitters end
 function GM:Think()
 	if not(LocalPlayer().TempSpeedMul)then LocalPlayer().TempSpeedMul=1 end
 end
@@ -113,7 +113,7 @@ function GM:PostDrawViewModel( vm, ply, weapon )
 
 	if ( weapon.UseHands || !weapon:IsScripted() ) then
 
-		local hands = LocalPlayer():GetHands()
+		local hands=LocalPlayer():GetHands()
 		if ( IsValid( hands ) ) then hands:DrawModel() end
 
 	end
@@ -151,7 +151,7 @@ function GM:PreDrawHalos()
 		StopThatShit=math.Clamp(StopThatShit-1,0,100)
 	end
 	if(StopThatShit>0)then return end
-	local client,murd = LocalPlayer(),LocalPlayer().Murderer
+	local client,murd=LocalPlayer(),LocalPlayer().Murderer
 	local Vary,Modulus=0,CurTime()%5
 	if(Modulus<1)then Vary=1-(math.sin(CurTime()*math.pi*2-(math.pi/2))+1)/2 end
 	if((IsValid(client))and(client:Alive()))then
@@ -360,7 +360,7 @@ function GM:PlayerBindPress(ply,bind,pressed)
 end
 
 net.Receive("hmcd_tker", function (len)
-	GAMEMODE.TKerPenalty = net.ReadFloat()
+	GAMEMODE.TKerPenalty=net.ReadFloat()
 	GAMEMODE.TKerUnShowTime=CurTime()+5
 end)
 

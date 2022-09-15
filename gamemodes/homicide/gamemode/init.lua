@@ -40,8 +40,8 @@ include("sv_tker.lua")
 include("sv_flashlight.lua")
 include("sv_resources.lua")
 
-GM.RoundLimit = CreateConVar("hmcd_roundlimit", 0, bit.bor(FCVAR_NOTIFY), "Number of rounds we should play before map change" )
-GM.Language = CreateConVar("hmcd_language", "", bit.bor(FCVAR_NOTIFY), "The language Murder should use" )
+GM.RoundLimit=CreateConVar("hmcd_roundlimit", 0, bit.bor(FCVAR_NOTIFY), "Number of rounds we should play before map change" )
+GM.Language=CreateConVar("hmcd_language", "", bit.bor(FCVAR_NOTIFY), "The language Murder should use" )
 GM.MurdererWins=0
 GM.BystanderWins=0
 GM.SHTF_MODE_ENGAGED=GM.SHTF_MODE_ENGAGED or false
@@ -316,7 +316,7 @@ end
 
 function GM:Initialize()
 	self:LoadSpawns()
-	self.DeathRagdolls = {}
+	self.DeathRagdolls={}
 	self:StartNewRound()
 	self:LoadMapList()
 	concommand.Remove("WobbleCreate") -- bastards
@@ -802,13 +802,13 @@ function GM:Think()
 			end
 		end
 		if ply:IsCSpectating() && IsValid(ply:GetCSpectatee()) && (!ply.LastSpectatePosSet || ply.LastSpectatePosSet < CurTime()) then
-			ply.LastSpectatePosSet = CurTime() + 0.25
+			ply.LastSpectatePosSet=CurTime() + 0.25
 			ply:SetPos(ply:GetCSpectatee():GetPos())
 		end
 		if !ply.HasMoved then
 			if ply:IsBot() || ply:KeyDown(IN_FORWARD) || ply:KeyDown(IN_JUMP) || ply:KeyDown(IN_ATTACK) || ply:KeyDown(IN_ATTACK2)
 				|| ply:KeyDown(IN_MOVELEFT) || ply:KeyDown(IN_MOVERIGHT) || ply:KeyDown(IN_BACK) || ply:KeyDown(IN_DUCK) then
-				ply.HasMoved = true
+				ply.HasMoved=true
 			end
 		end
 		--if ply.LastTKTime && ply.LastTKTime + self:GetTKPenaltyTime() < CurTime() then
@@ -1052,9 +1052,9 @@ function GM:EntityTakeDamage(ent,dmginfo)
 end
 
 function file.ReadDataAndContent(path)
-	local f = file.Read(path, "DATA")
+	local f=file.Read(path, "DATA")
 	if f then return f end
-	f = file.Read(GAMEMODE.Folder .. "/content/data/" .. path, "GAME")
+	f=file.Read(GAMEMODE.Folder .. "/content/data/" .. path, "GAME")
 	return f
 end
 
@@ -1458,8 +1458,8 @@ end
 
 -- DEVELOPED FOR BFS2114, IMPORTED FROM BFS2114
 local function toInt(b) -- this awesome shit copied from Silverlan's Nodegraph Editor
-	local i = {string.byte(b,1,4)}
-	i = i[1] +i[2] *256 +i[3] *65536 +i[4] *16777216
+	local i={string.byte(b,1,4)}
+	i=i[1] +i[2] *256 +i[3] *65536 +i[4] *16777216
 	if(i > 2147483647) then return i -4294967296 end
 	return i
 end

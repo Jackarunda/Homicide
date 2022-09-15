@@ -1,7 +1,7 @@
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
-local dtypes = {}
+local dtypes={}
 dtypes[DMG_GENERIC]=""
 dtypes[DMG_CRUSH]="Blunt Force"
 dtypes[DMG_BULLET]="Bullet"
@@ -29,15 +29,15 @@ dtypes[DMG_DIRECT]="Fire"
 dtypes[DMG_BUCKSHOT]="Bullet"
 
 
-local DeathRagdollsPerPlayer = 3
-local DeathRagdollsPerServer = 22
+local DeathRagdollsPerPlayer=3
+local DeathRagdollsPerServer=22
 
 if !PlayerMeta.CreateRagdollOld then
-	PlayerMeta.CreateRagdollOld = PlayerMeta.CreateRagdoll
+	PlayerMeta.CreateRagdollOld=PlayerMeta.CreateRagdoll
 end
 function PlayerMeta:CreateRagdoll(attacker, dmginfo)
-	local Data = duplicator.CopyEntTable( self )
-	local ent = ents.Create( "prop_ragdoll" )
+	local Data=duplicator.CopyEntTable( self )
+	local ent=ents.Create( "prop_ragdoll" )
 	ent.HmcdSpawned=true
 	duplicator.DoGeneric( ent, Data )
 	ent:Spawn()
@@ -56,15 +56,15 @@ function PlayerMeta:CreateRagdoll(attacker, dmginfo)
 	ent:SetHeadArmor(self.HeadArmor)
 
 	// set velocities
-	local Vel = self:GetVelocity()/5
+	local Vel=self:GetVelocity()/5
 
-	local iNumPhysObjects = ent:GetPhysicsObjectCount()
-	for Bone = 0, iNumPhysObjects-1 do
+	local iNumPhysObjects=ent:GetPhysicsObjectCount()
+	for Bone=0, iNumPhysObjects-1 do
 
-		local PhysObj = ent:GetPhysicsObjectNum( Bone )
+		local PhysObj=ent:GetPhysicsObjectNum( Bone )
 		if IsValid(PhysObj) then
 
-			local Pos, Ang = self:GetBonePosition( ent:TranslatePhysBoneToBone( Bone ) )
+			local Pos, Ang=self:GetBonePosition( ent:TranslatePhysBoneToBone( Bone ) )
 			PhysObj:SetPos( Pos )
 			PhysObj:SetAngles( Ang )
 			PhysObj:AddVelocity( Vel )
@@ -78,10 +78,10 @@ function PlayerMeta:CreateRagdoll(attacker, dmginfo)
 end
 
 if !PlayerMeta.GetRagdollEntityOld then
-	PlayerMeta.GetRagdollEntityOld = PlayerMeta.GetRagdollEntity
+	PlayerMeta.GetRagdollEntityOld=PlayerMeta.GetRagdollEntity
 end
 function PlayerMeta:GetRagdollEntity()
-	local ent = self:GetNWEntity("DeathRagdoll")
+	local ent=self:GetNWEntity("DeathRagdoll")
 	if IsValid(ent) then
 		return ent
 	end
@@ -89,10 +89,10 @@ function PlayerMeta:GetRagdollEntity()
 end
 
 if !PlayerMeta.GetRagdollOwnerOld then
-	PlayerMeta.GetRagdollOwnerOld = PlayerMeta.GetRagdollOwner
+	PlayerMeta.GetRagdollOwnerOld=PlayerMeta.GetRagdollOwner
 end
 function EntityMeta:GetRagdollOwner()
-	local ent = self:GetNWEntity("RagdollOwner")
+	local ent=self:GetNWEntity("RagdollOwner")
 	if IsValid(ent) then
 		return ent
 	end
@@ -122,7 +122,7 @@ function EntityMeta:SetHeadArmor(typ)
 end
 
 function GM:RagdollSetDeathDetails(victim, inflictor, attacker) 
-	local rag = victim:GetRagdollEntity()
+	local rag=victim:GetRagdollEntity()
 	if rag then
 		-- fuck you and your weird shit
 	end

@@ -20,7 +20,7 @@ GM.Name 	= "Homicide"
 GM.Author 	= "Jackarunda"
 GM.Email 	= ""
 GM.Website 	= ""
-GM.Version = "35"
+GM.Version="35"
 game.AddParticles("particles/pcfs_jack_muzzleflashes.pcf")
 game.AddParticles("particles/pcfs_jack_explosions_small3.pcf")
 game.AddParticles("particles/pcfs_jack_explosions_incendiary2.pcf")
@@ -415,9 +415,9 @@ HMCD_AmmoNames={
 
 HMCD_PlayerModelInfoTable={}
 function GM:addModel(model,sex,clothes)
-	local t = {}
-	t.model = model
-	t.sex = sex
+	local t={}
+	t.model=model
+	t.sex=sex
 	t.clothes=clothes
 	table.insert(HMCD_PlayerModelInfoTable,t)
 end
@@ -437,7 +437,7 @@ GM:addModel("female04", "female",1)
 GM:addModel("female05", "female",2)
 GM:addModel("female06", "female",4)
 
--- name = model, bone, male{pos,ang,scale}, female{pos,ang,scale}, is a hat (optional)
+-- name=model, bone, male{pos,ang,scale}, female{pos,ang,scale}, is a hat (optional)
 HMCD_Accessories={
 	["none"]={},
 	["eyeglasses"]={"models/captainbigbutt/skeyler/accessories/glasses01.mdl","ValveBiped.Bip01_Head1",{Vector(2.1,3,0),Angle(0,-70,-90),.9},{Vector(2.75,2,0),Angle(0,-70,-90),.8},false,0},
@@ -501,16 +501,16 @@ HMCD_Accessories={
 
 function table.FullCopy(tab)
 	if (!tab) then return nil end
-	local res = {}
+	local res={}
 	for k, v in pairs( tab ) do
 		if (type(v) == "table") then
-			res[k] = table.FullCopy(v) // recursion ho!
+			res[k]=table.FullCopy(v) // recursion ho!
 		elseif (type(v) == "Vector") then
-			res[k] = Vector(v.x, v.y, v.z)
+			res[k]=Vector(v.x, v.y, v.z)
 		elseif (type(v) == "Angle") then
-			res[k] = Angle(v.p, v.y, v.r)
+			res[k]=Angle(v.p, v.y, v.r)
 		else
-			res[k] = v
+			res[k]=v
 		end
 	end
 	return res
@@ -578,7 +578,7 @@ local FragMats={
 	"glass","combine_glass","computer"
 }
 function HMCD_ExplosiveType(self)
-	-- 1 = inert (default HE), 2 = fragmentary, 3 = incendiary
+	-- 1=inert (default HE), 2=fragmentary, 3=incendiary
 	if not(IsValid(self))then return 1 end
 	local Phys=self:GetPhysicsObject()
 	if(IsValid(Phys))then

@@ -1,5 +1,5 @@
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
 util.AddNetworkString("hmcd_tker")
 

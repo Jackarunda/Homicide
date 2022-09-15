@@ -2,12 +2,12 @@
 
 
 net.Receive("spectating_status", function (length)
-	GAMEMODE.SpectateMode = net.ReadInt(8)
-	GAMEMODE.Spectating = false
-	GAMEMODE.Spectatee = nil
+	GAMEMODE.SpectateMode=net.ReadInt(8)
+	GAMEMODE.Spectating=false
+	GAMEMODE.Spectatee=nil
 	if GAMEMODE.SpectateMode >= 0 then
-		GAMEMODE.Spectating = true
-		GAMEMODE.Spectatee = net.ReadEntity()
+		GAMEMODE.Spectating=true
+		GAMEMODE.Spectatee=net.ReadEntity()
 	end
 
 end)
@@ -50,7 +50,7 @@ function GM:RenderSpectate()
 		if IsValid(self:GetCSpectatee()) && self:GetCSpectatee():IsPlayer() then
 			drawTextShadow(translate.spectating, "MersRadial", ScrW() / 2, 50, Color(20,120,255), 1)
 		
-			local h = draw.GetFontHeight("MersRadial")
+			local h=draw.GetFontHeight("MersRadial")
 
 			--drawTextShadow(self:GetCSpectatee():Nick(), "MersRadialSmall", ScrW() / 2, ScrH() - 100 + h, Color(190, 190, 190), 1)
 

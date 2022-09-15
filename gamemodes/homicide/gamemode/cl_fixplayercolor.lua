@@ -15,7 +15,7 @@ matproxy.Add(
 	init	=	function( self, mat, values )
 
 		// Store the name of the variable we want to set
-		self.ResultTo = values.resultvar
+		self.ResultTo=values.resultvar
 
 	end,
 
@@ -25,12 +25,12 @@ matproxy.Add(
 
 		// retarded garry shit
 		-- if ( ent:IsRagdoll() ) then
-		-- 	ent = ent:GetRagdollOwner()
+		-- 	ent=ent:GetRagdollOwner()
 		-- 	if ( !IsValid( ent ) ) then return end
 		-- end
 
 		if ( ent.GetPlayerColor ) then
-			local col = ent:GetPlayerColor()
+			local col=ent:GetPlayerColor()
 			if ( isvector( col ) ) then
 				mat:SetVector( self.ResultTo, col )
 			end

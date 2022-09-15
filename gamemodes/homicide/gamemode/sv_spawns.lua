@@ -1,11 +1,11 @@
 if !TeamSpawns then
-	TeamSpawns = {}
+	TeamSpawns={}
 end
 
 function GM:LoadSpawns() 
-	local jason = file.ReadDataAndContent("homicide/"..game.GetMap()..".txt")
+	local jason=file.ReadDataAndContent("homicide/"..game.GetMap()..".txt")
 	if jason then
-		local tbl = util.JSONToTable(jason)
+		local tbl=util.JSONToTable(jason)
 		TeamSpawns=tbl
 	end
 end
@@ -29,7 +29,7 @@ end
 concommand.Add("hmcd_spawn_add", function (ply, com, args, full)
 	if(!ply:IsAdmin())then return end
 
-	local spawnList = TeamSpawns
+	local spawnList=TeamSpawns
 	if !spawnList then
 		ply:ChatPrint("Invalid list")
 		return

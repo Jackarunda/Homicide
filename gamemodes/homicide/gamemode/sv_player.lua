@@ -1,5 +1,5 @@
-local PlayerMeta = FindMetaTable("Player")
-local EntityMeta = FindMetaTable("Entity")
+local PlayerMeta=FindMetaTable("Player")
+local EntityMeta=FindMetaTable("Entity")
 
 util.AddNetworkString("hmcd_playersilent")
 util.AddNetworkString("hmcd_armor")
@@ -27,7 +27,7 @@ function GM:PlayerInitialSpawn( ply )
 		end
 	end)
 
-	ply.LootCollected = 0
+	ply.LootCollected=0
 
 	timer.Simple(0, function ()
 		if IsValid(ply) then
@@ -35,14 +35,14 @@ function GM:PlayerInitialSpawn( ply )
 		end
 	end)
 	
-	ply.HasMoved = true
+	ply.HasMoved=true
 	ply:SetTeam(2)
 
 	self:NetworkRound(ply)
 
-	self.LastPlayerSpawn = CurTime()
+	self.LastPlayerSpawn=CurTime()
 
-	local vec = Vector(0.5, 0.5, 0.5)
+	local vec=Vector(0.5, 0.5, 0.5)
 	ply:SetPlayerColor(vec)
 end
 
@@ -110,18 +110,18 @@ function GM:PlayerSpawn( ply )
 
 	hook.Call( "PlayerSetModel", GAMEMODE, ply )
 
-	local oldhands = ply:GetHands()
+	local oldhands=ply:GetHands()
 	if ( IsValid( oldhands ) ) then oldhands:Remove() end
 
-	local hands = ents.Create( "gmod_hands" )
+	local hands=ents.Create( "gmod_hands" )
 	hands.HmcdSpawned=true
 	if ( IsValid( hands ) ) then
 		ply:SetHands( hands )
 		hands:SetOwner( ply )
 
 		-- Which hands should we use?
-		local cl_playermodel = ply:GetInfo( "cl_playermodel" )
-		local info = player_manager.TranslatePlayerHands( cl_playermodel )
+		local cl_playermodel=ply:GetInfo( "cl_playermodel" )
+		local info=player_manager.TranslatePlayerHands( cl_playermodel )
 		if ( info ) then
 			hands:SetModel( info.model )
 			hands:SetSkin( info.skin )
@@ -129,7 +129,7 @@ function GM:PlayerSpawn( ply )
 		end
 
 		-- Attach them to the viewmodel
-		local vm = ply:GetViewModel( 0 )
+		local vm=ply:GetViewModel( 0 )
 		hands:AttachToViewmodel( vm )
 
 		vm:DeleteOnRemove( hands )
@@ -163,21 +163,21 @@ function GM:PlayerSpawn( ply )
 		if((ply)and(IsValid(ply))and(ply:Alive())and(ply.Murderer))then
 			local mins=math.ceil((self.PoliceTime-CurTime())/60)
 			if(self.SHTF)then
-				local argh = Translator:AdvVarTranslate(translate.guardIn, {
-					mins = {text = mins}
+				local argh=Translator:AdvVarTranslate(translate.guardIn, {
+					mins={text=mins}
 				})
-				aargh = ""
+				aargh=""
 				for k, msg in pairs(argh) do
-					aargh = aargh..msg.text
+					aargh=aargh..msg.text
 				end
 				ply:PrintMessage(HUD_PRINTTALK,aargh)
 			else
-				local argh = Translator:AdvVarTranslate(translate.policeIn, {
-					mins = {text = mins}
+				local argh=Translator:AdvVarTranslate(translate.policeIn, {
+					mins={text=mins}
 				})
-				aargh = ""
+				aargh=""
 				for k, msg in pairs(argh) do
-					aargh = aargh..msg.text
+					aargh=aargh..msg.text
 				end
 				ply:PrintMessage(HUD_PRINTTALK,aargh)
 			end
@@ -310,11 +310,11 @@ function GM:PlayerSetModel(ply)
 			if(maudhayle.model==ply.CustomModel)then playerModel=maudhayle break end
 		end
 	end
-	cl_playermodel = playerModel.model
-	local modelname = player_manager.TranslatePlayerModel( cl_playermodel )
+	cl_playermodel=playerModel.model
+	local modelname=player_manager.TranslatePlayerModel( cl_playermodel )
 	util.PrecacheModel( modelname )
 	ply:SetModel( modelname )
-	ply.ModelSex = playerModel.sex
+	ply.ModelSex=playerModel.sex
 	ply.ClothingMatIndex=playerModel.clothes
 end
 
@@ -437,7 +437,7 @@ function GM:DoPlayerDeath(ply,attacker,dmginfo)
 	ply:PrintMessage(HUD_PRINTTALK,DeathString)
 end
 
-local plyMeta = FindMetaTable("Player")
+local plyMeta=FindMetaTable("Player")
 
 function plyMeta:CalculateSpeed()
 	--print(self:GetEyeTrace().HitPos:Distance(self:GetShootPos())/52)
@@ -517,13 +517,13 @@ local function isValid() return true end
 local function getPos(self) return self.pos end
 
 local function generateSpawnEntities(spawnList)
-	local tbl = {}
+	local tbl={}
 
 	for k, pos in pairs(spawnList) do
-		local t = {}
-		t.IsValid = isValid
-		t.GetPos = getPos
-		t.pos = pos
+		local t={}
+		t.IsValid=isValid
+		t.GetPos=getPos
+		t.pos=pos
 		table.insert(tbl, t)
 	end
 
@@ -655,19 +655,19 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 	self:DoRoundDeaths(ply, attacker)
 
 	if (attacker.ModelSex == "male") then
-		s = translate.ms
+		s=translate.ms
 	else
-		s = translate.fs
+		s=translate.fs
 	end
 
 	if !ply.Murderer then
 
-		self.MurdererLastKill = CurTime()
+		self.MurdererLastKill=CurTime()
 		local murderer
-		local players = team.GetPlayers(2)
+		local players=team.GetPlayers(2)
 		for k,v in pairs(players) do
 			if v.Murderer then
-				murderer = v
+				murderer=v
 			end
 		end
 
@@ -678,31 +678,31 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 				local col,msgs,col2=attacker:GetPlayerColor(),nil,ply:GetPlayerColor()
 				if(ply.Innocent)then
 					if(self.SHTF)then
-						msgs = Translator:AdvVarTranslate(translate.killedTeamKillInnocent, {
-							player = {text = attacker:GetBystanderName(), color = Color(col.x * 255, col.y * 255, col.z * 255)},
-							s = {text = s}
+						msgs=Translator:AdvVarTranslate(translate.killedTeamKillInnocent, {
+							player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+							s={text=s}
 						})
 					else
-						msgs = Translator:AdvVarTranslate(translate.killedTeamKill, {
-							player = {text = attacker:GetBystanderName(), color = Color(col.x * 255, col.y * 255, col.z * 255)},
-							s = {text = s}
+						msgs=Translator:AdvVarTranslate(translate.killedTeamKill, {
+							player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+							s={text=s}
 						})
 					end
 				else
-					msgs = Translator:AdvVarTranslate(translate.killedTeamKillAggressive, {
-						player = {text = attacker:GetBystanderName(), color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = s}
+					msgs=Translator:AdvVarTranslate(translate.killedTeamKillAggressive, {
+						player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=s}
 					})
 				end
 				if(self.DEATHMATCH)then
-					msgs = Translator:AdvVarTranslate(translate.killedDM, {
-						player = {text = attacker:GetBystanderName(), color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						ded = {text = ply:GetBystanderName(), color = Color(col2.x * 255, col2.y * 255, col2.z * 255)},
-						s = {text = s}
+					msgs=Translator:AdvVarTranslate(translate.killedDM, {
+						player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						ded={text=ply:GetBystanderName(), color=Color(col2.x * 255, col2.y * 255, col2.z * 255)},
+						s={text=s}
 					})
 				end
 				if(self:GetRound()==1)then
-					local ct = ChatText()
+					local ct=ChatText()
 					ct:AddParts(msgs)
 					ct:SendAll()
 					--[[
@@ -717,50 +717,50 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 		end
 	else
 		if attacker != ply && IsValid(attacker) && attacker:IsPlayer() then
-			local col,col2 = attacker:GetPlayerColor(),ply:GetPlayerColor()
+			local col,col2=attacker:GetPlayerColor(),ply:GetPlayerColor()
 			local msgs,RealName,GameName=nil,attacker:Nick(),attacker:GetBystanderName()
 			if(RealName==GameName)then
 				if(self.ZOMBIE)then
 					msgs=Translator:AdvVarTranslate(translate.killedZombie, {
-						player = {text = GameName, color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = s}
+						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=s}
 					})
 				elseif(self.SHTF)then
 					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
-						player = {text = GameName, color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = s}
+						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=s}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player = {text = GameName, color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = s}
+						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=s}
 					})
 				end
 			else
 				if(self.SHTF)then
 					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
-						player = {text = RealName .. ", " .. GameName, color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = translate.ms}
+						player={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=translate.ms}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player = {text = RealName .. ", " .. GameName, color = Color(col.x * 255, col.y * 255, col.z * 255)},
-						s = {text = translate.ms}
+						player={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						s={text=translate.ms}
 					})
 				end
 			end
 			if(self.DEATHMATCH)then
-				msgs = Translator:AdvVarTranslate(translate.killedDM, {
-					player = {text = attacker:GetBystanderName(), color = Color(col.x * 255, col.y * 255, col.z * 255)},
-					ded = {text = ply:GetBystanderName(), color = Color(col2.x * 255, col2.y * 255, col2.z * 255)},
-					s = {text = s}
+				msgs=Translator:AdvVarTranslate(translate.killedDM, {
+					player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+					ded={text=ply:GetBystanderName(), color=Color(col2.x * 255, col2.y * 255, col2.z * 255)},
+					s={text=s}
 				})
 			end
-			local ct = ChatText()
+			local ct=ChatText()
 			ct:AddParts(msgs)
 			ct:SendAll()
 		elseif(attacker!=ply && IsValid(attacker) && attacker:IsNPC())then
-			local ct = ChatText()
+			local ct=ChatText()
 			if(self.ZOMBIE)then
 				ct:Add(translate.guardShotZombie)
 			elseif(self.SHTF)then
@@ -770,7 +770,7 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 			end
 			ct:SendAll()
 		else
-			local ct = ChatText()
+			local ct=ChatText()
 			if(self.SHTF)then
 				ct:Add(translate.traitorDeathUnknown)
 			else
@@ -780,9 +780,9 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 		end
 	end
 
-	ply.NextSpawnTime = CurTime() + 6
-	ply.DeathTime = CurTime()
-	ply.SpectateTime = CurTime() + 5
+	ply.NextSpawnTime=CurTime() + 6
+	ply.DeathTime=CurTime()
+	ply.SpectateTime=CurTime() + 5
 
 	umsg.Start("rp_death", ply)
 	umsg.Long(6)
@@ -791,8 +791,8 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 	
 	if ( Inflictor && Inflictor == attacker && (Inflictor:IsPlayer() || Inflictor:IsNPC()) ) then
 	
-		Inflictor = Inflictor:GetActiveWeapon()
-		if ( !Inflictor || Inflictor == NULL ) then Inflictor = attacker end
+		Inflictor=Inflictor:GetActiveWeapon()
+		if ( !Inflictor || Inflictor == NULL ) then Inflictor=attacker end
 	
 	end
 
@@ -813,7 +813,7 @@ function EntityMeta:GetPlayerColor()
 end
 
 function EntityMeta:SetPlayerColor(vec)
-	self.playerColor = vec
+	self.playerColor=vec
 	self:SetNWVector("playerColor", vec)
 end
 
@@ -869,11 +869,11 @@ function GM:PlayerCanHearChatVoice(listener, talker, typ)
 		return !listener:Alive() || listener:Team() != 2
 	end
 	
-	local ply = listener
+	local ply=listener
 
 	-- listen as if spectatee when spectating
 	if listener:IsCSpectating() && IsValid(listener:GetCSpectatee()) then
-		ply = listener:GetCSpectatee()
+		ply=listener:GetCSpectatee()
 	end
 	
 	local Wep=talker:GetActiveWeapon()
@@ -903,25 +903,25 @@ function GM:PlayerOnChangeTeam(ply, newTeam, oldTeam)
 	if newteam == 1 then
 		
 	end
-	ply.HasMoved = true
+	ply.HasMoved=true
 	ply:KillSilent()
 end
 
 concommand.Add("mu_jointeam", function (ply, com, args)
-	local newTeam = tonumber(args[1] or "") or 0
+	local newTeam=tonumber(args[1] or "") or 0
 	if ply.LastChangeTeam && ply.LastChangeTeam + 5 > CurTime() then return end
-	ply.LastChangeTeam = CurTime()
+	ply.LastChangeTeam=CurTime()
 
-	local curTeam = ply:Team()
+	local curTeam=ply:Team()
 	if newTeam >= 1 && newTeam <= 2 && newTeam != curTeam then
 		ply:SetTeam(newTeam)
 		GAMEMODE:PlayerOnChangeTeam(ply, newTeam, curTeam)
 
-		local msgs = Translator:AdvVarTranslate(translate.changeTeam, {
-			player = {text = ply:Nick(), color = team.GetColor(curTeam)},
-			team = {text = team.GetName(newTeam), color = team.GetColor(newTeam)}
+		local msgs=Translator:AdvVarTranslate(translate.changeTeam, {
+			player={text=ply:Nick(), color=team.GetColor(curTeam)},
+			team={text=team.GetName(newTeam), color=team.GetColor(newTeam)}
 		})
-		local ct = ChatText()
+		local ct=ChatText()
 		ct:AddParts(msgs)
 		ct:SendAll()
 	end
@@ -931,19 +931,19 @@ concommand.Add("hmcd_movetospectate", function (ply, com, args)
 	if !ply:IsAdmin() then return end
 	if #args < 1 then return end
 
-	local ent = Entity(tonumber(args[1]) or -1)
+	local ent=Entity(tonumber(args[1]) or -1)
 	if !IsValid(ent) || !ent:IsPlayer() then return end
 	
-	local curTeam = ent:Team()
+	local curTeam=ent:Team()
 	if 1 != curTeam then
 		ent:SetTeam(1)
 		GAMEMODE:PlayerOnChangeTeam(ent, 1, curTeam)
 
-		local msgs = Translator:AdvVarTranslate(translate.teamMoved, {
-			player = {text = ent:Nick(), color = team.GetColor(curTeam)},
-			team = {text = team.GetName(1), color = team.GetColor(1)}
+		local msgs=Translator:AdvVarTranslate(translate.teamMoved, {
+			player={text=ent:Nick(), color=team.GetColor(curTeam)},
+			team={text=team.GetName(1), color=team.GetColor(1)}
 		})
-		local ct = ChatText()
+		local ct=ChatText()
 		ct:AddParts(msgs)
 		ct:SendAll()
 	end
@@ -953,11 +953,11 @@ concommand.Add("mu_spectate", function (ply, com, args)
 	if !ply:IsAdmin() then return end
 	if #args < 1 then return end
 
-	local ent = Entity(tonumber(args[1]) or -1)
+	local ent=Entity(tonumber(args[1]) or -1)
 	if !IsValid(ent) || !ent:IsPlayer() then return end
 	
 	if ply:Alive() && ply:Team() != 1 then
-		local ct = ChatText()
+		local ct=ChatText()
 		ct:Add(translate.spectateFailed)
 		ct:Send(ply)
 		return
@@ -967,7 +967,7 @@ end)
 
 function GM:PlayerCanSeePlayersChat( text, teamOnly, listener, speaker )
 	if !IsValid(speaker) then return false end
-	local canhear = self:PlayerCanHearChatVoice(listener, speaker) 
+	local canhear=self:PlayerCanHearChatVoice(listener, speaker) 
 	return canhear
 end
 
@@ -1229,9 +1229,9 @@ function PlayerMeta:MurdererDisguise(copyent)
 	if(GAMEMODE.ZOMBIE)then return end
 	if(self.MurdererIdentityHidden)then return end
 	if !self.Disguised then
-		self.DisguiseColor = self:GetPlayerColor()
-		self.DisguiseName = self:GetBystanderName()
-		self.DisquiseClothes = self.ClothingType
+		self.DisguiseColor=self:GetPlayerColor()
+		self.DisguiseName=self:GetBystanderName()
+		self.DisquiseClothes=self.ClothingType
 	end
 	local WillSwitchArmor,WillSwitchHelmet=false,false
 	if(copyent.ChestArmor)then
@@ -1252,7 +1252,7 @@ function PlayerMeta:MurdererDisguise(copyent)
 			end
 		end
 	end
-	self.Disguised = true
+	self.Disguised=true
 	self.DisguisedStart=CurTime()
 	--self:SetBystanderName(copyent:GetBystanderName())
 	local OrigColor,OrigClothes,OrigAccessory,OrigArmor,OrigHelmet=self:GetPlayerColor(),self.ClothingType,self.Accessory,self.ChestArmor,self.HeadArmor
@@ -1273,7 +1273,7 @@ function PlayerMeta:UnMurdererDisguise()
 	if self.Disguised then
 		-- fuck you sonny boy
 	end
-	self.Disguised = false
+	self.Disguised=false
 end
 
 function PlayerMeta:GetMurdererDisguised()
