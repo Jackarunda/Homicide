@@ -679,25 +679,25 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 				if(ply.Innocent)then
 					if(self.SHTF)then
 						msgs=Translator:AdvVarTranslate(translate.killedTeamKillInnocent, {
-							player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
 							s={text=s}
 						})
 					else
 						msgs=Translator:AdvVarTranslate(translate.killedTeamKill, {
-							player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
 							s={text=s}
 						})
 					end
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedTeamKillAggressive, {
-						player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=s}
 					})
 				end
 				if(self.DEATHMATCH)then
 					msgs=Translator:AdvVarTranslate(translate.killedDM, {
-						player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
-						ded={text=ply:GetBystanderName(), color=Color(col2.x * 255, col2.y * 255, col2.z * 255)},
+						player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
+						ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)},
 						s={text=s}
 					})
 				end
@@ -722,37 +722,37 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 			if(RealName==GameName)then
 				if(self.ZOMBIE)then
 					msgs=Translator:AdvVarTranslate(translate.killedZombie, {
-						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=s}
 					})
 				elseif(self.SHTF)then
 					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
-						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=s}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=s}
 					})
 				end
 			else
 				if(self.SHTF)then
 					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
-						player={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=translate.ms}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 						s={text=translate.ms}
 					})
 				end
 			end
 			if(self.DEATHMATCH)then
 				msgs=Translator:AdvVarTranslate(translate.killedDM, {
-					player={text=attacker:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
-					ded={text=ply:GetBystanderName(), color=Color(col2.x * 255, col2.y * 255, col2.z * 255)},
+					player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
+					ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)},
 					s={text=s}
 				})
 			end
@@ -780,9 +780,9 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 		end
 	end
 
-	ply.NextSpawnTime=CurTime() + 6
+	ply.NextSpawnTime=CurTime()+6
 	ply.DeathTime=CurTime()
-	ply.SpectateTime=CurTime() + 5
+	ply.SpectateTime=CurTime()+5
 
 	umsg.Start("rp_death", ply)
 	umsg.Long(6)
@@ -909,7 +909,7 @@ end
 
 concommand.Add("mu_jointeam", function (ply, com, args)
 	local newTeam=tonumber(args[1] or "") or 0
-	if ply.LastChangeTeam && ply.LastChangeTeam + 5 > CurTime() then return end
+	if ply.LastChangeTeam && ply.LastChangeTeam+5 > CurTime() then return end
 	ply.LastChangeTeam=CurTime()
 
 	local curTeam=ply:Team()
@@ -1047,7 +1047,7 @@ function GM:PlayerSay(ply,text,teem)
 				if((WalkieTalkie)and not(ply2==ply))then
 					ct:Add(translate.weaponWalkieTalkie,color_white)
 				else
-					ct:Add(ply:GetBystanderName(), Color(col.x * 255, col.y * 255, col.z * 255))
+					ct:Add(ply:GetBystanderName(), Color(col.x*255, col.y*255, col.z*255))
 				end
 				ct:Add(": " .. text, color_white)
 				ct:Send(ply2)

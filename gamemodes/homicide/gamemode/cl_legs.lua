@@ -243,7 +243,7 @@ if(CLIENT)then
 	HMCD_Legs.RadAngle=nil
 	HMCD_Legs.RenderPos=nil
 	HMCD_Legs.RenderColor={}
-	HMCD_Legs.ClipVector=vector_up * -1
+	HMCD_Legs.ClipVector=vector_up*-1
 	HMCD_Legs.ForwardOffset=-24
 	function HMCD_Legs:CheckDrawVehicle()
 		return LocalPlayer():InVehicle()

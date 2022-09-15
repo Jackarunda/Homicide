@@ -18,7 +18,7 @@ surface.CreateFont( "MersHead1" , {
 	extended=ext
 })
 
-local basesize=ScrH() / 19.125 * 1.07829597918913 // we have to multiply because coolvetica v1 is just bigger than coolvetica v5 for some reason
+local basesize=ScrH() / 19.125*1.07829597918913 // we have to multiply because coolvetica v1 is just bigger than coolvetica v5 for some reason
 surface.CreateFont( "MersRadial" , {
 	font="Coolvetica Rg",
 	size=math.ceil(basesize),
@@ -113,8 +113,8 @@ net.Receive("hmcd_seizure",function()
 end)
 
 local function drawTextShadow(t,f,x,y,c,px,py)
-	draw.SimpleText(t,f,x + 1,y + 1,Color(0,0,0,c.a),px,py)
-	draw.SimpleText(t,f,x - 1,y - 1,Color(255,255,255,math.Clamp(c.a*.25,0,255)),px,py)
+	draw.SimpleText(t,f,x+1,y+1,Color(0,0,0,c.a),px,py)
+	draw.SimpleText(t,f,x-1,y-1,Color(255,255,255,math.Clamp(c.a*.25,0,255)),px,py)
 	draw.SimpleText(t,f,x,y,c,px,py)
 end
 
@@ -124,7 +124,7 @@ function GM:HUDPaint()
 	local client=LocalPlayer()
 
 	if round == 0 then
-		drawTextShadow(translate.minimumPlayers, "MersRadial", ScrW() / 2, ScrH() - 75, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+		drawTextShadow(translate.minimumPlayers, "MersRadial", ScrW() / 2, ScrH()-75, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
 	end
 
 	if client:Team() == 2 then
@@ -133,7 +133,7 @@ function GM:HUDPaint()
 		else
 
 			if round == 1 then
-				if self.RoundStart && self.RoundStart + 10 > CurTime() then
+				if self.RoundStart && self.RoundStart+10 > CurTime() then
 					self:DrawStartRoundInformation()
 				else
 					self:DrawGameHUD(LocalPlayer())
@@ -236,16 +236,16 @@ function GM:DrawStartRoundInformation()
 	end
 	draw.SimpleText(Txt, "MersRadial",ScrW()/2-20,ScrH()*.1,Col1,TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
 
-	draw.SimpleText(t1, "MersRadial", ScrW() / 2, ScrH()  * 0.35, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	draw.SimpleText(t1, "MersRadial", ScrW() / 2, ScrH() *0.35, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	if t2 then
 		local h=draw.GetFontHeight("MersRadial")
-		draw.SimpleText(t2, "MersRadialSmall", ScrW() / 2, ScrH() * 0.35 + h * 0.7, Color(120, 70, 245), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText(t2, "MersRadialSmall", ScrW() / 2, ScrH()*0.35+h*0.7, Color(120, 70, 245), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	if desc then
 		local fontHeight=draw.GetFontHeight("MersRadialSmall")
 		for k,v in pairs(desc) do
-			draw.SimpleText(v, "MersRadialSmall", ScrW() / 2, ScrH() * 0.8 + (k - 1) * fontHeight, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+			draw.SimpleText(v, "MersRadialSmall", ScrW() / 2, ScrH()*0.8+(k-1)*fontHeight, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 		end
 	end
 end
@@ -270,13 +270,13 @@ end
 usermessage.Hook("HMCD_PainBoost",PainBoost)
 
 local function colorDif(col1, col2)
-	local x=col1.x - col2.x
-	local y=col1.y - col2.y
-	local z=col1.z - col2.z
+	local x=col1.x-col2.x
+	local y=col1.y-col2.y
+	local z=col1.z-col2.z
 	x=x > 0 and x or -x
 	y=y > 0 and y or -y
 	z=z > 0 and z or -z
-	return x + y + z
+	return x+y+z
 end
 local Health,Stamina,PersonTex,StamTex,HelTex,BGTex=0,0,surface.GetTextureID("vgui/hud/hmcd_person"),surface.GetTextureID("vgui/hud/hmcd_stamina"),surface.GetTextureID("vgui/hud/hmcd_health"),surface.GetTextureID("vgui/hud/hmcd_background")
 function GM:DrawGameHUD(ply)
@@ -303,12 +303,12 @@ function GM:DrawGameHUD(ply)
 			self.LastLooked=tr.Entity
 			self.LookedFade=CurTime()
 		end
-		if IsValid(self.LastLooked) && self.LookedFade + 1 > CurTime() then
+		if IsValid(self.LastLooked) && self.LookedFade+1 > CurTime() then
 			local name=self.LastLooked:GetBystanderName() or "error"
 			local col=self.LastLooked:GetPlayerColor() or Vector()
-			col=Color(col.x * 255, col.y * 255, col.z * 255)
-			col.a=(1 - (CurTime() - self.LookedFade) / 1) * 255
-			drawTextShadow(name, "MersRadial", ScrW() / 2, ScrH() / 2 + 80, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+			col=Color(col.x*255, col.y*255, col.z*255)
+			col.a=(1-(CurTime()-self.LookedFade) / 1)*255
+			drawTextShadow(name, "MersRadial", ScrW() / 2, ScrH() / 2+80, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 		end
 	end
 
@@ -318,11 +318,11 @@ function GM:DrawGameHUD(ply)
 			if IsValid(tr.Entity) && LocalPlayer().Murderer && tr.Entity:GetClass() == "prop_ragdoll" && tr.HitPos:Distance(tr.StartPos) < 60 and not(self.ZOMBIE) then
 				if tr.Entity:GetBystanderName() != ply:GetBystanderName() || colorDif(tr.Entity:GetPlayerColor(), ply:GetPlayerColor()) > 0.1 then 
 					local h=draw.GetFontHeight("MersRadial")
-					drawTextShadow(translate.pressEToDisguiseFor1Loot, "MersRadialSmall", ScrW() / 2, ScrH() / 2 + 80 + h * 0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+					drawTextShadow(translate.pressEToDisguiseFor1Loot, "MersRadialSmall", ScrW() / 2, ScrH() / 2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 				end
 			elseif((IsValid(tr.Entity))and(table.HasValue(HMCD_PersonContainers,string.lower(tr.Entity:GetModel())))and(tr.HitPos:Distance(tr.StartPos)<60))then
 				local h=draw.GetFontHeight("MersRadial")
-				drawTextShadow(translate.hideInThing, "MersRadialSmall", ScrW() / 2, ScrH() / 2 + 80 + h * 0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+				drawTextShadow(translate.hideInThing, "MersRadialSmall", ScrW() / 2, ScrH() / 2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 			end
 		end
 	end
@@ -441,7 +441,7 @@ function GM:DrawGameHUD(ply)
 			local Mag,Message,Cnt=Wep:Clip1(),"",ply:GetAmmoCount(Wep.AmmoType)
 			if(Mag>=0)then
 				Message=tostring(Mag)
-				if(Cnt>0)then Message=Message.." + "..tostring(Cnt) end
+				if(Cnt>0)then Message=Message.."+"..tostring(Cnt) end
 			else
 				Message=tostring(Cnt)
 			end
@@ -601,10 +601,10 @@ function GM:RenderScreenspaceEffects()
 	end
 
 	if not(self.RoundStart)then self.RoundStart=CurTime() end
-	if self:GetRound() == 1 && self.RoundStart && self.RoundStart + 10 > CurTime() then
+	if self:GetRound() == 1 && self.RoundStart && self.RoundStart+10 > CurTime() then
 		local sw, sh=ScrW(), ScrH()
 		surface.SetDrawColor(0,0,0,255)
-		surface.DrawRect(-1,-1,sw + 2,sh + 2)
+		surface.DrawRect(-1,-1,sw+2,sh+2)
 	end
 end
 
@@ -620,14 +620,14 @@ function GM:PostDrawHUD()
 				if(self.TKerPenalty==1)then
 					surface.SetDrawColor(10,10,10,50)
 					if(self.SHTF)then
-						drawTextShadow(translate.ywbaInnocent, "MersRadial", ScrW() * 0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
+						drawTextShadow(translate.ywbaInnocent, "MersRadial", ScrW()*0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
 					else
-						drawTextShadow(translate.ywbaBystander, "MersRadial", ScrW() * 0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
+						drawTextShadow(translate.ywbaBystander, "MersRadial", ScrW()*0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
 					end
 					AlreadyDrawn=true
 				elseif(self.TKerPenalty==2)then
 					surface.SetDrawColor(10,10,10,50)
-					drawTextShadow(translate.ywbaSpectator, "MersRadial", ScrW() * 0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
+					drawTextShadow(translate.ywbaSpectator, "MersRadial", ScrW()*0.5, ScrH()/2, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
 					AlreadyDrawn=true
 				end
 			end
@@ -636,7 +636,7 @@ function GM:PostDrawHUD()
 			local Ply=LocalPlayer()
 			if((Ply.InnocenceLost)and(Ply.InnocenceLost>CurTime()))then
 				surface.SetDrawColor(10,10,10,50)
-				drawTextShadow(translate.noInnocence, "MersRadial", ScrW() * .5, ScrH()*.85, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
+				drawTextShadow(translate.noInnocence, "MersRadial", ScrW()*.5, ScrH()*.85, Color(90,20,20), 1, TEXT_ALIGN_CENTER)
 			end
 		end
 	end
@@ -920,7 +920,7 @@ HMCD_Legs.BiaisAngle=nil
 HMCD_Legs.RadAngle=nil
 HMCD_Legs.RenderPos=nil
 HMCD_Legs.RenderColor={}
-HMCD_Legs.ClipVector=vector_up * -1
+HMCD_Legs.ClipVector=vector_up*-1
 HMCD_Legs.ForwardOffset=-24
 function HMCD_Legs:CheckDrawVehicle()
 	return LocalPlayer():InVehicle()

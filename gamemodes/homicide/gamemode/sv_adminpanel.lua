@@ -11,7 +11,7 @@ net.Receive("mu_adminpanel_details", function (length, ply)
 
 	local total=0
 	for k, ply in pairs(team.GetPlayers(2)) do
-		total=total + (ply.MurdererChance or 1) ^ tab.weightMul
+		total=total+(ply.MurdererChance or 1) ^ tab.weightMul
 	end
 
 	for k, ply in pairs(team.GetPlayers(2)) do

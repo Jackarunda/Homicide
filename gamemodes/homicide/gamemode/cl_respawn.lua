@@ -7,7 +7,7 @@ function GM:RenderDeathOverlay()
 
 		// render black screen
 		surface.SetDrawColor(0,0,0,255)
-		surface.DrawRect(-1,-1,sw + 2,sh + 2)
+		surface.DrawRect(-1,-1,sw+2,sh+2)
 
 		render.SetColorModulation(1, 1, 1)
 		render.SetBlend(1)
@@ -28,8 +28,8 @@ end
 GM.DeathEndTime=0
 GM.SpectateTime=0
 usermessage.Hook("rp_death",function (um)
-	GAMEMODE.DeathEndTime=CurTime() + um:ReadLong()
-	GAMEMODE.SpectateTime=CurTime() + um:ReadLong()
+	GAMEMODE.DeathEndTime=CurTime()+um:ReadLong()
+	GAMEMODE.SpectateTime=CurTime()+um:ReadLong()
 end)
 
 function GM:RenderRespawnText()

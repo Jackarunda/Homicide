@@ -66,9 +66,9 @@ function GM:RoundThink()
 		players={}
 	end
 	if self.RoundStage == 0 then
-		if #players > 1 && (!self.LastPlayerSpawn || self.LastPlayerSpawn + 1 < CurTime()) then
+		if #players > 1 && (!self.LastPlayerSpawn || self.LastPlayerSpawn+1 < CurTime()) then
 			self:StartNewRound()
-		elseif((#players==1)and(!self.LastPlayerSpawn || self.LastPlayerSpawn + 1 < CurTime()))then
+		elseif((#players==1)and(!self.LastPlayerSpawn || self.LastPlayerSpawn+1 < CurTime()))then
 			RunConsoleCommand("bot")
 			timer.Simple(2,function()
 				local PlayersNow=team.GetPlayers(2)
@@ -123,7 +123,7 @@ function GM:RoundThink()
 			self:RoundCheckForWin()
 		end
 	elseif self.RoundStage == 2 then
-		if self.RoundTime + 5 < CurTime() then
+		if self.RoundTime+5 < CurTime() then
 			self:StartNewRound()
 		end
 	end
@@ -180,7 +180,7 @@ end
 
 function GM:DoRoundDeaths(dead, attacker)
 	if self.RoundStage == 1 then
-		self.RoundLastDeath=CurTime() + 2
+		self.RoundLastDeath=CurTime()+2
 	end
 end
 
@@ -214,11 +214,11 @@ function GM:EndTheRound(reason, murderer)
 			local msgs
 			if(self.SHTF)then
 				msgs=Translator:AdvVarTranslate(translate.murdererLostWill, {
-					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)}
+					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.traitorLostWill, {
-					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)}
+					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			end
 			local ct=ChatText(msgs)
@@ -234,17 +234,17 @@ function GM:EndTheRound(reason, murderer)
 			local msgs
 			if(self.SHTF)then
 				msgs=Translator:AdvVarTranslate(translate.traitorDisconnectKnown, {
-					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)}
+					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.murdererDisconnectKnown, {
-					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x * 255, col.y * 255, col.z * 255)}
+					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			end
 			local ct=ChatText(msgs)
 			ct:SendAll()
 			-- ct:Add(", it was ")
-			-- ct:Add(murderer:Nick() .. ", " .. murderer:GetBystanderName(), Color(col.x * 255, col.y * 255, col.z * 255))
+			-- ct:Add(murderer:Nick() .. ", " .. murderer:GetBystanderName(), Color(col.x*255, col.y*255, col.z*255))
 		else
 			if(self.SHTF)then
 				local ct=ChatText()
@@ -262,24 +262,24 @@ function GM:EndTheRound(reason, murderer)
 		if(RealName==GameName)then
 			if(self.SHTF)then
 				msgs=Translator:AdvVarTranslate(translate.winInnocentsTraitorWas,{
-					murderer={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 					s={text=s}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.winBystandersMurdererWas, {
-					murderer={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 					s={text=s}
 				})
 			end
 		else
 			if(self.SHTF)then
 				msgs=Translator:AdvVarTranslate(translate.winInnocentsTraitorWas, {
-					murderer={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 					s={text=translate.ms}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.winBystandersMurdererWas, {
-					murderer={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 					s={text=translate.ms}
 				})
 			end
@@ -299,12 +299,12 @@ function GM:EndTheRound(reason, murderer)
 		local msgs,RealName,GameName=nil,murderer:Nick(),murderer:GetBystanderName()
 		if(RealName==GameName)then
 			msgs=Translator:AdvVarTranslate(translate.winMurdererMurdererWas, {
-				murderer={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+				murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 				s={text=s}
 			})
 		else
 			msgs=Translator:AdvVarTranslate(translate.winMurdererMurdererWas, {
-				murderer={text=RealName .. ", " .. GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+				murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 				s={text=translate.ms}
 			})
 		end
@@ -324,7 +324,7 @@ function GM:EndTheRound(reason, murderer)
 		local col=murderer:GetPlayerColor()
 		local msgs,RealName,GameName=nil,murderer:Nick(),murderer:GetBystanderName()
 		msgs=Translator:AdvVarTranslate(translate.winDM, {
-			murderer={text=GameName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+			murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
 			s={text=s}
 		})
 		local ct=ChatText()
@@ -390,7 +390,7 @@ function GM:EndTheRound(reason, murderer)
 
 			local col=ply:GetPlayerColor()
 			local msgs=Translator:AdvVarTranslate(translate.teamMoved, {
-				player={text=ply:Nick(), color=Color(col.x * 255, col.y * 255, col.z * 255)},
+				player={text=ply:Nick(), color=Color(col.x*255, col.y*255, col.z*255)},
 				team={text=team.GetName(1), color=team.GetColor(2)}
 			})
 			local ct=ChatText()
@@ -407,7 +407,7 @@ function GM:EndTheRound(reason, murderer)
 	self.MurdererLastKill=nil
 
 	hook.Call("OnEndRound")
-	self.RoundCount=self.RoundCount + 1
+	self.RoundCount=self.RoundCount+1
 	local limit=self.RoundLimit:GetInt()
 	if limit > 0 then
 		if self.RoundCount >= limit then
@@ -496,7 +496,7 @@ function GM:StartNewRound()
 	self.VillainPlayer=nil
 	
 	self:SetRound(1)
-	self.RoundUnFreezePlayers=CurTime() + 10
+	self.RoundUnFreezePlayers=CurTime()+10
 
 	local players=team.GetPlayers(2)
 	for k,ply in pairs(players) do
@@ -648,7 +648,7 @@ function GM:RotateMap()
 		end
 	end
 	if !index then index=1 end
-	index=index + 1
+	index=index+1
 	if index > #self.MapList then
 		index=1
 	end

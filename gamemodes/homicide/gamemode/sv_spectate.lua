@@ -57,7 +57,7 @@ function GM:SpectateNext(ply, direction)
 		end
 	end
 	if #players > 0 then
-		index=index + direction
+		index=index+direction
 		if index > #players then
 			index=1
 		end

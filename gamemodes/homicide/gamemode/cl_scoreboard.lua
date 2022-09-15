@@ -31,7 +31,7 @@ local function addPlayerItem(self, mlist, ply, pteam)
 		surface.DrawRect(0, 0, w, h)
 
 		surface.SetDrawColor(255,255,255,10)
-		surface.DrawRect(0, 0, w, h * 0.45 )
+		surface.DrawRect(0, 0, w, h*0.45 )
 
 		surface.SetDrawColor(color_black)
 		surface.DrawOutlinedRect(0, 0, w, h)
@@ -42,22 +42,22 @@ local function addPlayerItem(self, mlist, ply, pteam)
 			if showAdmins && ply:IsAdmin() then
 				surface.SetMaterial(admin)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s + 4, h / 2 - 16, 32, 32)
-				s=s + 32
+				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				s=s+32
 			end
 
 			if ply:IsMuted() then
 				surface.SetMaterial(muted)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s + 4, h / 2 - 16, 32, 32)
-				s=s + 32
+				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				s=s+32
 			end
 
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w - 9, 4, color_black, 2)
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w - 10, 3, color_white, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-9, 4, color_black, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-10, 3, color_white, 2)
 
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s + 11, 4, color_black, 0)
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s + 10, 3, color_white, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+11, 4, color_black, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+10, 3, color_white, 0)
 
 			
 		end
@@ -160,12 +160,12 @@ local function makeTeamList(parent, pteam)
 	pnl:DockPadding(8,8,8,8)
 	function pnl:Paint(w, h) 
 		surface.SetDrawColor(Color(50,50,50,255))
-		surface.DrawRect(2, 2, w - 4, h - 4)
+		surface.DrawRect(2, 2, w-4, h-4)
 	end
 
 	function pnl:Think()
 		if !self.RefreshWait || self.RefreshWait < CurTime() then
-			self.RefreshWait=CurTime() + 0.1
+			self.RefreshWait=CurTime()+0.1
 			doPlayerItems(self, mlist, pteam)
 
 			// update chaos/control
@@ -196,17 +196,17 @@ local function makeTeamList(parent, pteam)
 		surface.DrawRect(0, 0, w, h)
 
 		surface.SetDrawColor(255,255,255,10)
-		surface.DrawRect(0, 0, w, h * 0.45 )
+		surface.DrawRect(0, 0, w, h*0.45 )
 
 		surface.SetDrawColor(color_black)
 		surface.DrawOutlinedRect(0, 0, w, h)
 
 		if self:IsDown() then
 			surface.SetDrawColor(50,50,50,120)
-			surface.DrawRect(1, 1, w - 2, h - 2)
+			surface.DrawRect(1, 1, w-2, h-2)
 		elseif self:IsHovered() then
 			surface.SetDrawColor(255,255,255,30)
-			surface.DrawRect(1, 1, w - 2, h - 2)
+			surface.DrawRect(1, 1, w-2, h-2)
 		end
 	end
 
@@ -254,7 +254,7 @@ function GM:ScoreboardShow()
 		menu:SetVisible(true)
 	else
 		menu=vgui.Create("DFrame")
-		menu:SetSize(ScrW() * 0.8, ScrH() * 0.8)
+		menu:SetSize(ScrW()*0.8, ScrH()*0.8)
 		menu:Center()
 		menu:MakePopup()
 		menu:SetKeyboardInputEnabled(false)
@@ -264,7 +264,7 @@ function GM:ScoreboardShow()
 		menu:SetTitle("")
 		menu:DockPadding(4,4,4,4)
 		function menu:PerformLayout()
-			menu.Cops:SetWidth(self:GetWide() * 0.5)
+			menu.Cops:SetWidth(self:GetWide()*0.5)
 		end
 
 		function menu:Paint()

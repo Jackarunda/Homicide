@@ -9,7 +9,7 @@ function GM:DisplayEndRoundBoard(data)
 	if(Dude)then Showin=true end
 
 	menu=vgui.Create("DFrame")
-	menu:SetSize(ScrW() * 0.8, ScrH() * 0.8)
+	menu:SetSize(ScrW()*0.8, ScrH()*0.8)
 	menu:Center()
 	if(Showin)then
 		menu:SetSize(ScrW()*.45,ScrH()*.9)
@@ -33,7 +33,7 @@ function GM:DisplayEndRoundBoard(data)
 	end
 	function winnerPnl:Paint(w, h) 
 		surface.SetDrawColor(Color(50,50,50,255))
-		surface.DrawRect(2, 2, w - 4, h - 4)
+		surface.DrawRect(2, 2, w-4, h-4)
 	end
 
 	local winner=vgui.Create("DLabel", winnerPnl)
@@ -114,12 +114,12 @@ function GM:DisplayEndRoundBoard(data)
 		local msgs
 		if(self.SHTF)then
 			msgs=Translator:AdvVarTranslate(translate.endroundTraitorWas, {
-				murderer={text=data.murdererName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)},
 				s={text=s}
 			})
 		else
 			msgs=Translator:AdvVarTranslate(translate.endroundMurdererWas, {
-				murderer={text=data.murdererName, color=Color(col.x * 255, col.y * 255, col.z * 255)},
+				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)},
 				s={text=s}
 			})
 		end
@@ -140,7 +140,7 @@ function GM:DisplayEndRoundBoard(data)
 	lootPnl:DockPadding(24,24,24,24)
 	function lootPnl:Paint(w, h) 
 		surface.SetDrawColor(Color(50,50,50,255))
-		surface.DrawRect(2, 2, w - 4, h - 4)
+		surface.DrawRect(2, 2, w-4, h-4)
 	end
 	
 	local desc=vgui.Create("DLabel", lootPnl)
@@ -171,13 +171,13 @@ function GM:DisplayEndRoundBoard(data)
 		end
 		function pnl:PerformLayout()
 			if self.NamePnl then
-				self.NamePnl:SetWidth(self:GetWide() * 0.4)
+				self.NamePnl:SetWidth(self:GetWide()*0.4)
 			end
 			if self.BNamePnl then
-				self.BNamePnl:SetWidth(self:GetWide() * 0.3)
+				self.BNamePnl:SetWidth(self:GetWide()*0.3)
 			end
 			if self.SNamePnl then
-				self.SNamePnl:SetWidth(self:GetWide() * 0.4)
+				self.SNamePnl:SetWidth(self:GetWide()*0.4)
 			end
 			self:SizeToChildren(false, true)
 		end
@@ -210,7 +210,7 @@ function GM:DisplayEndRoundBoard(data)
 			col=v:GetPlayerColor()
 		end
 		bname:SetFont("MersRadialSmall")
-		bname:SetTextColor(Color(col.x * 255, col.y * 255, col.z * 255))
+		bname:SetTextColor(Color(col.x*255, col.y*255, col.z*255))
 		bname:SetContentAlignment(4)
 		function bname:Paint() end
 		bname.DoClick=name.DoClick

@@ -76,8 +76,8 @@ end
 -- local tab={}
 -- for i=0, 1000 do
 -- 	local p=murds:Roll()
--- 	tab[p]=(tab[p] or 0) + 1
+-- 	tab[p]=(tab[p] or 0)+1
 -- end
 -- for k,v in pairs(tab) do
--- 	print(k, math.Round(v / 1000 * 10))
+-- 	print(k, math.Round(v / 1000*10))
 -- end

@@ -19,14 +19,14 @@ function PANEL:Init()
 	function self.ColorBlock:Paint(w, h)
 		if IsValid(self.Player) && self.Player:IsPlayer() then
 			local col=self.Player:GetPlayerColor()
-			surface.SetDrawColor(Color(col.x * 255, col.y * 255, col.z * 255))
+			surface.SetDrawColor(Color(col.x*255, col.y*255, col.z*255))
 			surface.DrawRect(0, 0, w, h)
 		end
 	end
 
 	self.Color=color_transparent
 
-	self:SetSize( 250, 32 + 8 )
+	self:SetSize( 250, 32+8 )
 	self:DockPadding( 4, 4, 4, 4 )
 	self:DockMargin( 2, 2, 2, 2 )
 	self:Dock( BOTTOM )
@@ -68,7 +68,7 @@ function PANEL:CheckBystanderState(state)
 		if newBystanderState then
 			local col=self.ply:GetPlayerColor()
 			if col != self.PrevColor then
-				local color=Color(col.x * 255, col.y * 255, col.z * 255)
+				local color=Color(col.x*255, col.y*255, col.z*255)
 				self.Color=color
 				self.LabelName:SetTextColor(color)
 			end
@@ -79,7 +79,7 @@ end
 
 function PANEL:SetBystanderState(state)
 	local col=self.ply:GetPlayerColor()
-	local color=Color(col.x * 255, col.y * 255, col.z * 255)
+	local color=Color(col.x*255, col.y*255, col.z*255)
 	self.Color=color
 
 	self.Bystander=state
@@ -99,7 +99,7 @@ end
 function PANEL:Paint( w, h )
 
 	if ( !IsValid( self.ply ) ) then return end
-	draw.RoundedBox( 4, 0, 0, w, h, Color( 0, self.ply:VoiceVolume() * 255, 0, 240 ) )
+	draw.RoundedBox( 4, 0, 0, w, h, Color( 0, self.ply:VoiceVolume()*255, 0, 240 ) )
 
 end
 
@@ -124,7 +124,7 @@ function PANEL:FadeOut( anim, delta, data )
 		
 	return end
 			
-	self:SetAlpha( 255 - (255 * delta) )
+	self:SetAlpha( 255-(255*delta) )
 
 end
 
@@ -197,8 +197,8 @@ local function CreateVoiceVGUI()
 	g_VoicePanelList=vgui.Create( "DPanel" )
 
 	g_VoicePanelList:ParentToHUD()
-	g_VoicePanelList:SetPos( ScrW() - 300, 100 )
-	g_VoicePanelList:SetSize( 250, ScrH() - 200 )
+	g_VoicePanelList:SetPos( ScrW()-300, 100 )
+	g_VoicePanelList:SetSize( 250, ScrH()-200 )
 	g_VoicePanelList:SetDrawBackground( false )
 
 end

@@ -1,5 +1,5 @@
 //
-// Localized ParticleEmitter as it's tied to the player position or input pos. - Josh 'Acecool' Moser
+// Localized ParticleEmitter as it's tied to the player position or input pos.-Josh 'Acecool' Moser
 //
 --[[ -- none of this works, at all
 local META_PLAYER=FindMetaTable( "Player" );

@@ -802,7 +802,7 @@ function GM:Think()
 			end
 		end
 		if ply:IsCSpectating() && IsValid(ply:GetCSpectatee()) && (!ply.LastSpectatePosSet || ply.LastSpectatePosSet < CurTime()) then
-			ply.LastSpectatePosSet=CurTime() + 0.25
+			ply.LastSpectatePosSet=CurTime()+0.25
 			ply:SetPos(ply:GetCSpectatee():GetPos())
 		end
 		if !ply.HasMoved then
@@ -811,7 +811,7 @@ function GM:Think()
 				ply.HasMoved=true
 			end
 		end
-		--if ply.LastTKTime && ply.LastTKTime + self:GetTKPenaltyTime() < CurTime() then
+		--if ply.LastTKTime && ply.LastTKTime+self:GetTKPenaltyTime() < CurTime() then
 		--	ply:SetTKer(false)
 		--end
 	end

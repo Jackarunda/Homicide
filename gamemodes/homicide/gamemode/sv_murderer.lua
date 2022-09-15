@@ -26,7 +26,7 @@ function GM:MurdererThink()
 		if murderer:HasWeapon("wep_jack_hmcd_shuriken") then
 			murderer.LastHadKnife=CurTime()
 		else
-			if murderer.LastHadKnife && murderer.LastHadKnife + NO_KNIFE_TIME < CurTime() then
+			if murderer.LastHadKnife && murderer.LastHadKnife+NO_KNIFE_TIME < CurTime() then
 				for k, ent in pairs(ents.FindByClass("ent_jack_hmcd_shuriken")) do
 					ent:Remove()
 				end

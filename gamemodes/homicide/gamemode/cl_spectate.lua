@@ -38,8 +38,8 @@ end
 
 
 local function drawTextShadow(t,f,x,y,c,px,py)
-	draw.SimpleText(t,f,x + 1,y + 1,Color(0,0,0,c.a),px,py)
-	draw.SimpleText(t,f,x - 1,y - 1,Color(255,255,255,math.Clamp(c.a*.25,0,255)),px,py)
+	draw.SimpleText(t,f,x+1,y+1,Color(0,0,0,c.a),px,py)
+	draw.SimpleText(t,f,x-1,y-1,Color(255,255,255,math.Clamp(c.a*.25,0,255)),px,py)
 	draw.SimpleText(t,f,x,y,c,px,py)
 end
 
@@ -52,7 +52,7 @@ function GM:RenderSpectate()
 		
 			local h=draw.GetFontHeight("MersRadial")
 
-			--drawTextShadow(self:GetCSpectatee():Nick(), "MersRadialSmall", ScrW() / 2, ScrH() - 100 + h, Color(190, 190, 190), 1)
+			--drawTextShadow(self:GetCSpectatee():Nick(), "MersRadialSmall", ScrW() / 2, ScrH()-100+h, Color(190, 190, 190), 1)
 
 			local Time=CurTime()
 			if(nextTipSwitch<Time)then

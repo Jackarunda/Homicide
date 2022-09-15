@@ -18,13 +18,13 @@ local function addPlayerItem(self, mlist, ply, pteam)
 		local col=team.GetColor(pteam)
 		if IsValid(ply) then
 			col=ply:GetPlayerColor()
-			col=Color(col.x * 255, col.y * 255, col.z * 255)
+			col=Color(col.x*255, col.y*255, col.z*255)
 		end
 		surface.SetDrawColor(col)
 		surface.DrawRect(0, 0, w, h)
 
 		surface.SetDrawColor(255,255,255,10)
-		surface.DrawRect(0, 0, w, h * 0.45 )
+		surface.DrawRect(0, 0, w, h*0.45 )
 
 		surface.SetDrawColor(color_black)
 		surface.DrawOutlinedRect(0, 0, w, h)
@@ -35,32 +35,32 @@ local function addPlayerItem(self, mlist, ply, pteam)
 			if((showAdmins)and(ply:IsAdmin()))then
 				surface.SetMaterial(admin)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s + 4, h / 2 - 16, 32, 32)
-				s=s + 32
+				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				s=s+32
 			end
 
 			if ply:IsSpeaking() then
 				surface.SetMaterial(talking)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s + 4, h / 2 - 16, 32, 32)
-				s=s + 32
+				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				s=s+32
 			end
 
 			if ply:IsMuted() then
 				surface.SetMaterial(muted)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s + 4, h / 2 - 16, 32, 32)
-				s=s + 32
+				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				s=s+32
 			end
 
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w - 9, 9, color_black, 2)
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w - 10, 8, color_white, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-9, 9, color_black, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-10, 8, color_white, 2)
 
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s + 11, 9, color_black, 0)
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s + 10, 8, color_white, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+11, 9, color_black, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+10, 8, color_white, 0)
 
-			draw.DrawText(ply:GetBystanderName(), "ScoreboardPlayer", w * 0.4 + 1, 9, color_black, 0)
-			draw.DrawText(ply:GetBystanderName(), "ScoreboardPlayer", w * 0.4, 8, color_white, 0)
+			draw.DrawText(ply:GetBystanderName(), "ScoreboardPlayer", w*0.4+1, 9, color_black, 0)
+			draw.DrawText(ply:GetBystanderName(), "ScoreboardPlayer", w*0.4, 8, color_white, 0)
 
 			local status=translate.bystander
 			local statusColor=team.GetColor(2)
@@ -72,15 +72,15 @@ local function addPlayerItem(self, mlist, ply, pteam)
 				statusColor=Color(190, 20, 20)
 			end
 
-			draw.DrawText(status, "ScoreboardPlayer", w * 0.64 + 1, 9, color_black, 0)
-			draw.DrawText(status, "ScoreboardPlayer", w * 0.64, 8, statusColor, 0)
+			draw.DrawText(status, "ScoreboardPlayer", w*0.64+1, 9, color_black, 0)
+			draw.DrawText(status, "ScoreboardPlayer", w*0.64, 8, statusColor, 0)
 
 			local chance="?"
 			if playerData && playerData.players[ply:EntIndex()] then
-				chance=math.Round(playerData.players[ply:EntIndex()].murdererChance * 100) .. "%"
+				chance=math.Round(playerData.players[ply:EntIndex()].murdererChance*100) .. "%"
 			end
-			draw.DrawText(chance, "ScoreboardPlayer", w * 0.86 + 1, 9, color_black, 0)
-			draw.DrawText(chance, "ScoreboardPlayer", w * 0.86, 8, color_white, 0)
+			draw.DrawText(chance, "ScoreboardPlayer", w*0.86+1, 9, color_black, 0)
+			draw.DrawText(chance, "ScoreboardPlayer", w*0.86, 8, color_white, 0)
 			
 		end
 	end
@@ -128,12 +128,12 @@ local function makeTeamList(parent, pteam)
 	pnl:DockPadding(8,8,8,8)
 	function pnl:Paint(w, h) 
 		surface.SetDrawColor(Color(50,50,50,255))
-		surface.DrawRect(2, 2, w - 4, h - 4)
+		surface.DrawRect(2, 2, w-4, h-4)
 	end
 
 	function pnl:Think()
 		if !self.RefreshWait || self.RefreshWait < CurTime() then
-			self.RefreshWait=CurTime() + 0.1
+			self.RefreshWait=CurTime()+0.1
 			doPlayerItems(self, mlist, pteam)
 
 			// update chaos/control
@@ -150,17 +150,17 @@ local function makeTeamList(parent, pteam)
 	-- headp:DockPadding(4,0,4,0)
 	headp:Dock(TOP)
 	function headp:Paint(w, h)
-		draw.DrawText(translate.scoreboardPing, "ScoreboardPlayer", w - 9, 2, color_black, 2)
-		draw.DrawText(translate.scoreboardPing, "ScoreboardPlayer", w - 10, 2, color_white, 2)
+		draw.DrawText(translate.scoreboardPing, "ScoreboardPlayer", w-9, 2, color_black, 2)
+		draw.DrawText(translate.scoreboardPing, "ScoreboardPlayer", w-10, 2, color_white, 2)
 
-		draw.DrawText(translate.scoreboardBystanderName, "ScoreboardPlayer", w * 0.4 + 1, 2, color_black, 0)
-		draw.DrawText(translate.scoreboardBystanderName, "ScoreboardPlayer", w * 0.4, 2, color_white, 0)
+		draw.DrawText(translate.scoreboardBystanderName, "ScoreboardPlayer", w*0.4+1, 2, color_black, 0)
+		draw.DrawText(translate.scoreboardBystanderName, "ScoreboardPlayer", w*0.4, 2, color_white, 0)
 
-		draw.DrawText(translate.scoreboardStatus, "ScoreboardPlayer", w * 0.64 + 1, 2, color_black, 0)
-		draw.DrawText(translate.scoreboardStatus, "ScoreboardPlayer", w * 0.64, 2, color_white, 0)
+		draw.DrawText(translate.scoreboardStatus, "ScoreboardPlayer", w*0.64+1, 2, color_black, 0)
+		draw.DrawText(translate.scoreboardStatus, "ScoreboardPlayer", w*0.64, 2, color_white, 0)
 
-		draw.DrawText(translate.scoreboardChance, "ScoreboardPlayer", w * 0.86 + 1, 2, color_black, 0)
-		draw.DrawText(translate.scoreboardChance, "ScoreboardPlayer", w * 0.86, 2, color_white, 0)
+		draw.DrawText(translate.scoreboardChance, "ScoreboardPlayer", w*0.86+1, 2, color_black, 0)
+		draw.DrawText(translate.scoreboardChance, "ScoreboardPlayer", w*0.86, 2, color_white, 0)
 
 		draw.DrawText(translate.scoreboardName, "ScoreboardPlayer", 11, 2, color_black, 0)
 		draw.DrawText(translate.scoreboardName, "ScoreboardPlayer", 10, 2, color_white, 0)
@@ -210,7 +210,7 @@ concommand.Add("mu_adminpanel", function (client)
 		menu:SetVisible(true)
 	else
 		menu=vgui.Create("DFrame")
-		menu:SetSize(ScrW() * 0.9, ScrH() * 0.9)
+		menu:SetSize(ScrW()*0.9, ScrH()*0.9)
 		menu:Center()
 		menu:MakePopup()
 		menu:SetKeyboardInputEnabled(false)
@@ -220,7 +220,7 @@ concommand.Add("mu_adminpanel", function (client)
 		menu:SetTitle(translate.adminPanel)
 		function menu:PerformLayout()
 			if menu.Players then
-				menu.Players:SetWidth(self:GetWide() * 0.5)
+				menu.Players:SetWidth(self:GetWide()*0.5)
 			end
 		end
 
@@ -238,17 +238,17 @@ concommand.Add("mu_adminpanel", function (client)
 			surface.DrawRect(0, 0, w, h)
 
 			surface.SetDrawColor(255,255,255,10)
-			surface.DrawRect(0, 0, w, h * 0.45 )
+			surface.DrawRect(0, 0, w, h*0.45 )
 
 			surface.SetDrawColor(color_black)
 			surface.DrawOutlinedRect(0, 0, w, h)
 
 			if self:IsDown() then
 				surface.SetDrawColor(50,50,50,120)
-				surface.DrawRect(1, 1, w - 2, h - 2)
+				surface.DrawRect(1, 1, w-2, h-2)
 			elseif self:IsHovered() then
 				surface.SetDrawColor(255,255,255,30)
-				surface.DrawRect(1, 1, w - 2, h - 2)
+				surface.DrawRect(1, 1, w-2, h-2)
 			end
 		end
 

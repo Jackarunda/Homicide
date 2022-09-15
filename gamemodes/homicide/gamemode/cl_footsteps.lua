@@ -17,11 +17,11 @@ local function renderfoot(self)
 	local pos=EyePos()
 	local lifeTime=20
 	for k, footstep in pairs(FootSteps) do
-		if footstep.curtime + lifeTime > CurTime() then
-			if (footstep.pos - EyePos()):LengthSqr() < maxDistance then
+		if footstep.curtime+lifeTime > CurTime() then
+			if (footstep.pos-EyePos()):LengthSqr() < maxDistance then
 				local FSCol,Ambient=footstep.col,render.GetLightColor(footstep.pos)
 				FSCol=Color(FSCol.r*Ambient.x,FSCol.g*Ambient.y,FSCol.b*Ambient.z,200)
-				render.DrawQuadEasy( footstep.pos + footstep.normal * 0.01, footstep.normal, 10, 20, FSCol, footstep.angle ) 
+				render.DrawQuadEasy( footstep.pos+footstep.normal*0.01, footstep.normal, 10, 20, FSCol, footstep.angle ) 
 			end
 		else
 			FootSteps[k]=nil
@@ -48,15 +48,15 @@ function GM:AddFootstep(ply, pos, ang)
 	ang.r=0
 	local fpos=pos
 	if ply.LastFoot then
-		fpos=fpos + ang:Right() * 5
+		fpos=fpos+ang:Right()*5
 	else
-		fpos=fpos + ang:Right() * -5
+		fpos=fpos+ang:Right()*-5
 	end
 	ply.LastFoot=!ply.LastFoot
 
 	local trace={}
 	trace.start=fpos
-	trace.endpos=trace.start + Vector(0,0,-10)
+	trace.endpos=trace.start+Vector(0,0,-10)
 	trace.filter=ply
 	local tr=util.TraceLine(trace)
 
@@ -70,7 +70,7 @@ function GM:AddFootstep(ply, pos, ang)
 		tbl.angle=ang.y
 		tbl.normal=tr.HitNormal
 		local col=ply:GetPlayerColor()
-		tbl.col=Color(col.x * 255, col.y * 255, col.z * 255)
+		tbl.col=Color(col.x*255, col.y*255, col.z*255)
 		table.insert(FootSteps, tbl)
 	end
 end
