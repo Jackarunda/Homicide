@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 50
+	SWEP.ViewModelFOV=50
 
-	SWEP.Slot = 1
-	SWEP.SlotPos = 5
+	SWEP.Slot=1
+	SWEP.SlotPos=5
 
 	killicon.AddFont("wep_jack_hmcd_hammer", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -36,10 +36,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/weapons/v_jjife_t.mdl"
-SWEP.WorldModel = "models/weapons/w_jjife_t.mdl"
+SWEP.ViewModel="models/weapons/v_jjife_t.mdl"
+SWEP.WorldModel="models/weapons/w_jjife_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_hammer");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponHammer
+SWEP.PrintName=translate.weaponHammer
 SWEP.Instructions	= translate.weaponHammerDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -74,7 +74,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_hammer"
 SWEP.DownAmt=0
@@ -90,7 +90,7 @@ end
 function SWEP:Initialize()
 	self:SetHoldType("melee")
 	self.DownAmt=20
-	self.PrintName = translate.weaponHammer
+	self.PrintName=translate.weaponHammer
 	self.Instructions	= translate.weaponHammerDesc
 end
 

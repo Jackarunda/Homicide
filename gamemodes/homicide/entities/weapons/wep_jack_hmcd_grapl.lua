@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
-	SWEP.ViewModelFOV = 65
-	SWEP.Slot = 2
-	SWEP.SlotPos = 1
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
+	SWEP.ViewModelFOV=65
+	SWEP.Slot=2
+	SWEP.SlotPos=1
 	killicon.AddFont("wep_jack_hmcd_grapl", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -55,7 +55,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= true
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 SWEP.HomicideSWEP=true
 
 SWEP.JustThrew=false

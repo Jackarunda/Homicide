@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
-	SWEP.ViewModelFOV = 65
-	SWEP.Slot = 4
-	SWEP.SlotPos = 3
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
+	SWEP.ViewModelFOV=65
+	SWEP.Slot=4
+	SWEP.SlotPos=3
 	killicon.AddFont("wep_jack_hmcd_molotov", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -21,10 +21,10 @@ elseif(CLIENT)then
 	end
 end
 SWEP.Base="weapon_base"
-SWEP.ViewModel = "models/w_models/weapons/w_eq_molotov.mdl"
-SWEP.WorldModel = "models/w_models/weapons/w_eq_molotov.mdl"
+SWEP.ViewModel="models/w_models/weapons/w_eq_molotov.mdl"
+SWEP.WorldModel="models/w_models/weapons/w_eq_molotov.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_molotov");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponMolotov
+SWEP.PrintName=translate.weaponMolotov
 SWEP.Instructions	= translate.weaponMolotovDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -55,7 +55,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 SWEP.HomicideSWEP=true
 SWEP.CommandDroppable=true
 SWEP.ENT="ent_jack_hmcd_molotov"
@@ -65,7 +65,7 @@ SWEP.CarryWeight=1000
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
-	self.PrintName = translate.weaponMolotov
+	self.PrintName=translate.weaponMolotov
 	self.Instructions	= translate.weaponMolotovDesc
 end
 function SWEP:SetupDataTables()

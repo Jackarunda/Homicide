@@ -1,11 +1,11 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
-	SWEP.ViewModelFOV = 65
-	SWEP.Slot = 4
-	SWEP.SlotPos = 2
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
+	SWEP.ViewModelFOV=65
+	SWEP.Slot=4
+	SWEP.SlotPos=2
 	killicon.AddFont("wep_jack_hmcd_oldgrenade_dm", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 	function SWEP:Initialize()
 		--wat
@@ -21,10 +21,10 @@ elseif(CLIENT)then
 	end
 end
 SWEP.Base="weapon_base"
-SWEP.ViewModel = "models/weapons/v_jj_fraggrenade.mdl"
-SWEP.WorldModel = "models/weapons/w_jj_fraggrenade.mdl"
+SWEP.ViewModel="models/weapons/v_jj_fraggrenade.mdl"
+SWEP.WorldModel="models/weapons/w_jj_fraggrenade.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_oldgrenade");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponGrenade
+SWEP.PrintName=translate.weaponGrenade
 SWEP.Instructions	= translate.weaponGrenadeDescDM
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -55,14 +55,14 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 SWEP.HomicideSWEP=true
 SWEP.CommandDroppable=true
 SWEP.CarryWeight=1000
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
-	self.PrintName = translate.weaponGrenade
+	self.PrintName=translate.weaponGrenade
 	self.Instructions	= translate.weaponGrenadeDescDM
 end
 function SWEP:SetupDataTables()

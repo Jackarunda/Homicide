@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 35
+	SWEP.ViewModelFOV=35
 
-	SWEP.Slot = 2
-	SWEP.SlotPos = 3
+	SWEP.Slot=2
+	SWEP.SlotPos=3
 
 	killicon.AddFont("wep_jack_hmcd_hatchet", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,10 +30,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/weapons/j_jnife_j.mdl"
-SWEP.WorldModel = "models/props/cs_militia/axe.mdl"
+SWEP.ViewModel="models/weapons/j_jnife_j.mdl"
+SWEP.WorldModel="models/props/cs_militia/axe.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_hatchet");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponHatchet
+SWEP.PrintName=translate.weaponHatchet
 SWEP.Instructions	= translate.weaponHatchetDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_hatchet"
 SWEP.NoHolster=true
@@ -81,7 +81,7 @@ function SWEP:Initialize()
 	self:SetHoldType("melee")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
-	self.PrintName = translate.weaponHatchet
+	self.PrintName=translate.weaponHatchet
 	self.Instructions	= translate.weaponHatchetDesc
 end
 
@@ -144,12 +144,12 @@ function SWEP:Think()
 		self:SetWindUp(math.Clamp(self:GetWindUp()-.2,0,1))
 	end
 	if self.FistCanAttack && self.FistCanAttack < CurTime() then
-		self.FistCanAttack = nil
+		self.FistCanAttack=nil
 		--self:SendWeaponAnim( ACT_VM_IDLE )
-		self.IdleTime = CurTime() + 0.1
+		self.IdleTime=CurTime()+0.1
 	end	
 	if self.FistHit && self.FistHit < CurTime() then
-		self.FistHit = nil
+		self.FistHit=nil
 		--self:AttackTrace()
 	end
 end

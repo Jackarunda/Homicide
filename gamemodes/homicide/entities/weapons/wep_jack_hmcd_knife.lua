@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 65
+	SWEP.ViewModelFOV=65
 
-	SWEP.Slot = 1
-	SWEP.SlotPos = 1
+	SWEP.Slot=1
+	SWEP.SlotPos=1
 
 	killicon.AddFont("wep_jack_hmcd_knife", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,10 +30,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/weapons/v_jnife_t.mdl"
-SWEP.WorldModel = "models/weapons/w_knife_t.mdl"
+SWEP.ViewModel="models/weapons/v_jnife_t.mdl"
+SWEP.WorldModel="models/weapons/w_knife_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_knife");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponKnife
+SWEP.PrintName=translate.weaponKnife
 SWEP.Instructions	= translate.weaponKnifeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -68,14 +68,14 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 SWEP.HomicideSWEP=true
 SWEP.Poisonable=true
 SWEP.CarryWeight=500
 function SWEP:Initialize()
 	self:SetNextIdle(CurTime()+1)
 	self:SetHoldType("knife")
-	self.PrintName = translate.weaponKnife
+	self.PrintName=translate.weaponKnife
 	self.Instructions	= translate.weaponKnifeDesc
 end
 
@@ -127,12 +127,12 @@ function SWEP:Think()
 		self:UpdateNextIdle()
 	end
 	if self.FistCanAttack && self.FistCanAttack < CurTime() then
-		self.FistCanAttack = nil
+		self.FistCanAttack=nil
 		--self:SendWeaponAnim( ACT_VM_IDLE )
-		self.IdleTime = CurTime() + 0.1
+		self.IdleTime=CurTime()+0.1
 	end	
 	if self.FistHit && self.FistHit < CurTime() then
-		self.FistHit = nil
+		self.FistHit=nil
 		--self:AttackTrace()
 	end
 	if(SERVER)then
@@ -163,7 +163,7 @@ function SWEP:AttackFront()
 			SelfForce=25
 			sound.Play("snd_jack_hmcd_knifestab.wav",HitPos,50,math.random(90,110))
 			util.Decal("Blood",HitPos+HitNorm,HitPos-HitNorm)
-			local edata = EffectData()
+			local edata=EffectData()
 			edata:SetStart(self.Owner:GetShootPos())
 			edata:SetOrigin(HitPos)
 			edata:SetNormal(HitNorm)

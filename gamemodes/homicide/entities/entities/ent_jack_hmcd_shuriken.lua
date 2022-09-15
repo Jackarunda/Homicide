@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type = "anim"
-ENT.Base = "base_anim"
+ENT.Type="anim"
+ENT.Base="base_anim"
 
 ENT.PrintName		= "Knife"
 ENT.Author			= ""
@@ -18,7 +18,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_NONE)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys = self:GetPhysicsObject()
+		local phys=self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:Wake()
 			phys:SetMass(3)
@@ -62,11 +62,11 @@ if(SERVER)then
 	end
 
 	function ENT:PhysicsCollide(data,physobj)
-		local ply = data.HitEntity
+		local ply=data.HitEntity
 		if IsValid(ply) && (ply:IsPlayer() || ply:IsNPC()) then
 			if((self.Thrown)and not(self.HitSomething))then
 				self.HitSomething=true
-				local dmg = DamageInfo()
+				local dmg=DamageInfo()
 				dmg:SetDamage(math.random(5,9))
 				dmg:SetAttacker(self:GetOwner())
 				dmg:SetDamageType(DMG_SLASH)
@@ -78,14 +78,14 @@ if(SERVER)then
 					HMCD_Poison(ply,self:GetOwner())
 					self.Poisoned=false
 				end
-				local edata = EffectData()
+				local edata=EffectData()
 				edata:SetStart(self:GetPos())
 				edata:SetOrigin(self:GetPos())
 				edata:SetNormal(vector_up)
 				edata:SetEntity(ply)
 				util.Effect("BloodImpact",edata,true,true)
-				local pos = ply:GetPos() + Vector(00,0,40)
-				local ang = ply:GetAngles() * 1
+				local pos=ply:GetPos()+Vector(00,0,40)
+				local ang=ply:GetAngles()*1
 				addangle(ang, Angle(-60,0,0))
 			end
 		elseif(data.DeltaTime>.1)then
@@ -102,8 +102,8 @@ if(SERVER)then
 	end
 elseif(CLIENT)then
 	function ENT:Initialize()
-		--self.Emitter = ParticleEmitter(self:GetPos())
-		self.NextPart = CurTime() 
+		--self.Emitter=ParticleEmitter(self:GetPos())
+		self.NextPart=CurTime() 
 	end
 
 	function ENT:Draw()
@@ -111,18 +111,18 @@ elseif(CLIENT)then
 	end
 
 	function ENT:Think()
-		local pos = self:GetPos()
-		local client = LocalPlayer()
+		local pos=self:GetPos()
+		local client=LocalPlayer()
 
 		if false then
 
 			if client:GetPos():Distance(pos) > 1000 then return end
 
 			self.Emitter:SetPos(pos)
-			self.NextPart = CurTime() + math.Rand(0, 0.02)
-			local vec = VectorRand() * 3
-			local pos = self:LocalToWorld(vec)
-			local particle = self.Emitter:Add( "particle/snow.vmt", pos)
+			self.NextPart=CurTime()+math.Rand(0, 0.02)
+			local vec=VectorRand()*3
+			local pos=self:LocalToWorld(vec)
+			local particle=self.Emitter:Add( "particle/snow.vmt", pos)
 			particle:SetVelocity(  Vector(0,0, 4) )
 			particle:SetDieTime( 7 )
 			particle:SetStartAlpha( 140 )

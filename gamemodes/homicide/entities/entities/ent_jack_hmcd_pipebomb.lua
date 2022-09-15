@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type = "anim"
-ENT.Base = "base_anim"
+ENT.Type="anim"
+ENT.Base="base_anim"
 ENT.PrintName		= "Grenade"
 ENT.Author			= ""
 ENT.Contact			= ""
@@ -17,7 +17,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_NONE)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys = self:GetPhysicsObject()
+		local phys=self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:Wake()
 			phys:SetMass(10)

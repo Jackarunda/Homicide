@@ -4,7 +4,7 @@ else
 	killicon.AddFont( "wep_jack_hmcd_rifle", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_rifle")
 end
-SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.Base="wep_jack_hmcd_firearm_base"
 SWEP.PrintName		= translate.weaponrifle
 SWEP.Instructions	= translate.weaponrifleDesc
 SWEP.Primary.ClipSize			= 5

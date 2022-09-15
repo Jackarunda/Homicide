@@ -23,7 +23,7 @@ else
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_smallpistol")
 	SWEP.BounceWeaponIcon=false
 end
-SWEP.Base = "weapon_base"
+SWEP.Base="weapon_base"
 SWEP.Slot			= 2
 SWEP.SlotPos		= 1
 SWEP.DrawAmmo		= false
@@ -126,9 +126,9 @@ function SWEP:Initialize()
 	self:SetReady(true)
 	if(self.CustomColor)then self:SetColor(self.CustomColor) end
 	self:SetReloading(false)
-	local a = string.Explode("_", self:GetClass())
-	self.PrintName = translate["weapon"..a[4]]
-	self.Instructions = translate["weapon"..a[4].."Desc"]
+	local a=string.Explode("_", self:GetClass())
+	self.PrintName=translate["weapon"..a[4]]
+	self.Instructions=translate["weapon"..a[4].."Desc"]
 end
 
 function SWEP:PreDrawViewModel()
@@ -145,7 +145,7 @@ function SWEP:SetupDataTables()
 end
 
 function SWEP:BulletCallback(att, tr, dmg)
-	return {effects = true, damage = true}
+	return {effects=true, damage=true}
 end
 
 function SWEP:PrimaryAttack()
@@ -174,14 +174,14 @@ function SWEP:PrimaryAttack()
 	local dmgAmt,InAcc=self.Damage*math.Rand(.9,1.1)*WaterMul,(1-self.Accuracy)
 	if not(self:GetAiming()>99)then InAcc=InAcc+self.HipFireInaccuracy end
 	local BulletTraj=(self.Owner:GetAimVector()+VectorRand()*InAcc):GetNormalized()
-	local bullet = {}
-	bullet.Num = self.NumProjectiles
-	bullet.Src = self.Owner:GetShootPos()
-	bullet.Dir = BulletTraj
-	bullet.Spread = Vector(self.Spread,self.Spread,0)
-	bullet.Tracer = 0
-	bullet.Force = dmgAmt/10
-	bullet.Damage = dmgAmt
+	local bullet={}
+	bullet.Num=self.NumProjectiles
+	bullet.Src=self.Owner:GetShootPos()
+	bullet.Dir=BulletTraj
+	bullet.Spread=Vector(self.Spread,self.Spread,0)
+	bullet.Tracer=0
+	bullet.Force=dmgAmt/10
+	bullet.Damage=dmgAmt
 	bullet.Callback=function(ply,tr)
 		ply:GetActiveWeapon():BulletCallbackFunc(dmgAmt,ply,tr,dmg,false,true,false)
 	end

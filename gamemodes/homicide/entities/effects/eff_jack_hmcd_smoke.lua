@@ -3,15 +3,15 @@
 ---------------------------------------------------------*/
 function EFFECT:Init( data )
 
-	self.Position = data:GetOrigin()
-	self.Position.z = self.Position.z + 4
+	self.Position=data:GetOrigin()
+	self.Position.z=self.Position.z+4
 	self.WindFactor=data:GetStart()
 	
-	local Pos = self.Position
+	local Pos=self.Position
 
-	self.Emitter = ParticleEmitter( Pos,false )
+	self.Emitter=ParticleEmitter( Pos,false )
 
-	local spawnpos = Pos
+	local spawnpos=Pos
 	
 	local Scayul=data:GetScale()
 	self.Scayul=Scayul

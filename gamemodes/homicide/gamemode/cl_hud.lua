@@ -18,7 +18,7 @@ surface.CreateFont( "MersHead1" , {
 	extended=ext
 })
 
-local basesize=ScrH() / 19.125*1.07829597918913 // we have to multiply because coolvetica v1 is just bigger than coolvetica v5 for some reason
+local basesize=ScrH()/19.125*1.07829597918913 // we have to multiply because coolvetica v1 is just bigger than coolvetica v5 for some reason
 surface.CreateFont( "MersRadial" , {
 	font="Coolvetica Rg",
 	size=math.ceil(basesize),
@@ -124,7 +124,7 @@ function GM:HUDPaint()
 	local client=LocalPlayer()
 
 	if round == 0 then
-		drawTextShadow(translate.minimumPlayers, "MersRadial", ScrW() / 2, ScrH()-75, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+		drawTextShadow(translate.minimumPlayers, "MersRadial", ScrW()/2, ScrH()-75, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
 	end
 
 	if client:Team() == 2 then
@@ -236,16 +236,16 @@ function GM:DrawStartRoundInformation()
 	end
 	draw.SimpleText(Txt, "MersRadial",ScrW()/2-20,ScrH()*.1,Col1,TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER)
 
-	draw.SimpleText(t1, "MersRadial", ScrW() / 2, ScrH() *0.35, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	draw.SimpleText(t1, "MersRadial", ScrW()/2, ScrH() *0.35, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	if t2 then
 		local h=draw.GetFontHeight("MersRadial")
-		draw.SimpleText(t2, "MersRadialSmall", ScrW() / 2, ScrH()*0.35+h*0.7, Color(120, 70, 245), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText(t2, "MersRadialSmall", ScrW()/2, ScrH()*0.35+h*0.7, Color(120, 70, 245), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	if desc then
 		local fontHeight=draw.GetFontHeight("MersRadialSmall")
 		for k,v in pairs(desc) do
-			draw.SimpleText(v, "MersRadialSmall", ScrW() / 2, ScrH()*0.8+(k-1)*fontHeight, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+			draw.SimpleText(v, "MersRadialSmall", ScrW()/2, ScrH()*0.8+(k-1)*fontHeight, c, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 		end
 	end
 end
@@ -307,8 +307,8 @@ function GM:DrawGameHUD(ply)
 			local name=self.LastLooked:GetBystanderName() or "error"
 			local col=self.LastLooked:GetPlayerColor() or Vector()
 			col=Color(col.x*255, col.y*255, col.z*255)
-			col.a=(1-(CurTime()-self.LookedFade) / 1)*255
-			drawTextShadow(name, "MersRadial", ScrW() / 2, ScrH() / 2+80, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+			col.a=(1-(CurTime()-self.LookedFade)/1)*255
+			drawTextShadow(name, "MersRadial", ScrW()/2, ScrH()/2+80, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 		end
 	end
 
@@ -318,11 +318,11 @@ function GM:DrawGameHUD(ply)
 			if IsValid(tr.Entity) && LocalPlayer().Murderer && tr.Entity:GetClass() == "prop_ragdoll" && tr.HitPos:Distance(tr.StartPos) < 60 and not(self.ZOMBIE) then
 				if tr.Entity:GetBystanderName() != ply:GetBystanderName() || colorDif(tr.Entity:GetPlayerColor(), ply:GetPlayerColor()) > 0.1 then 
 					local h=draw.GetFontHeight("MersRadial")
-					drawTextShadow(translate.pressEToDisguiseFor1Loot, "MersRadialSmall", ScrW() / 2, ScrH() / 2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+					drawTextShadow(translate.pressEToDisguiseFor1Loot, "MersRadialSmall", ScrW()/2, ScrH()/2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 				end
 			elseif((IsValid(tr.Entity))and(table.HasValue(HMCD_PersonContainers,string.lower(tr.Entity:GetModel())))and(tr.HitPos:Distance(tr.StartPos)<60))then
 				local h=draw.GetFontHeight("MersRadial")
-				drawTextShadow(translate.hideInThing, "MersRadialSmall", ScrW() / 2, ScrH() / 2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+				drawTextShadow(translate.hideInThing, "MersRadialSmall", ScrW()/2, ScrH()/2+80+h*0.7, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 			end
 		end
 	end

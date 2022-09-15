@@ -1,362 +1,362 @@
-pt.bystander = "Свидетель"
-pt.murderer = "Убийца"
-pt.spectator = "Наблюдатель"
+pt.bystander="Свидетель"
+pt.murderer="Убийца"
+pt.spectator="Наблюдатель"
 
-pt.knife = "Нож"
-pt.magnum = "Револьвер"
-pt.gun = "Оружие"
-pt.hands = "Руки"
-
-
-pt.teamSpectators = "Наблюдатели"
-pt.teamPlayers = "Игроки"
-pt.teamAss = "Торт"
-
-pt.killedTeamKill = "{player} уби{s} невиновного свидетеля" 
-pt.killedMurderer = "{player} уби{s} убийцу"
-
-pt.murdererDeathUnknown = "Убийца умер по неизвестным причинам"
-
-pt.changeTeam = "{player} сменил команду на {team}"
-pt.teamMoved = "{player} был перемещён в {team}"
-pt.teamMovedAFK = "{player} был перемещён в {team} за неактивность"
-
-pt.spectateFailed = "Вы не можете наблюдать. Вы всё ещё живы."
-
-pt.murdererDisconnect = "Убийца пропал без вести"
-pt.murdererDisconnectKnown = "Убийца покинул сервер, его звали {murderer}"
-
-pt.winBystanders = "Свидетели победили!"
-pt.winBystandersMurdererWas = " Убийцей бы{s} {murderer}"
-pt.winMurderer = "Убийца победил!"
-pt.winMurdererMurdererWas = " Им бы{s} {murderer}"
-
-pt.minimumPlayers = "Недостаточно игроков, чтобы начать раунд"
-pt.roundStarted = "Новый раунд начался"
+pt.knife="Нож"
+pt.magnum="Револьвер"
+pt.gun="Оружие"
+pt.hands="Руки"
 
 
-pt.adminMurdererSelect = "{player} будет убийцей в следующем раунде"
-pt.adminMurdererForce = "Назначить убийцей в следующем раунде"
-pt.adminSpectate = "Наблюдать"
-pt.adminMoveToSpectate = "Переместить в {spectate}"
+pt.teamSpectators="Наблюдатели"
+pt.teamPlayers="Игроки"
+pt.teamAss="Торт"
 
-pt.mapChange = "Меняем карту на {map}"
+pt.killedTeamKill="{player} уби{s} невиновного свидетеля" 
+pt.killedMurderer="{player} уби{s} убийцу"
 
-pt.scoreboard = "Таблица игроков"
-pt.scoreboardName = "Имя"
-pt.scoreboardPing = "Задержка"
-pt.scoreboardBystanderName = "Имя свидетеля"
-pt.scoreboardStatus = "Статус"
-pt.scoreboardChance = "Шанс"
-pt.scoreboardRefresh = "Обновить"
+pt.murdererDeathUnknown="Убийца умер по неизвестным причинам"
 
-pt.scoreboardJoinTeam = "Присоединиться"
+pt.changeTeam="{player} сменил команду на {team}"
+pt.teamMoved="{player} был перемещён в {team}"
+pt.teamMovedAFK="{player} был перемещён в {team} за неактивность"
 
-pt.scoreboardActionAdmin = "Админ"
-pt.scoreboardActionMute = "Выключить микрофон"
-pt.scoreboardActionUnmute = "Включить микрофон"
+pt.spectateFailed="Вы не можете наблюдать. Вы всё ещё живы."
 
-pt.endroundMurdererQuit = "Свидетели победили! Убийца покинул игру"
-pt.endroundBystandersWin = "Свидетели победили!"
-pt.endroundMurdererWins = "Убийца убил всех!"
-pt.endroundMurdererWas = "Убийцей бы{s} {murderer}"
+pt.murdererDisconnect="Убийца пропал без вести"
+pt.murdererDisconnectKnown="Убийца покинул сервер, его звали {murderer}"
 
-pt.endroundLootCollected = "Собрано улик"
+pt.winBystanders="Свидетели победили!"
+pt.winBystandersMurdererWas=" Убийцей бы{s} {murderer}"
+pt.winMurderer="Убийца победил!"
+pt.winMurdererMurdererWas=" Им бы{s} {murderer}"
 
-pt.adminPanel = "Панель админа"
+pt.minimumPlayers="Недостаточно игроков, чтобы начать раунд"
+pt.roundStarted="Новый раунд начался"
 
-pt.spectating = "Наблюдение"
 
-pt.adMelonbomberWhy = "Почему бы не попробовать "
-pt.adMelonbomberBy = " Режим от создателя Murder"
+pt.adminMurdererSelect="{player} будет убийцей в следующем раунде"
+pt.adminMurdererForce="Назначить убийцей в следующем раунде"
+pt.adminSpectate="Наблюдать"
+pt.adminMoveToSpectate="Переместить в {spectate}"
 
-pt.voiceHelp = "Помощь"
-pt.voiceHelpDescription = "Позвать на помощь"
-pt.voiceRandom = "Случайное"
-pt.voiceRandomDescription = "Я даже не знаю"
-pt.voiceHappy = "Счастье"
-pt.voiceHappyDescription = "Исполнить счастливый жест"
-pt.voiceMorose = "Печаль"
-pt.voiceMoroseDescription = "Почувствовать грусть"
-pt.voiceResponse = "Ответ"
-pt.voiceResponseDescription = "Скажи им"
-pt.voiceVillain = "Злодей"
-pt.voiceVillainDescription = "Убей их всех"
-pt.voiceHero = "Герой"
-pt.voiceHeroDescription = "Спаси день"
-pt.voiceDrop = "Выкинуть предмет"
-pt.voiceDropDescription = "Выкинуть предмет из рук"
+pt.mapChange="Меняем карту на {map}"
 
-pt.startHelpBystanderTitle = "Вы свидетель"
-pt.startHelpBystander = {
+pt.scoreboard="Таблица игроков"
+pt.scoreboardName="Имя"
+pt.scoreboardPing="Задержка"
+pt.scoreboardBystanderName="Имя свидетеля"
+pt.scoreboardStatus="Статус"
+pt.scoreboardChance="Шанс"
+pt.scoreboardRefresh="Обновить"
+
+pt.scoreboardJoinTeam="Присоединиться"
+
+pt.scoreboardActionAdmin="Админ"
+pt.scoreboardActionMute="Выключить микрофон"
+pt.scoreboardActionUnmute="Включить микрофон"
+
+pt.endroundMurdererQuit="Свидетели победили! Убийца покинул игру"
+pt.endroundBystandersWin="Свидетели победили!"
+pt.endroundMurdererWins="Убийца убил всех!"
+pt.endroundMurdererWas="Убийцей бы{s} {murderer}"
+
+pt.endroundLootCollected="Собрано улик"
+
+pt.adminPanel="Панель админа"
+
+pt.spectating="Наблюдение"
+
+pt.adMelonbomberWhy="Почему бы не попробовать "
+pt.adMelonbomberBy=" Режим от создателя Murder"
+
+pt.voiceHelp="Помощь"
+pt.voiceHelpDescription="Позвать на помощь"
+pt.voiceRandom="Случайное"
+pt.voiceRandomDescription="Я даже не знаю"
+pt.voiceHappy="Счастье"
+pt.voiceHappyDescription="Исполнить счастливый жест"
+pt.voiceMorose="Печаль"
+pt.voiceMoroseDescription="Почувствовать грусть"
+pt.voiceResponse="Ответ"
+pt.voiceResponseDescription="Скажи им"
+pt.voiceVillain="Злодей"
+pt.voiceVillainDescription="Убей их всех"
+pt.voiceHero="Герой"
+pt.voiceHeroDescription="Спаси день"
+pt.voiceDrop="Выкинуть предмет"
+pt.voiceDropDescription="Выкинуть предмет из рук"
+
+pt.startHelpBystanderTitle="Вы свидетель"
+pt.startHelpBystander={
 	"Убийца на свободе",
 	"Не дайте ему убить вас",
 	"Атакуя других, вы потеряете свою невиновность"
 }
 
-pt.startHelpGunTitle = "Вы свидетель"
-pt.startHelpGunSubtitle = "с легальным, спрятанным огнестрельным оружием"
-pt.startHelpGun = {
+pt.startHelpGunTitle="Вы свидетель"
+pt.startHelpGunSubtitle="с легальным, спрятанным огнестрельным оружием"
+pt.startHelpGun={
 	"Убийца на свободе",
 	"Найдите и убейте его/её",
 	"Не убивайте невиновных, если они не атакуют других"
 }
 
-pt.startHelpMurdererTitle = "Вы убийца"
-pt.startHelpMurderer = {
+pt.startHelpMurdererTitle="Вы убийца"
+pt.startHelpMurderer={
 	"Убейте всех",
 	"Пока не убили вас"
 }
 
-pt.pressEToDisguiseFor1Loot = "[E] Замаскироваться"
+pt.pressEToDisguiseFor1Loot="[E] Замаскироваться"
 
-pt.playerStatusDead = "Мёртв"
+pt.playerStatusDead="Мёртв"
 
 // lines not originally in file
 
-pt.ms = "л"
-pt.fs = "ла"
+pt.ms="л"
+pt.fs="ла"
 
-pt.endroundZombieGaveUp = "Выжившие победили! Альфа-зомби сдался"
-pt.endroundTraitorGaveUp = "Невиновные победили! Предатель сдался"
-pt.endroundMurdererGaveUp = "Свидетели победили! Убийца сдался"
-pt.endroundZombieQuit = "Выжившие победили! Альфа-зомби покинул сервер"
-pt.endroundTraitorQuit = "Невиновные победили! Предатель покинул сервер"
-pt.endroundSurvivorsWin = "Выжившие победили!"
-pt.endroundInnocentsWin = "Невиновные победили!"
-pt.endroundZombiesWin = "Зомби победили!"
-pt.endroundTraitorWins = "Предатель победил!"
-pt.endroundEveryoneDied = "Все умерли. Конец"
-pt.endroundTimesUp = "Время вышло. Конец."
-pt.endroundMVP = "                         СЦИ: "
-pt.endroundTraitorWas = "Предателем бы{s} {murderer}"
-pt.endroundDMWins = "{murderer} победи{s}!"
+pt.endroundZombieGaveUp="Выжившие победили! Альфа-зомби сдался"
+pt.endroundTraitorGaveUp="Невиновные победили! Предатель сдался"
+pt.endroundMurdererGaveUp="Свидетели победили! Убийца сдался"
+pt.endroundZombieQuit="Выжившие победили! Альфа-зомби покинул сервер"
+pt.endroundTraitorQuit="Невиновные победили! Предатель покинул сервер"
+pt.endroundSurvivorsWin="Выжившие победили!"
+pt.endroundInnocentsWin="Невиновные победили!"
+pt.endroundZombiesWin="Зомби победили!"
+pt.endroundTraitorWins="Предатель победил!"
+pt.endroundEveryoneDied="Все умерли. Конец"
+pt.endroundTimesUp="Время вышло. Конец."
+pt.endroundMVP="                         СЦИ: "
+pt.endroundTraitorWas="Предателем бы{s} {murderer}"
+pt.endroundDMWins="{murderer} победи{s}!"
 
-pt.startHelpDMTitle = "Приготовьтесь к бою"
-pt.startHelpDM = {"Битва начнётся, когда таймер дойдет до нуля."}
+pt.startHelpDMTitle="Приготовьтесь к бою"
+pt.startHelpDM={"Битва начнётся, когда таймер дойдет до нуля."}
 
-pt.startHelpSurvivorTitle = "Вы выживший"
-pt.startHelpSurvivor = {"Убивайте альфа-зомби, убегайте или ждите военных."}
+pt.startHelpSurvivorTitle="Вы выживший"
+pt.startHelpSurvivor={"Убивайте альфа-зомби, убегайте или ждите военных."}
 
-pt.startHelpInnocentTitle = "Вы невиновный"
-pt.startHelpInnocent = {
+pt.startHelpInnocentTitle="Вы невиновный"
+pt.startHelpInnocent={
 	"В группе есть кровожадный предатель",
 	"Будьте осторожны"
 }
 
-pt.startHelpZombieTitle = "Вы альфа-зомби"
-pt.startHelpZombie = {
+pt.startHelpZombieTitle="Вы альфа-зомби"
+pt.startHelpZombie={
 	"Возглавляйте орды зомби",
 	"Пожирайте мозги живых"
 }
 
-pt.startHelpTraitorTitle = "Вы предатель"
-pt.startHelpTraitor = {
+pt.startHelpTraitorTitle="Вы предатель"
+pt.startHelpTraitor={
 	"Убейте всех и заберите их вещи",
 	"Не попадитесь"
 }
 
-pt.startHelpBigGunSubtitle = "с большим оружием"
-pt.startHelpSurvgun = {
+pt.startHelpBigGunSubtitle="с большим оружием"
+pt.startHelpSurvgun={
 	"Убейте альфа-зомби,",
 	"убейте всех остальных зомби или",
 	"прячьтесь, пока не прибудут военные"
 }
-pt.startHelpIngun = {
+pt.startHelpIngun={
 	"Найдите и убейте предателя",
 	"Защищайте невиновных"
 }
 
-pt.roundDM = "Бонусный дезматч раунд"
-pt.roundDMDesc = "Классический бой 'каждый за себя'."
-pt.roundZS = "Режим вспышки зомби-вируса"
-pt.roundZSDesc = "Вспыхнула зомби-инфекция. Выжившие должны сражаться с альфа-зомби и его полчищами."
-pt.roundSOE = "Режим чрезвычайной ситуации"
-pt.roundSOEDesc = "Местное общество распалось после катастрофы, и в группе появился кровожадный предатель."
-pt.roundGFZ = "Режим зоны без оружия"
-pt.roundGFZDesc = "Здесь запрещено огнестрельное оружие. Есть серийный убийца, но полиция реагирует быстро."
-pt.roundWW = "Режим дикого запада"
-pt.roundWWDesc = "Здесь у всех есть огнестрельное оружие, включая убийцу. Полиция не торопится реагировать."
-pt.roundJM = "Режим джихада"
-pt.roundJMDesc = "На свободе сумасшедший самоубийца, который хочет всех убить."
-pt.roundSM = "Стандартный режим"
-pt.roundSMDesc = "Как и в любой день, за исключением убийцы на свободе."
+pt.roundDM="Бонусный дезматч раунд"
+pt.roundDMDesc="Классический бой 'каждый за себя'."
+pt.roundZS="Режим вспышки зомби-вируса"
+pt.roundZSDesc="Вспыхнула зомби-инфекция. Выжившие должны сражаться с альфа-зомби и его полчищами."
+pt.roundSOE="Режим чрезвычайной ситуации"
+pt.roundSOEDesc="Местное общество распалось после катастрофы, и в группе появился кровожадный предатель."
+pt.roundGFZ="Режим зоны без оружия"
+pt.roundGFZDesc="Здесь запрещено огнестрельное оружие. Есть серийный убийца, но полиция реагирует быстро."
+pt.roundWW="Режим дикого запада"
+pt.roundWWDesc="Здесь у всех есть огнестрельное оружие, включая убийцу. Полиция не торопится реагировать."
+pt.roundJM="Режим джихада"
+pt.roundJMDesc="На свободе сумасшедший самоубийца, который хочет всех убить."
+pt.roundSM="Стандартный режим"
+pt.roundSMDesc="Как и в любой день, за исключением убийцы на свободе."
 
-pt.hideInThing = "[ПКМ]+[E] Спрятаться"
+pt.hideInThing="[ПКМ]+[E] Спрятаться"
 
-pt.traitor = "Предатель"
-pt.innocent = "Невиновный"
-pt.fighter = "Боец"
-pt.survivor = "Выживший"
-pt.zombie = "Альфа-зомби"
+pt.traitor="Предатель"
+pt.innocent="Невиновный"
+pt.fighter="Боец"
+pt.survivor="Выживший"
+pt.zombie="Альфа-зомби"
 
-pt.ywbaInnocent = "Вы будете невиновным в следующем раунде."
-pt.ywbaBystander = "Вы будете свидетелем в следующем раунде."
-pt.ywbaSpectator = "Вы будете наблюдателем в следующем раунде."
-pt.noInnocence = "Вы потеряли свою невиновность."
+pt.ywbaInnocent="Вы будете невиновным в следующем раунде."
+pt.ywbaBystander="Вы будете свидетелем в следующем раунде."
+pt.ywbaSpectator="Вы будете наблюдателем в следующем раунде."
+pt.noInnocence="Вы потеряли свою невиновность."
 
-pt.ammoNo = "У вас нет патронов!"
-pt.ammoDrop = "Выбросить патроны"
-pt.ammoAmount = "Количество"
-pt.ammoType = "Тип"
-pt.ammoDropShort = "Выбросить"
-pt.ammoAlyxGun = "5.7x16мм (.22 LR)"
-pt.ammoPistol = "9x19мм (9мм Parabellum)"
-pt.ammo357 = "9x29ммR (.38 Special)"
-pt.ammoSMG1 = "5.56x45мм (.223 Remington)"
-pt.ammoBuckshot = "18.5x70ммR (12 Gauge)"
-pt.ammoAR2 = "7x57мм (7mm Mauser)"
-pt.ammoXBowBolt = "6x735мм ширококонечная охотничья стрела"
-pt.ammoAirboatGun = "2x89мм столярный гвоздь"
+pt.ammoNo="У вас нет патронов!"
+pt.ammoDrop="Выбросить патроны"
+pt.ammoAmount="Количество"
+pt.ammoType="Тип"
+pt.ammoDropShort="Выбросить"
+pt.ammoAlyxGun="5.7x16мм (.22 LR)"
+pt.ammoPistol="9x19мм (9мм Parabellum)"
+pt.ammo357="9x29ммR (.38 Special)"
+pt.ammoSMG1="5.56x45мм (.223 Remington)"
+pt.ammoBuckshot="18.5x70ммR (12 Gauge)"
+pt.ammoAR2="7x57мм (7mm Mauser)"
+pt.ammoXBowBolt="6x735мм ширококонечная охотничья стрела"
+pt.ammoAirboatGun="2x89мм столярный гвоздь"
 
-pt.chest = "Грудная клетка: "
-pt.head = "Голова: "
-pt.armorLevelIII = "Уровень III"
-pt.armorLevelIIIA = "Уровень IIIA"
+pt.chest="Грудная клетка: "
+pt.head="Голова: "
+pt.armorLevelIII="Уровень III"
+pt.armorLevelIIIA="Уровень IIIA"
 
-pt.identityIncorrectLines = "Homicide: неправильное количество строк в homicide_identity.txt! Нужно 10 строк"
-pt.appearanceTitle = "Пользовательский внешний вид Homicide"
-pt.appearanceName = "Имя"
-pt.appearanceModel = "Модель игрока"
-pt.appearanceUBodySize = "Размер верхней части тела"
-pt.appearanceWaistSize = "Размер талии"
-pt.appearanceLBodySize = "Размер нижней части тела"
-pt.appearanceCColor = "Цвет одежды"
-pt.appearanceCStyle = "Стиль одежды"
-pt.appearanceAccessory = "Аксессуары"
-pt.appearanceSet = "УСТАНОВИТЬ ЛИЧНОСТЬ"
+pt.identityIncorrectLines="Homicide: неправильное количество строк в homicide_identity.txt! Нужно 10 строк"
+pt.appearanceTitle="Пользовательский внешний вид Homicide"
+pt.appearanceName="Имя"
+pt.appearanceModel="Модель игрока"
+pt.appearanceUBodySize="Размер верхней части тела"
+pt.appearanceWaistSize="Размер талии"
+pt.appearanceLBodySize="Размер нижней части тела"
+pt.appearanceCColor="Цвет одежды"
+pt.appearanceCStyle="Стиль одежды"
+pt.appearanceAccessory="Аксессуары"
+pt.appearanceSet="УСТАНОВИТЬ ЛИЧНОСТЬ"
 
-pt.voiceDropEquipment = "Выбросить снаряжение"
-pt.voiceDropEquipmentDescription = "Выбросить поношенные вещи"
-pt.voiceDropAmmo = "Выбросить патроны"
-pt.voiceDropAmmoDescription = "Выбрать патроны для выброса"
+pt.voiceDropEquipment="Выбросить снаряжение"
+pt.voiceDropEquipmentDescription="Выбросить поношенные вещи"
+pt.voiceDropAmmo="Выбросить патроны"
+pt.voiceDropAmmoDescription="Выбрать патроны для выброса"
 
-pt.wrongfullyKilled = "Вы были неправомерно убиты.\nВы можете нажать F, чтобы простить нападавших."
+pt.wrongfullyKilled="Вы были неправомерно убиты.\nВы можете нажать F, чтобы простить нападавших."
 
-pt.youAreNoAdmin = "Вы не админ."
+pt.youAreNoAdmin="Вы не админ."
 
-pt.police = "Полиция"
-pt.nationalguardsman = "Солдат"
-pt.zombieSimple = "Зомби"
+pt.police="Полиция"
+pt.nationalguardsman="Солдат"
+pt.zombieSimple="Зомби"
 
-pt.statusEffectPoisoned = "ОТРАВЛЕНИЕ"
-pt.statusEffectAsphyxiating = "УДУШЕНИЕ"
-pt.statusEffectImmobilized = "ОБЕЗДВИЖИВАНИЕ"
-pt.statusEffectDisarmed = "ОБЕЗОРУЖЕНИЕ"
+pt.statusEffectPoisoned="ОТРАВЛЕНИЕ"
+pt.statusEffectAsphyxiating="УДУШЕНИЕ"
+pt.statusEffectImmobilized="ОБЕЗДВИЖИВАНИЕ"
+pt.statusEffectDisarmed="ОБЕЗОРУЖЕНИЕ"
 
-pt.arrivalNationalGuard = "Национальная гвардия прибыла!"
-pt.arrivalPolice = "Полиция прибыла!"
+pt.arrivalNationalGuard="Национальная гвардия прибыла!"
+pt.arrivalPolice="Полиция прибыла!"
 
-pt.battleStartsIn = "Битва начнется через "
+pt.battleStartsIn="Битва начнется через "
 
-pt.attTraitor = "предателем"
-pt.attMurderer = "убийцей"
-pt.attPolice = "полицейским"
-pt.attGuardsman = "гвардейцем"
-pt.attYourself = "собой"
-pt.attHimself = "собой"
-pt.attObject = "объектом"
-pt.attGround = "землёй"
-pt.attSlash = "зарезаны"
-pt.attClub = "избиты"
-pt.attBurn = "принесены в жертву"
-pt.attDirect = "сожжены"
-pt.attCrush = "раздавлены"
-pt.attGeneric = "ранены"
-pt.attShock = "убиты током"
-pt.attBullet = "застрелены"
-pt.attBuckshot = "убиты осколком от взрыва"
-pt.attPoison = "отравлены"
-pt.attBlast = "взорваны"
-pt.attDrown = "задушены"
-pt.attHead = "в голову"
-pt.attRArm = "в правую руку"
-pt.attLArm = "в левую руку"
-pt.attLLeg = "в левую ногу"
-pt.attRLeg = "в правую ногу"
-pt.attChest = "в грудную клетку"
-pt.attAbdomen = "в брюшную полость"
-pt.attTheyBledToDeath = " истек кровью после того, как был "
-pt.attYouBledToDeath = "Вы истекли кровью после того, как были "
-pt.attBy = ""
-pt.attHeWas = " был "
-pt.attYouWere = "Вы были "
+pt.attTraitor="предателем"
+pt.attMurderer="убийцей"
+pt.attPolice="полицейским"
+pt.attGuardsman="гвардейцем"
+pt.attYourself="собой"
+pt.attHimself="собой"
+pt.attObject="объектом"
+pt.attGround="землёй"
+pt.attSlash="зарезаны"
+pt.attClub="избиты"
+pt.attBurn="принесены в жертву"
+pt.attDirect="сожжены"
+pt.attCrush="раздавлены"
+pt.attGeneric="ранены"
+pt.attShock="убиты током"
+pt.attBullet="застрелены"
+pt.attBuckshot="убиты осколком от взрыва"
+pt.attPoison="отравлены"
+pt.attBlast="взорваны"
+pt.attDrown="задушены"
+pt.attHead="в голову"
+pt.attRArm="в правую руку"
+pt.attLArm="в левую руку"
+pt.attLLeg="в левую ногу"
+pt.attRLeg="в правую ногу"
+pt.attChest="в грудную клетку"
+pt.attAbdomen="в брюшную полость"
+pt.attTheyBledToDeath=" истек кровью после того, как был "
+pt.attYouBledToDeath="Вы истекли кровью после того, как были "
+pt.attBy=""
+pt.attHeWas=" был "
+pt.attYouWere="Вы были "
 
-pt.kickSpectate = "Наблюдали слишком долго"
+pt.kickSpectate="Наблюдали слишком долго"
 
-pt.guardIn = "Национальная гвардия прибудет через {mins} минут."
-pt.guardInSeconds = "Национальная гвардия прибудет через {secs} секунд."
-pt.policeIn = "Полиция прибудет через {mins} минут."
-pt.policeInSeconds = "Полиция прибудет через {secs} секунд."
+pt.guardIn="Национальная гвардия прибудет через {mins} минут."
+pt.guardInSeconds="Национальная гвардия прибудет через {secs} секунд."
+pt.policeIn="Полиция прибудет через {mins} минут."
+pt.policeInSeconds="Полиция прибудет через {secs} секунд."
 
-pt.killedTeamKillInnocent = "{player} уби{s} невиновного."
-pt.killedTeamKillAggressive = "{player} уби{s} агрессивного нарушителя спокойствия."
-pt.killedDM = "{player} уби{s} {ded}"
-pt.killedZombie = "{player} уби{s} альфа-зомби"
-pt.killedTraitor = "{player} уби{s} предателя"
-pt.guardShotZombie = "Альфа-зомби был застрелен национальной гвардией."
-pt.guardShotTraitor = "Предатель был застрелен национальной гвардией."
-pt.policeShotMurderer = "Убийца был застрелен полицией."
-pt.traitorDeathUnknown = "Предатель погиб при загадочных обстоятельствах."
+pt.killedTeamKillInnocent="{player} уби{s} невиновного."
+pt.killedTeamKillAggressive="{player} уби{s} агрессивного нарушителя спокойствия."
+pt.killedDM="{player} уби{s} {ded}"
+pt.killedZombie="{player} уби{s} альфа-зомби"
+pt.killedTraitor="{player} уби{s} предателя"
+pt.guardShotZombie="Альфа-зомби был застрелен национальной гвардией."
+pt.guardShotTraitor="Предатель был застрелен национальной гвардией."
+pt.policeShotMurderer="Убийца был застрелен полицией."
+pt.traitorDeathUnknown="Предатель погиб при загадочных обстоятельствах."
 
-pt.hardFrics = {"к", "п", "с", "т", "ф", "х", "ц", "щ", "ш", "ч"}
-pt.softFrics = {"й", "м", "н", "л", "р", "б", "в", "г", "д", "з", "ж"}
-pt.alphabet = {"а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я"}
+pt.hardFrics={"к", "п", "с", "т", "ф", "х", "ц", "щ", "ш", "ч"}
+pt.softFrics={"й", "м", "н", "л", "р", "б", "в", "г", "д", "з", "ж"}
+pt.alphabet={"а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я"}
 
-pt.stuck = "Игрок застрял. Перемещаем..."
-pt.stuckUnable = "Не удалось подтвердить то, что игрок застрял."
-pt.stuckAlready = "Вы уже использовали *unstick в этом раунде"
+pt.stuck="Игрок застрял. Перемещаем..."
+pt.stuckUnable="Не удалось подтвердить то, что игрок застрял."
+pt.stuckAlready="Вы уже использовали *unstick в этом раунде"
 
-pt.radio = " (радио)"
-pt.poisoned = "Это отравлено!"
-pt.someonesInside = "В этом контейнере уже кто-то есть"
+pt.radio=" (радио)"
+pt.poisoned="Это отравлено!"
+pt.someonesInside="В этом контейнере уже кто-то есть"
 
-pt.youAreHavingASeizure = "У вас припадок."
-pt.seizure = "ПРИПАДОК"
+pt.youAreHavingASeizure="У вас припадок."
+pt.seizure="ПРИПАДОК"
 
-pt.murdererLostWill = "Убийца потерял волю к убийству, это был {murderer}.\nВсе жили долго и счастливо."
-pt.traitorLostWill = "Предатель потерял волю к убийству, это был {murderer}.\nВсе жили долго и счастливо."
-pt.traitorDisconnectKnown = "Предатель вышел с сервера, это был {murderer}"
-pt.traitorDisconnect = "Предатель вышел с сервера"
-pt.winInnocentsTraitorWas = "Предателем бы{s} {murderer}"
-pt.winInnocents = "Невиновные победили! "
-pt.winZombies = "Зомби съели всех людей!"
-pt.winTraitor = "Предатель победил!"
-pt.winDM = "{murderer} победи{s}!"
+pt.murdererLostWill="Убийца потерял волю к убийству, это был {murderer}.\nВсе жили долго и счастливо."
+pt.traitorLostWill="Предатель потерял волю к убийству, это был {murderer}.\nВсе жили долго и счастливо."
+pt.traitorDisconnectKnown="Предатель вышел с сервера, это был {murderer}"
+pt.traitorDisconnect="Предатель вышел с сервера"
+pt.winInnocentsTraitorWas="Предателем бы{s} {murderer}"
+pt.winInnocents="Невиновные победили! "
+pt.winZombies="Зомби съели всех людей!"
+pt.winTraitor="Предатель победил!"
+pt.winDM="{murderer} победи{s}!"
 
-pt.tempBan = " был временно заблокирован за неоднократное нападение или убийство невиновных."
-pt.whyIsTheHostKillingPeopleOhNo = " не может быть заблокирован т.к. является хостом сервера."
+pt.tempBan=" был временно заблокирован за неоднократное нападение или убийство невиновных."
+pt.whyIsTheHostKillingPeopleOhNo=" не может быть заблокирован т.к. является хостом сервера."
 
-pt.miscUnsupportedPM = "ВНИМАНИЕ: Неподдерживаемая модель игрока"
-pt.miscTKPenaltiesDisabled = "\nВНИМАНИЕ: штрафы за убийство своих отключены!"
-pt.miscExplanation = "Начинаем запись, чтобы исправить дурацкий баг с исчезающей моделью оружия. Свяжитесь с Гарри."
-pt.miscRDM1 = "Ваша вина составляет "
-pt.miscRDM2 = "%. Продолжение РДМа приведёт к блокировке."
-pt.notAllowedWithSVC0 = " запрещён с sv_cheats 0!"
-pt.notAllowedNoclip = "Режим полёта запрещён с sv_cheats 0!"
-pt.notAllowedGodmode = "Бессмертие запрещено с sv_cheats 0!"
-pt.notAllowedAdditionalHealth = "Доп. здоровье запрещено с sv_cheats 0!"
-pt.notAllowedHL2Armor = "Броня из HL2 запрещена с sv_cheats 0!"
+pt.miscUnsupportedPM="ВНИМАНИЕ: Неподдерживаемая модель игрока"
+pt.miscTKPenaltiesDisabled="\nВНИМАНИЕ: штрафы за убийство своих отключены!"
+pt.miscExplanation="Начинаем запись, чтобы исправить дурацкий баг с исчезающей моделью оружия. Свяжитесь с Гарри."
+pt.miscRDM1="Ваша вина составляет "
+pt.miscRDM2="%. Продолжение РДМа приведёт к блокировке."
+pt.notAllowedWithSVC0=" запрещён с sv_cheats 0!"
+pt.notAllowedNoclip="Режим полёта запрещён с sv_cheats 0!"
+pt.notAllowedGodmode="Бессмертие запрещено с sv_cheats 0!"
+pt.notAllowedAdditionalHealth="Доп. здоровье запрещено с sv_cheats 0!"
+pt.notAllowedHL2Armor="Броня из HL2 запрещена с sv_cheats 0!"
 
-pt.identWrongFormat = "Homicide: неправильный формат файла личности (нужны 10 строк: имя, модель, R, G, B, верхнее тело, талия, нижнее тело, одежда, аксессуар)"
-pt.identCustName = "Homicide: ошибка при разборе имени (пример: My Custom Name, разрешена только латиница)"
-pt.identTraitorMurderer = "Homicide: имена 'предатель' и 'убийца' зарезервированы."
-pt.identModel = "Homicide: неверная модель (пример: male01)"
-pt.identColor = "Homicide: неверный цвет (пример: 1 .5 .2)"
-pt.identUpper = "Homicide: неверный размер верхнего тела! Должен быть между 80 и 130"
-pt.identCore = "Homicide: неверный размер талии! Должен быть между 75 и 120"
-pt.identLower = "Homicide: неверный размер нижнего тела! Должен быть между 80 и 130"
-pt.identClothes = "Homicide: неверный тип одежды Должен быть normal, casual, striped, plaid, formal, young или cold!"
-pt.identAccessory = "Homicide: неверный аксессуар! Должен быть одним из следующих:"
-pt.identSuccess1 = "Польз. личность установлена: "
-pt.identSuccess2 = " цвет "
-pt.identSuccess3 = " верх "
-pt.identSuccess4 = " талия "
-pt.identSuccess5 = " низ "
-pt.identSuccess6 = " одежда "
-pt.identSuccess7 = " аксессуар "
+pt.identWrongFormat="Homicide: неправильный формат файла личности (нужны 10 строк: имя, модель, R, G, B, верхнее тело, талия, нижнее тело, одежда, аксессуар)"
+pt.identCustName="Homicide: ошибка при разборе имени (пример: My Custom Name, разрешена только латиница)"
+pt.identTraitorMurderer="Homicide: имена 'предатель' и 'убийца' зарезервированы."
+pt.identModel="Homicide: неверная модель (пример: male01)"
+pt.identColor="Homicide: неверный цвет (пример: 1 .5 .2)"
+pt.identUpper="Homicide: неверный размер верхнего тела! Должен быть между 80 и 130"
+pt.identCore="Homicide: неверный размер талии! Должен быть между 75 и 120"
+pt.identLower="Homicide: неверный размер нижнего тела! Должен быть между 80 и 130"
+pt.identClothes="Homicide: неверный тип одежды Должен быть normal, casual, striped, plaid, formal, young или cold!"
+pt.identAccessory="Homicide: неверный аксессуар! Должен быть одним из следующих:"
+pt.identSuccess1="Польз. личность установлена: "
+pt.identSuccess2=" цвет "
+pt.identSuccess3=" верх "
+pt.identSuccess4=" талия "
+pt.identSuccess5=" низ "
+pt.identSuccess6=" одежда "
+pt.identSuccess7=" аксессуар "
 
-pt.tips = {
+pt.tips={
 	"Сюрикен - это не смертельное оружие. Он полезен для отравления и для нанесения урона тем, кто находится вне досягаемости.",
 	"Нож убийцы наносит больший урон при ударе в спину.",
 	"СВУ может быть спрятано внутри большинства предметов. Некоторые предметы добавляют особые эффекты к взрыву.",
@@ -417,7 +417,7 @@ pt.tips = {
 	"Мы живем в законопослушном обществе. С РДМом обращаются очень жестко. Включите sv_cheats, чтобы отключить штрафы.",
 	"Ваши нарушения RDM со временем прощаются. Пройдите весь раунд, не потеряв своей невинности, и вы получите бонусное прощение.",
 	"СВУ само по себе не так уж смертоносно. Встройте его во что-нибудь, что может расколоться, например, в металлический контейнер.",
-	"Как предатель / убийца, вы начинаете с большим количеством снаряжения. Не выдавайте себя, показывая его слишком рано.",
+	"Как предатель/убийца, вы начинаете с большим количеством снаряжения. Не выдавайте себя, показывая его слишком рано.",
 	"Наличие у кого-то дополнительного снаряжения или предметов - не причина для подозрений. Предметы можно найти по всей карте.",
 	"Яд кураре можно нанести на любое холодное оружие. Первый человек, пораженный оружием, умрет через некоторое время.",
 	"Яд VX можно применить к любому предмету, что можно взять. Первый человек, что прикоснется к нему, через некоторое время умрет.",
@@ -425,7 +425,7 @@ pt.tips = {
 	"Яд можно подмешать в любой расходник, что валяется поблизости. Любой, кто съест его, через некоторое время умрет.",
 	"Дверной клин можно использовать для полного блокирования двери с одной стороны.",
 	"Не можешь прыгнуть достаточно высоко? Просто отдохни минутку. Позволь своей выносливости восстановиться.",
-	"Базовое понимание аэробной выносливости / усталости необходимо для эффективного бегства от убийцы.",
+	"Базовое понимание аэробной выносливости/усталости необходимо для эффективного бегства от убийцы.",
 	-- "Ваши заслуги (убийства, передачи и т.д.) хранятся в базе данных сервера и используются при расчете вашего навыка (SK)..",
 	-- "Ваши недостатки (смерти, командные поражения и т.д.) сохраняются в базе данных сервера и используются при расчете вашего навыка (SK)..",
 	-- "Общее время, проведенное вами в живых во время игры, сохраняется в базе данных сервера и используется при расчете вашего опыта (XP)..",
@@ -443,7 +443,7 @@ pt.tips = {
 	"Натяните веревку крюка-кошки в середине полета, чтобы он приземлился там, где вы хотите.",
 	"Если вы застряли в чем-то, наведите курсор туда, куда вы хотите попасть, и используйте команду *unstick.",
 	"Команда *unstick может избавить вас от застревания на карте. Однако, вы можете использовать её только один раз за раунд.",
-	"Люди могут спрятаться внутри больших контейнеров, нажав ПКМ + E. Смертельная охота за предметами.",
+	"Люди могут спрятаться внутри больших контейнеров, нажав ПКМ+E. Смертельная охота за предметами.",
 	"Скрываясь внутри объекта, вы можете перемещать объект в разных направлениях с помощью WASD.",
 	"Канистра с ядовитым газом Циклон-Б будет загрязнять местность в течение примерно 4 минут.",
 	"Ядовитый газ менее смертоносен на широких открытых пространствах и более смертоносен в небольших закрытых помещениях.",
@@ -470,144 +470,144 @@ pt.tips = {
 	"Если ваш друг случайно убьет вас несправедливо, нажмите F после смерти, чтобы простить его и не дать ему получить вину."
 }
 
-pt.weaponAdrenaline = "Автоинъектор эпинефрина"
-pt.weaponAdrenalineDesc = "Это автономный инъектор адреналина для облегчения аллергических реакций. Используйте его, чтобы значительно повысить свою выносливость при убийстве.\n\nЛКМ, чтобы ввести наркотик."
+pt.weaponAdrenaline="Автоинъектор эпинефрина"
+pt.weaponAdrenalineDesc="Это автономный инъектор адреналина для облегчения аллергических реакций. Используйте его, чтобы значительно повысить свою выносливость при убийстве.\n\nЛКМ, чтобы ввести наркотик."
 
-pt.weaponassaultrifle = "AR-15"
-pt.weaponassaultrifleDesc = "Очень мощное оружие, этот алюминиево-полимерный полуавтоматический карабин на 30 патронов 5.56x45мм - просто квинтэссенция гражданского вооружения Америки на начало 21 века.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponassaultrifle="AR-15"
+pt.weaponassaultrifleDesc="Очень мощное оружие, этот алюминиево-полимерный полуавтоматический карабин на 30 патронов 5.56x45мм - просто квинтэссенция гражданского вооружения Америки на начало 21 века.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponAxe = "Топор"
-pt.weaponAxeDesc = "Самый обычный топор для рубки деревьев со стальным и острым лезвием. Убивай невиновных как настоящий псих!\n\nЛКМ, чтобы взмахнуть.\nТакже может выламывать двери и укрепления."
+pt.weaponAxe="Топор"
+pt.weaponAxeDesc="Самый обычный топор для рубки деревьев со стальным и острым лезвием. Убивай невиновных как настоящий псих!\n\nЛКМ, чтобы взмахнуть.\nТакже может выламывать двери и укрепления."
 
-pt.weaponSmallBandage = "Малый бинт"
-pt.weaponLargeBandage = "Большой бинт"
-pt.weaponBandageDesc = "Это хлопчатобумажная ткань, которой можно обернуть рану, чтобы остановить кровотечение и стабилизировать состояние здоровья.\n\nЛКМ - использовать на себе\nПКМ - использовать на ком-то"
+pt.weaponSmallBandage="Малый бинт"
+pt.weaponLargeBandage="Большой бинт"
+pt.weaponBandageDesc="Это хлопчатобумажная ткань, которой можно обернуть рану, чтобы остановить кровотечение и стабилизировать состояние здоровья.\n\nЛКМ - использовать на себе\nПКМ - использовать на ком-то"
 
-pt.weaponBaseballBat = "Бейсбольная бита"
-pt.weaponBaseballBatDesc = "Это обычная деревянная бейсбольная бита. Используй так, как считаешь нужным (атакуй/обороняйся и тд). Не может быть убрана.\nЛКМ, чтобы взмахнуть."
+pt.weaponBaseballBat="Бейсбольная бита"
+pt.weaponBaseballBatDesc="Это обычная деревянная бейсбольная бита. Используй так, как считаешь нужным (атакуй/обороняйся и тд). Не может быть убрана.\nЛКМ, чтобы взмахнуть."
 
-pt.weaponBow = "Охотничий лук"
-pt.weaponBowDesc = "Это современный алюминиево-стекловолоконный композитный лук с силой натягивания 290 ньютонов, используется (вместе с бронебойными стрелами) чтобы убить северную американскую дичь среднего размера.\n\nПКМ, чтобы прицелиться.\nЛКМ, чтобы выстрелить."
+pt.weaponBow="Охотничий лук"
+pt.weaponBowDesc="Это современный алюминиево-стекловолоконный композитный лук с силой натягивания 290 ньютонов, используется (вместе с бронебойными стрелами) чтобы убить северную американскую дичь среднего размера.\n\nПКМ, чтобы прицелиться.\nЛКМ, чтобы выстрелить."
 
-pt.weaponDuctTape = "Скотч"
-pt.weaponDuctTapeDesc = "Это рулон обычной водонепроницаемой виниловой клейкой ленты с полиэтиленовым покрытием. Используйте, чтобы склеивать вещи.\n\nЛКМ, чтобы склеить.\nВы можете наклеить скотч только на шов или закрыть щель между двумя объектами."
-pt.weaponDoorSealed = "Дверь забаррикадирована"
-pt.weaponBondStrength = "Прочность сцепления: "
-pt.weaponDuctTapeRemaining = "% рулона осталось"
+pt.weaponDuctTape="Скотч"
+pt.weaponDuctTapeDesc="Это рулон обычной водонепроницаемой виниловой клейкой ленты с полиэтиленовым покрытием. Используйте, чтобы склеивать вещи.\n\nЛКМ, чтобы склеить.\nВы можете наклеить скотч только на шов или закрыть щель между двумя объектами."
+pt.weaponDoorSealed="Дверь забаррикадирована"
+pt.weaponBondStrength="Прочность сцепления: "
+pt.weaponDuctTapeRemaining="% рулона осталось"
 
-pt.weaponFakePistol = "Фальшивый пистолет"
-pt.weaponFakePistolDesc = "Это не рабочий страйкбольный пистолет. Используйте его, чтобы обмануть невиновных и заманить их на гибель, либо используйте его в качестве приманки, нажав ЛКМ и бросив его."
+pt.weaponFakePistol="Фальшивый пистолет"
+pt.weaponFakePistolDesc="Это не рабочий страйкбольный пистолет. Используйте его, чтобы обмануть невиновных и заманить их на гибель, либо используйте его в качестве приманки, нажав ЛКМ и бросив его."
 
-pt.weaponSmallConsumable = "Малый расходник"
-pt.weaponBigConsumable = "Большой расходник"
-pt.weaponConsumableDesc = "Это вещь, которую ты можешь есть/пить. Это повышает скорость восстановления выносливости и даёт небольшую регенерацию здоровья.\n\nЛКМ, чтобы есть/пить."
+pt.weaponSmallConsumable="Малый расходник"
+pt.weaponBigConsumable="Большой расходник"
+pt.weaponConsumableDesc="Это вещь, которую ты можешь есть/пить. Это повышает скорость восстановления выносливости и даёт небольшую регенерацию здоровья.\n\nЛКМ, чтобы есть/пить."
 
-pt.weaponGrapl = "Альпинистская кошка"
-pt.weaponGraplDesc = "Это стальная альпинистская кошка с прикрепленной веревкой. Используйте её, чтобы добраться до высоких/дальних мест или безопасно спуститься вниз.\n\nЛКМ, чтобы кинуть\nЛКМ, чтобы натянуть веревку\nПКМ, чтобы ослабить веревку\nR, чтобы отпустить веревку"
+pt.weaponGrapl="Альпинистская кошка"
+pt.weaponGraplDesc="Это стальная альпинистская кошка с прикрепленной веревкой. Используйте её, чтобы добраться до высоких/дальних мест или безопасно спуститься вниз.\n\nЛКМ, чтобы кинуть\nЛКМ, чтобы натянуть веревку\nПКМ, чтобы ослабить веревку\nR, чтобы отпустить веревку"
 
-pt.weaponHammer = "Молоток"
-pt.weaponHammerDesc = "Это обычный столярный молоток. Используйте его, чтобы забивать гвозди и строить конструкции. Им также можно атаковать.\n\nЛКМ, чтобы атаковать.\nПКМ, чтобы вбить гвоздь.\nВы можете вбить гвоздь только в предмет, который плотно прилегает к другой поверхности.\nГвозди держатся сильнее, чем скотч."
-pt.weaponHammerNailsNeeded = "Нужно 3 гвоздя, чтобы заколотить дверь."
+pt.weaponHammer="Молоток"
+pt.weaponHammerDesc="Это обычный столярный молоток. Используйте его, чтобы забивать гвозди и строить конструкции. Им также можно атаковать.\n\nЛКМ, чтобы атаковать.\nПКМ, чтобы вбить гвоздь.\nВы можете вбить гвоздь только в предмет, который плотно прилегает к другой поверхности.\nГвозди держатся сильнее, чем скотч."
+pt.weaponHammerNailsNeeded="Нужно 3 гвоздя, чтобы заколотить дверь."
 
-pt.weaponHandsDesc = "Это ваши руки. Используйте так, как считаете нужным. Нападайте, защищайтесь и т.д..\n\nЛКМ, чтобы сделать взмах.\nR, чтобы опустить руки.\nКогда руки опущены, нажмите ПКМ, чтобы нести вещи.\nКогда руки подняты, удерживайте ПКМ, чтобы блокировать атаки."
+pt.weaponHandsDesc="Это ваши руки. Используйте так, как считаете нужным. Нападайте, защищайтесь и т.д..\n\nЛКМ, чтобы сделать взмах.\nR, чтобы опустить руки.\nКогда руки опущены, нажмите ПКМ, чтобы нести вещи.\nКогда руки подняты, удерживайте ПКМ, чтобы блокировать атаки."
 
-pt.weaponHatchet = "Топорик"
-pt.weaponHatchetDesc = "Это небольшой топорик, по весу и размеру похожий на томагавк. Бросьте его во врагов, чтобы нанести большой урон.\n\nЛКМ, чтобы бросить."
+pt.weaponHatchet="Топорик"
+pt.weaponHatchetDesc="Это небольшой топорик, по весу и размеру похожий на томагавк. Бросьте его во врагов, чтобы нанести большой урон.\n\nЛКМ, чтобы бросить."
 
-pt.weaponIED = "Комплект взрывчатки Аммонал"
-pt.weaponIEDDesc = "Это небольшая коробка аммонала с детонатором. Используйте, чтобы создать взрывную ловушку.\n\nНажмите ЛКМ, чтобы спрятать взрывное устройство в объекте.\nПКМ, чтобы просто заложить бомбу.\nПосле закладки, нажмите ЛКМ, чтобы детонировать.\nВзрывчатка либо породит шрапнель, либо снесет двери, в зависимости от выбора предмета."
-pt.weaponIEDRig = "[ЛКМ] встроить"
-pt.weaponIEDFragments = "взрыв породит осколки"
-pt.weaponIEDFire = "взрыв породит огонь"
+pt.weaponIED="Комплект взрывчатки Аммонал"
+pt.weaponIEDDesc="Это небольшая коробка аммонала с детонатором. Используйте, чтобы создать взрывную ловушку.\n\nНажмите ЛКМ, чтобы спрятать взрывное устройство в объекте.\nПКМ, чтобы просто заложить бомбу.\nПосле закладки, нажмите ЛКМ, чтобы детонировать.\nВзрывчатка либо породит шрапнель, либо снесет двери, в зависимости от выбора предмета."
+pt.weaponIEDRig="[ЛКМ] встроить"
+pt.weaponIEDFragments="взрыв породит осколки"
+pt.weaponIEDFire="взрыв породит огонь"
 
-pt.weaponJam = "Дверной клин"
-pt.weaponJamDesc = "Это сверхпрочный дверной клин. Его можно вставить в дверь, чтобы подпереть её.\n\nЛКМ, чтобы подпереть дверь.\nE, чтобы подобрать."
+pt.weaponJam="Дверной клин"
+pt.weaponJamDesc="Это сверхпрочный дверной клин. Его можно вставить в дверь, чтобы подпереть её.\n\nЛКМ, чтобы подпереть дверь.\nE, чтобы подобрать."
 
-pt.weaponJihad = "Взрывной пояс"
-pt.weaponJihadDesc = "Это взрывной пояс, набитый кучей военной взрывчатки окруженной гвоздями, и детонатор. Используйте его, чтобы покончить со своей жалкой жизнью последним алоха снокабаром.\n\nЛКМ, чтобы совершить самоубийство"
+pt.weaponJihad="Взрывной пояс"
+pt.weaponJihadDesc="Это взрывной пояс, набитый кучей военной взрывчатки окруженной гвоздями, и детонатор. Используйте его, чтобы покончить со своей жалкой жизнью последним алоха снокабаром.\n\nЛКМ, чтобы совершить самоубийство"
 
-pt.weaponKnife = "SOG M37 Seal Pup"
-pt.weaponKnifeDesc = "Это ваш надежный нож с фиксированным лезвием из углеродистой стали. Используйте, чтобы лишать невиновных жизни.\n\nЛКМ, чтобы ударить.\nУдары в спину наносят больше урона."
+pt.weaponKnife="SOG M37 Seal Pup"
+pt.weaponKnifeDesc="Это ваш надежный нож с фиксированным лезвием из углеродистой стали. Используйте, чтобы лишать невиновных жизни.\n\nЛКМ, чтобы ударить.\nУдары в спину наносят больше урона."
 
-pt.weaponMask = "Маскировка психопата"
-pt.weaponMaskDesc = "Эта маскировка полностью скроет вашу истинную личность и, возможно, напугает людей. Используйте, чтобы скрыть свою сущность убийцы. \nЛКМ, чтобы надеть \nПКМ, чтобы снять"
+pt.weaponMask="Маскировка психопата"
+pt.weaponMaskDesc="Эта маскировка полностью скроет вашу истинную личность и, возможно, напугает людей. Используйте, чтобы скрыть свою сущность убийцы. \nЛКМ, чтобы надеть \nПКМ, чтобы снять"
 
-pt.weaponMedkit = "Аптечка"
-pt.weaponMedkitDesc = "Это аптечка первой помощи, содержащая кровоостанавливающие средства, бинты, антибиотики, дезинфицирующие средства, болеутоляющие и немного аскорбинок.\n\nЛКМ - использовать на себе\nПКМ - использовать на ком-то"
+pt.weaponMedkit="Аптечка"
+pt.weaponMedkitDesc="Это аптечка первой помощи, содержащая кровоостанавливающие средства, бинты, антибиотики, дезинфицирующие средства, болеутоляющие и немного аскорбинок.\n\nЛКМ - использовать на себе\nПКМ - использовать на ком-то"
 
-pt.weaponMolotov = "Коктейль Молотова"
-pt.weaponMolotovDesc = "Это импровизированное зажигательное устройство представляет собой стеклянную бутылку, наполненную смесью моторного масла и бензина, заткнутую тряпкой. При поджигании и броске стекло разбивается о твердую поверхность и разбрызгивает горящую смесь.\n\nЛКМ, чтобы поджечь и бросить"
+pt.weaponMolotov="Коктейль Молотова"
+pt.weaponMolotovDesc="Это импровизированное зажигательное устройство представляет собой стеклянную бутылку, наполненную смесью моторного масла и бензина, заткнутую тряпкой. При поджигании и броске стекло разбивается о твердую поверхность и разбрызгивает горящую смесь.\n\nЛКМ, чтобы поджечь и бросить"
 
-pt.weaponGrenade = "Граната Type 59"
-pt.weaponGrenadeDesc = "Это дешёвая китайская реплика старой советской гранаты РГД-5. Она имеет радиус летального поражения 3 метра и радиус нанесения нелетального урона 9 метров. Была изъята из партии оружия на черном рынке, предназначенной для террористов.\n\nЛКМ, чтобы бросить.\nПКМ на поверхность, чтобы установить мину-ловушку."
-pt.weaponGrenadeDescDM = "Это дешёвая китайская реплика старой советской гранаты РГД-5. Она имеет радиус летального поражения 3 метра и радиус нанесения нелетального урона 9 метров.\n\nЛКМ, чтобы бросить.\nПКМ на поверхность, чтобы установить мину-ловушку."
+pt.weaponGrenade="Граната Type 59"
+pt.weaponGrenadeDesc="Это дешёвая китайская реплика старой советской гранаты РГД-5. Она имеет радиус летального поражения 3 метра и радиус нанесения нелетального урона 9 метров. Была изъята из партии оружия на черном рынке, предназначенной для террористов.\n\nЛКМ, чтобы бросить.\nПКМ на поверхность, чтобы установить мину-ловушку."
+pt.weaponGrenadeDescDM="Это дешёвая китайская реплика старой советской гранаты РГД-5. Она имеет радиус летального поражения 3 метра и радиус нанесения нелетального урона 9 метров.\n\nЛКМ, чтобы бросить.\nПКМ на поверхность, чтобы установить мину-ловушку."
 
-pt.weaponPills = "Болеутоляющее"
-pt.weaponPillsDesc = "Некоторые нестероидные противовоспалительные (Ибупрофен, ацетаминофен, аспирин) таблетки в пластиковой бутылке. Они позволяют человеку хорошо себя чувствовать (двигаться, прыгать и т. д.) при травме.\n\nЛКМ, чтобы принять таблетки"
+pt.weaponPills="Болеутоляющее"
+pt.weaponPillsDesc="Некоторые нестероидные противовоспалительные (Ибупрофен, ацетаминофен, аспирин) таблетки в пластиковой бутылке. Они позволяют человеку хорошо себя чувствовать (двигаться, прыгать и т. д.) при травме.\n\nЛКМ, чтобы принять таблетки"
 
-pt.weaponPhone = "Сотовый телефон"
-pt.weaponPhoneDesc = "Это смартфон который можно использовать, чтобы позвонить в полицию, которая должна скоро приехать.\n\nЛКМ, чтобы набрать 911"
-pt.weaponPhonePretend = "Вы притворяетесь, что звоните в полицию."
-pt.weaponPhoneCalledGuard = "Кто-то позвонил национальной гвардии!"
-pt.weaponPhoneCalledPolice = "Кто-то позвонил в полицию!"
+pt.weaponPhone="Сотовый телефон"
+pt.weaponPhoneDesc="Это смартфон который можно использовать, чтобы позвонить в полицию, которая должна скоро приехать.\n\nЛКМ, чтобы набрать 911"
+pt.weaponPhonePretend="Вы притворяетесь, что звоните в полицию."
+pt.weaponPhoneCalledGuard="Кто-то позвонил национальной гвардии!"
+pt.weaponPhoneCalledPolice="Кто-то позвонил в полицию!"
 
-pt.weaponPipeBomb = "Самодельная бомба"
-pt.weaponPipeBombDesc = "Это самодельное взрывное устройство представляет собой толстостенную стальную трубу, наполненную черным порохом и окруженную гвоздями. Имеет простой короткий фитиль. Это устройство обеспечивает высокую скорость детонации и выброс осколков за счет плотного удержания дымного пороха (слабое взрывчатое вещество). Тем не менее оно не так смертоносно и надежно, как настоящая граната.\n\nЛКМ, чтобы зажечь и бросить."
+pt.weaponPipeBomb="Самодельная бомба"
+pt.weaponPipeBombDesc="Это самодельное взрывное устройство представляет собой толстостенную стальную трубу, наполненную черным порохом и окруженную гвоздями. Имеет простой короткий фитиль. Это устройство обеспечивает высокую скорость детонации и выброс осколков за счет плотного удержания дымного пороха (слабое взрывчатое вещество). Тем не менее оно не так смертоносно и надежно, как настоящая граната.\n\nЛКМ, чтобы зажечь и бросить."
 
-pt.weaponpistol = "Beretta PX4-Storm SubCompact"
-pt.weaponsmallpistol = pt.weaponpistol
-pt.weaponpistolDesc = "Это ваш надёжный 9x19мм пистолет. Используйте так, как считаете нужным.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
-pt.weaponsmallpistolDesc = "Это ваш надёжный, скрытый 9x19мм пистолет с лёгкой, малоёмкой обоймой. Используйте его для защиты жизней свидетелей.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponpistol="Beretta PX4-Storm SubCompact"
+pt.weaponsmallpistol=pt.weaponpistol
+pt.weaponpistolDesc="Это ваш надёжный 9x19мм пистолет. Используйте так, как считаете нужным.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponsmallpistolDesc="Это ваш надёжный, скрытый 9x19мм пистолет с лёгкой, малоёмкой обоймой. Используйте его для защиты жизней свидетелей.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильным.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponPocketKnife = "CRKT M16-13Z"
-pt.weaponPocketKnifeDesc = "Это складной карманный нож из углеродистой стали с предохранительным замком. Используйте так как считаете нужным для атаки или обороны.\n\nЛКМ, чтобы взмахнуть."
+pt.weaponPocketKnife="CRKT M16-13Z"
+pt.weaponPocketKnifeDesc="Это складной карманный нож из углеродистой стали с предохранительным замком. Используйте так как считаете нужным для атаки или обороны.\n\nЛКМ, чтобы взмахнуть."
 
-pt.weaponPoisonCan = "Канистра цианида"
-pt.weaponPoisonCanDesc = "Это адсорбированный цианистый водород с черного рынка, повторно запечатанный в оригинальной нацистской канистре Циклон-Б времен Второй мировой войны. После открытия газ загрязняет небольшую область в течение нескольких минут и отравляет все внутри.\n\nЛКМ, чтобы открыть и бросить\nПосле открытия, немедленно покиньте зону действия."
+pt.weaponPoisonCan="Канистра цианида"
+pt.weaponPoisonCanDesc="Это адсорбированный цианистый водород с черного рынка, повторно запечатанный в оригинальной нацистской канистре Циклон-Б времен Второй мировой войны. После открытия газ загрязняет небольшую область в течение нескольких минут и отравляет все внутри.\n\nЛКМ, чтобы открыть и бросить\nПосле открытия, немедленно покиньте зону действия."
 
-pt.weaponPoisonGoo = "Флакон кураре"
-pt.weaponPoisonGooDesc = "Это крошечный флакон домашнего приготовления с высококонцентрированным экстрактом алкалоидов из различных растительных источников, содержащих кураре. Это очень токсичный яд для крови, его можно наносить на любой режущий или проникающий предмет.\n\nЛКМ чтобы открыть меню"
-pt.weaponPoisonGooMenuTitle = "Отравить оружие"
-pt.weaponPoisonGooPoison = "Отравить "
+pt.weaponPoisonGoo="Флакон кураре"
+pt.weaponPoisonGooDesc="Это крошечный флакон домашнего приготовления с высококонцентрированным экстрактом алкалоидов из различных растительных источников, содержащих кураре. Это очень токсичный яд для крови, его можно наносить на любой режущий или проникающий предмет.\n\nЛКМ чтобы открыть меню"
+pt.weaponPoisonGooMenuTitle="Отравить оружие"
+pt.weaponPoisonGooPoison="Отравить "
 
-pt.weaponPoisonLiq = "VX флакон"
-pt.weaponPoisonLiqDesc = "Это крошечный флакон с украденным маслянистым жидким нервно-паралитическим веществом VX, возможно, самым смертоносным нервно-паралитическим веществом из когда-либо синтезированных.\n\nЛКМ чтобы размазать по предмету.\nЛюбой, кто схватит или поднимет предмет, будет отравлен."
+pt.weaponPoisonLiq="VX флакон"
+pt.weaponPoisonLiqDesc="Это крошечный флакон с украденным маслянистым жидким нервно-паралитическим веществом VX, возможно, самым смертоносным нервно-паралитическим веществом из когда-либо синтезированных.\n\nЛКМ чтобы размазать по предмету.\nЛюбой, кто схватит или поднимет предмет, будет отравлен."
 
-pt.weaponPoisonNeedle = "Игла тетродотоксина"
-pt.weaponPoisonNeedleDesc = "Это крошечный импровизированный шприц с очень маленькой острой иглой и несколькими миллиграммами смертельного нейротоксина рыбы-фугу. Используйте его, чтобы убить очень аккуратно.\n\nЛКМ, чтобы уколоть кого-либо.\nОдноразовая.\nНужно время, до того как подействует.\nДолжен быть позади жертвы."
-pt.weaponPoisonNeedleBehind = "Должен быть позади!"
+pt.weaponPoisonNeedle="Игла тетродотоксина"
+pt.weaponPoisonNeedleDesc="Это крошечный импровизированный шприц с очень маленькой острой иглой и несколькими миллиграммами смертельного нейротоксина рыбы-фугу. Используйте его, чтобы убить очень аккуратно.\n\nЛКМ, чтобы уколоть кого-либо.\nОдноразовая.\nНужно время, до того как подействует.\nДолжен быть позади жертвы."
+pt.weaponPoisonNeedleBehind="Должен быть позади!"
 
-pt.weaponPoisonPowder = "Капсула цианида"
-pt.weaponPoisonPowderDesc = "Это цианид в капсуле. Смешайте его с едой или напитком для скрытого убийства.\n\nЛКМ, чтобы подмешать в расходник.\nЭто должны съесть или выпить.\nНужно время, до того как подействует.\nОдноразовое."
+pt.weaponPoisonPowder="Капсула цианида"
+pt.weaponPoisonPowderDesc="Это цианид в капсуле. Смешайте его с едой или напитком для скрытого убийства.\n\nЛКМ, чтобы подмешать в расходник.\nЭто должны съесть или выпить.\nНужно время, до того как подействует.\nОдноразовое."
 
-pt.weaponrevolver = "Manurhin MR96"
-pt.weaponrevolverDesc = "Это дешевый 6-зарядный револьвер калибра .38-special.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nКоличество выстрелов.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponrevolver="Manurhin MR96"
+pt.weaponrevolverDesc="Это дешевый 6-зарядный револьвер калибра .38-special.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nКоличество выстрелов.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponrifle = "Mauser Kar98k"
-pt.weaponrifleDesc = "Это старая охотничья винтовка с продольно-скользящим затвором и оптическим прицелом с внутренним магазином на пять патронов калибра 7,92x57 мм.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponrifle="Mauser Kar98k"
+pt.weaponrifleDesc="Это старая охотничья винтовка с продольно-скользящим затвором и оптическим прицелом с внутренним магазином на пять патронов калибра 7,92x57 мм.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponshotgun = "Remington 870"
-pt.weaponshotgunDesc = "Это типичное гражданское помповое охотничье ружье. Имеет магазин на 6 патронов и стреляет патронами 12 калибра 2-3/4 дюйма.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение."
+pt.weaponshotgun="Remington 870"
+pt.weaponshotgunDesc="Это типичное гражданское помповое охотничье ружье. Имеет магазин на 6 патронов и стреляет патронами 12 калибра 2-3/4 дюйма.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение."
 
-pt.weaponShuriken = "Шестиконечный хира-сюрикен"
-pt.weaponShurikenDesc = "Это тяжелая стальная звезда с шестью острыми кончиками. Бросьте его, чтобы ранить людей издалека. Наносит меньше урона, чем удар ножом, но это хоть что то.\n\nУдерживайте ЛКМ, чтобы бросить.\nСюрикен автоматически восстановиться через некоторое время."
+pt.weaponShuriken="Шестиконечный хира-сюрикен"
+pt.weaponShurikenDesc="Это тяжелая стальная звезда с шестью острыми кончиками. Бросьте его, чтобы ранить людей издалека. Наносит меньше урона, чем удар ножом, но это хоть что то.\n\nУдерживайте ЛКМ, чтобы бросить.\nСюрикен автоматически восстановиться через некоторое время."
 
-pt.weaponSmokeBomb = "Дымовая шашка"
-pt.weaponSmokeBombDesc = "Это самодельная дымовая шашка из сахарного нитрата калия, полезна для визуальной маскировки при убийстве людей.\n\nЛКМ, чтобы зажечь и бросить.\nНенадолго наполнит комнату дымом."
+pt.weaponSmokeBomb="Дымовая шашка"
+pt.weaponSmokeBombDesc="Это самодельная дымовая шашка из сахарного нитрата калия, полезна для визуальной маскировки при убийстве людей.\n\nЛКМ, чтобы зажечь и бросить.\nНенадолго наполнит комнату дымом."
 
-pt.weaponsuppressed = "Walther P22"
-pt.weaponsuppressedDesc = "Это полуавтоматический пистолет с магазином на десять патронов и самодельным глушителем. Стреляет .22LR. Используйте, чтобы убивать невиновных аккуратно.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponsuppressed="Walther P22"
+pt.weaponsuppressedDesc="Это полуавтоматический пистолет с магазином на десять патронов и самодельным глушителем. Стреляет .22LR. Используйте, чтобы убивать невиновных аккуратно.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponsuppressedrifle = "Mauser Kar98k с глушителем"
-pt.weaponsuppressedrifleDesc = "Это старая охотничья винтовка с продольно-скользящим затвором, оптическим прицелом, глушителем и внутренним магазином на пять патронов 7.92x57мм.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
+pt.weaponsuppressedrifle="Mauser Kar98k с глушителем"
+pt.weaponsuppressedrifleDesc="Это старая охотничья винтовка с продольно-скользящим затвором, оптическим прицелом, глушителем и внутренним магазином на пять патронов 7.92x57мм.\n\nЛКМ, чтобы выстрелить.\nПКМ, чтобы прицелиться.\nR для перезарядки.\nМесто попадания выстрела имеет значение.\nПриседание делает прицел более стабильны.\nПули могут рикошетить и пробивать поверхности."
 
-pt.weaponWalkieTalkie = "Рация"
-pt.weaponWalkieTalkieDesc = "Это обычная рация среднего радиуса действия гражданского класса. Используйте, чтобы общаться (или шпионить за общающимися).\n\nИмея это в руках, все, что вы говорите в чате, транслируется всем людям, у которых также есть рация, независимо от расстояния или прямой видимости."
-pt.weaponWalkieTalkieHide = "Вы прячете дополнительную рацию."
+pt.weaponWalkieTalkie="Рация"
+pt.weaponWalkieTalkieDesc="Это обычная рация среднего радиуса действия гражданского класса. Используйте, чтобы общаться (или шпионить за общающимися).\n\nИмея это в руках, все, что вы говорите в чате, транслируется всем людям, у которых также есть рация, независимо от расстояния или прямой видимости."
+pt.weaponWalkieTalkieHide="Вы прячете дополнительную рацию."
 
-pt.weaponZombHandsDesc = "Это ваши зомбифицированные руки. Это не энергетический меч, но они все еще бьют больно.\n\nЛКМ, чтобы поколотить.\nПКМ, чтобы направлять дружественных зомби.\nR, чтобы подозвать к себе зомби."
+pt.weaponZombHandsDesc="Это ваши зомбифицированные руки. Это не энергетический меч, но они все еще бьют больно.\n\nЛКМ, чтобы поколотить.\nПКМ, чтобы направлять дружественных зомби.\nR, чтобы подозвать к себе зомби."
 
-pt.additionalFlashlight = "Вы прячете дополнительный фонарик."
+pt.additionalFlashlight="Вы прячете дополнительный фонарик."
 
 --Здесь были Doresun, Rozy Cosmic (a.k.a Cozy Rosmic), introvert, DenDi85, Adolf Fritz, Gunter, ZOOM3331
 

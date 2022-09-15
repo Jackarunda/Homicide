@@ -3,7 +3,7 @@
 ---------------------------------------------------------*/
 function EFFECT:Init(data)
 	
-	local vOffset = data:GetOrigin()
+	local vOffset=data:GetOrigin()
 	
 	local Scayul=data:GetScale()
 	local Dir=data:GetNormal()
@@ -17,13 +17,13 @@ function EFFECT:Init(data)
 		return
 	end
 
-	local emitter = ParticleEmitter(vOffset)
+	local emitter=ParticleEmitter(vOffset)
 	if(emitter)then
-		for i = 0, 15*Scayul^0.5 do
+		for i=0, 15*Scayul^0.5 do
 
-			local Pos = (data:GetOrigin())
+			local Pos=(data:GetOrigin())
 		
-			local particle = emitter:Add("sprites/mat_jack_basicglow",Pos)
+			local particle=emitter:Add("sprites/mat_jack_basicglow",Pos)
 
 			if (particle) then
 				particle:SetVelocity(VectorRand()*math.Rand(15, 150)*Scayul+Dir*300*Scayul)

@@ -1,6 +1,6 @@
 AddCSLuaFile()
 SWEP.Author		= "Jackarunda"
-SWEP.Base       = "weapon_base"
+SWEP.Base      ="weapon_base"
 SWEP.Purpose	= "The answer? Use a gun. An' if that don't work, use more gun."
 SWEP.Spawnable	= false
 SWEP.Primary.ClipSize		= 10
@@ -32,7 +32,7 @@ AccessorFunc(SWEP,"fNPCFireRate","NPCFireRate")
 AccessorFunc(SWEP,"fNPCMinRestTime","NPCMinRest")
 AccessorFunc(SWEP,"fNPCMaxRestTime","NPCMaxRest")
 function SWEP:SetupWeaponHoldTypeForAI(t)
-	self.ActivityTranslateAI = {}
+	self.ActivityTranslateAI={}
 	self.ActivityTranslateAI [ ACT_RANGE_ATTACK1 ] 				= ACT_RANGE_ATTACK_AR2
 	self.ActivityTranslateAI [ ACT_RELOAD ] 					= ACT_RELOAD_SMG1
 	self.ActivityTranslateAI [ ACT_IDLE ] 						= ACT_IDLE_RIFLE

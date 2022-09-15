@@ -23,7 +23,7 @@ function GM:SaveSpawns()
 end
 
 local function getPosPrintString(pos, plyPos) 
-	return math.Round(pos.x) .. "," .. math.Round(pos.y) .. "," .. math.Round(pos.z) .. " " .. math.Round(pos:Distance(plyPos) / 12) .. "ft"
+	return math.Round(pos.x) .. "," .. math.Round(pos.y) .. "," .. math.Round(pos.z) .. " " .. math.Round(pos:Distance(plyPos)/12) .. "ft"
 end
 
 concommand.Add("hmcd_spawn_add", function (ply, com, args, full)

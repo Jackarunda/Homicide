@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 55
+	SWEP.ViewModelFOV=55
 
-	SWEP.Slot = 3
-	SWEP.SlotPos = 2
+	SWEP.Slot=3
+	SWEP.SlotPos=2
 
 	killicon.AddFont("wep_jack_hmcd_food", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,10 +30,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/foodnhouseholditems/mcdburgerbox.mdl"
-SWEP.WorldModel = "models/foodnhouseholditems/mcdburgerbox.mdl"
+SWEP.ViewModel="models/foodnhouseholditems/mcdburgerbox.mdl"
+SWEP.WorldModel="models/foodnhouseholditems/mcdburgerbox.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_fooddrink");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponSmallConsumable
+SWEP.PrintName=translate.weaponSmallConsumable
 SWEP.Instructions	= translate.weaponConsumableDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_fooddrink"
 SWEP.DownAmt=0
@@ -81,7 +81,7 @@ function SWEP:Initialize()
 	if(SERVER)then
 		if not(self:GetRandomModel())then self:SetRandomModel("models/foodnhouseholditems/mcdburgerbox.mdl") end
 	end
-	self.PrintName = translate.weaponSmallConsumable
+	self.PrintName=translate.weaponSmallConsumable
 	self.Instructions	= translate.weaponConsumableDesc
 end
 

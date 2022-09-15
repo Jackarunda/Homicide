@@ -3,7 +3,7 @@ if ( SERVER ) then
 else
 	killicon.AddFont( "wep_jack_hmcd_pistol", "HL2MPTypeDeath", "1", Color( 255, 0, 0 ) )
 end
-SWEP.Base = "wep_jack_hmcd_smallpistol"
+SWEP.Base="wep_jack_hmcd_smallpistol"
 SWEP.PrintName		= translate.weaponpistol
 SWEP.Instructions	= translate.weaponpistolDesc
 SWEP.Primary.ClipSize			= 13

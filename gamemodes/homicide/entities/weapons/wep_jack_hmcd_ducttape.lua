@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 55
+	SWEP.ViewModelFOV=55
 
-	SWEP.Slot = 4
-	SWEP.SlotPos = 5
+	SWEP.Slot=4
+	SWEP.SlotPos=5
 
 	killicon.AddFont("wep_jack_hmcd_ducttape", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -36,10 +36,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/props_phx/wheels/drugster_front.mdl"
-SWEP.WorldModel = "models/props_phx/wheels/drugster_front.mdl"
+SWEP.ViewModel="models/props_phx/wheels/drugster_front.mdl"
+SWEP.WorldModel="models/props_phx/wheels/drugster_front.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_ducttape");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponDuctTape
+SWEP.PrintName=translate.weaponDuctTape
 SWEP.Instructions	= translate.weaponDuctTapeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -74,7 +74,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_ducttape"
 SWEP.DownAmt=0
@@ -86,7 +86,7 @@ SWEP.CarryWeight=400
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
-	self.PrintName = translate.weaponDuctTape
+	self.PrintName=translate.weaponDuctTape
 	self.Instructions	= translate.weaponDuctTapeDesc
 end
 

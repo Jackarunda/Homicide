@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 55
+	SWEP.ViewModelFOV=55
 
-	SWEP.Slot = 5
-	SWEP.SlotPos = 4
+	SWEP.Slot=5
+	SWEP.SlotPos=4
 
 	killicon.AddFont("wep_jack_hmcd_phone", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,10 +30,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/lt_c/tech/cellphone.mdl"
-SWEP.WorldModel = "models/lt_c/tech/cellphone.mdl"
+SWEP.ViewModel="models/lt_c/tech/cellphone.mdl"
+SWEP.WorldModel="models/lt_c/tech/cellphone.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_phone");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponPhone
+SWEP.PrintName=translate.weaponPhone
 SWEP.Instructions	= translate.weaponPhoneDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -68,7 +68,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_phone"
 SWEP.DownAmt=0
@@ -79,7 +79,7 @@ function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
 	self:SetCalling(false)
-	self.PrintName = translate.weaponPhone
+	self.PrintName=translate.weaponPhone
 	self.Instructions	= translate.weaponPhoneDesc
 end
 
@@ -132,21 +132,21 @@ function SWEP:PrimaryAttack()
 					if(GAMEMODE.SHTF)then
 						if(DatTime)then
 							if(DatTime>60)then
-								local argh = Translator:AdvVarTranslate(translate.guardIn, {
-									mins = {text = math.ceil(DatTime/60)}
+								local argh=Translator:AdvVarTranslate(translate.guardIn, {
+									mins={text=math.ceil(DatTime/60)}
 								})
-								aargh = ""
+								aargh=""
 								for k, msg in pairs(argh) do
-									aargh = aargh..msg.text
+									aargh=aargh..msg.text
 								end
 								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							else
-								local argh = Translator:AdvVarTranslate(translate.guardInSeconds, {
-									secs = {text = math.ceil(DatTime)}
+								local argh=Translator:AdvVarTranslate(translate.guardInSeconds, {
+									secs={text=math.ceil(DatTime)}
 								})
-								aargh = ""
+								aargh=""
 								for k, msg in pairs(argh) do
-									aargh = aargh..msg.text
+									aargh=aargh..msg.text
 								end
 								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							end
@@ -159,21 +159,21 @@ function SWEP:PrimaryAttack()
 					else
 						if(DatTime)then
 							if(DatTime>60)then
-								local argh = Translator:AdvVarTranslate(translate.policeIn, {
-									mins = {text = math.ceil(DatTime/60)}
+								local argh=Translator:AdvVarTranslate(translate.policeIn, {
+									mins={text=math.ceil(DatTime/60)}
 								})
-								aargh = ""
+								aargh=""
 								for k, msg in pairs(argh) do
-									aargh = aargh..msg.text
+									aargh=aargh..msg.text
 								end
 								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							else
-								local argh = Translator:AdvVarTranslate(translate.policeInSeconds, {
-									secs = {text = math.ceil(DatTime)}
+								local argh=Translator:AdvVarTranslate(translate.policeInSeconds, {
+									secs={text=math.ceil(DatTime)}
 								})
-								aargh = ""
+								aargh=""
 								for k, msg in pairs(argh) do
-									aargh = aargh..msg.text
+									aargh=aargh..msg.text
 								end
 								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							end

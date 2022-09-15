@@ -1,6 +1,6 @@
 AddCSLuaFile()
-ENT.Type = "anim"
-ENT.Base = "ent_jack_hmcd_loot_base"
+ENT.Type="anim"
+ENT.Base="ent_jack_hmcd_loot_base"
 ENT.PrintName		= "First-Aid Kit"
 ENT.SWEP="wep_jack_hmcd_medkit"
 ENT.ImpactSound="physics/body/body_medium_impact_soft5.wav"
@@ -13,7 +13,7 @@ if(SERVER)then
 		self:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 		self:SetUseType(SIMPLE_USE)
 		self:DrawShadow(true)
-		local phys = self:GetPhysicsObject()
+		local phys=self:GetPhysicsObject()
 		if IsValid(phys) then
 			phys:SetMass(20)
 			phys:Wake()

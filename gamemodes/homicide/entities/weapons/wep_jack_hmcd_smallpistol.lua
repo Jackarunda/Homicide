@@ -1,5 +1,5 @@
 AddCSLuaFile()
-SWEP.Base = "wep_jack_hmcd_firearm_base"
+SWEP.Base="wep_jack_hmcd_firearm_base"
 SWEP.PrintName		= translate.weaponsmallpistol
 SWEP.Instructions	= translate.weaponsmallpistolDesc
 SWEP.CustomColor=Color(50,50,50,255)

@@ -5,7 +5,7 @@ else
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_fakepistol")
 	SWEP.BounceWeaponIcon=false
 end
-SWEP.Base = "weapon_base"
+SWEP.Base="weapon_base"
 SWEP.PrintName		= translate.weaponFakePistol
 SWEP.Instructions	= translate.weaponFakePistolDesc
 SWEP.Slot			= 5
@@ -42,9 +42,9 @@ SWEP.Primary.Force				= 0
 SWEP.Primary.TakeAmmoPerBullet	= false
 SWEP.Primary.Automatic			= false
 SWEP.Primary.Ammo				= "none"
-SWEP.Primary.ReloadTime = 0
+SWEP.Primary.ReloadTime=0
 SWEP.ReloadFinishedSound		= Sound("Weapon_Crossbow.BoltElectrify")
-SWEP.ReloadSound = Sound("Weapon_357.Reload")
+SWEP.ReloadSound=Sound("Weapon_357.Reload")
 
 SWEP.Secondary.Sound				= ""
 SWEP.Secondary.Damage				= 0
@@ -92,7 +92,7 @@ function SWEP:SetupDataTables()
 end
 
 function SWEP:BulletCallback(att, tr, dmg)
-	return {effects = true, damage = true}
+	return {effects=true, damage=true}
 end
 
 function SWEP:PrimaryAttack()

@@ -48,7 +48,7 @@ SWEP.Instructions	= translate.weaponHandsDesc
 SWEP.Spawnable			= false
 SWEP.AdminOnly		= true
 
-SWEP.HoldType = "normal"
+SWEP.HoldType="normal"
 
 SWEP.ViewModel	= "models/weapons/c_arms_citizen.mdl"
 SWEP.WorldModel	= "models/props_junk/cardboard_box004a.mdl"
@@ -111,10 +111,10 @@ function SWEP:CanPrimaryAttack()
 	return true
 end
 
-local pickupWhiteList = {
-	["prop_ragdoll"] = true,
-	["prop_physics"] = true,
-	["prop_physics_multiplayer"] = true
+local pickupWhiteList={
+	["prop_ragdoll"]=true,
+	["prop_physics"]=true,
+	["prop_physics_multiplayer"]=true
 }
 function SWEP:CanPickup(ent)
 	if ent:IsNPC() then return false end
@@ -129,7 +129,7 @@ function SWEP:SecondaryAttack()
 	if(self:GetFists())then return end
 	if SERVER then
 		self:SetCarrying()
-		local tr = self.Owner:GetEyeTraceNoCursor()
+		local tr=self.Owner:GetEyeTraceNoCursor()
 		if((IsValid(tr.Entity))and(self:CanPickup(tr.Entity))and not(tr.Entity:IsPlayer()))then
 			local Dist=(self.Owner:GetShootPos()-tr.HitPos):Length()
 			if(Dist<self.ReachDistance)then
@@ -161,13 +161,13 @@ function SWEP:SecondaryAttack()
 end
 
 function SWEP:ApplyForce()
-	local target = self.Owner:GetAimVector() * self.CarryDist + self.Owner:GetShootPos()
-	local phys = self.CarryEnt:GetPhysicsObjectNum(self.CarryBone)
+	local target=self.Owner:GetAimVector()*self.CarryDist+self.Owner:GetShootPos()
+	local phys=self.CarryEnt:GetPhysicsObjectNum(self.CarryBone)
 	if IsValid(phys) then
 		local TargetPos=phys:GetPos()
 		if(self.CarryPos)then TargetPos=self.CarryEnt:LocalToWorld(self.CarryPos) end
-		local vec = target - TargetPos
-		local len,mul = vec:Length(),self.CarryEnt:GetPhysicsObject():GetMass()
+		local vec=target - TargetPos
+		local len,mul=vec:Length(),self.CarryEnt:GetPhysicsObject():GetMass()
 		if((len>self.ReachDistance)or(mul>170))then
 			self:SetCarrying()
 			return
@@ -199,8 +199,8 @@ end
 
 function SWEP:SetCarrying(ent,bone,pos,dist)
 	if IsValid(ent) then
-		self.CarryEnt = ent
-		self.CarryBone = bone
+		self.CarryEnt=ent
+		self.CarryBone=bone
 		self.CarryDist=dist
 		if not(ent:GetClass()=="prop_ragdoll")then
 			self.CarryPos=ent:WorldToLocal(pos)
@@ -208,9 +208,9 @@ function SWEP:SetCarrying(ent,bone,pos,dist)
 			self.CarryPos=nil
 		end
 	else
-		self.CarryEnt = nil
-		self.CarryBone = nil
-		self.CarryPos = nil
+		self.CarryEnt=nil
+		self.CarryBone=nil
+		self.CarryPos=nil
 		self.CarryDist=nil
 	end
 end

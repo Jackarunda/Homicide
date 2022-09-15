@@ -22,21 +22,21 @@ local function getSelected()
 	local total=#ments
 	local w=math.min(sw*0.45, sh*0.45)
 	local h=w
-	local sx, sy=sw / 2, sh / 2
+	local sx, sy=sw/2, sh/2
 	local x2,y2=mx-sx, my-sy
 	local ang=0
 	local dis=math.sqrt(x2 ^ 2+y2 ^ 2)
-	if dis / w <= 1 then
+	if dis/w <= 1 then
 		if y2 <= 0 && x2 <= 0 then
-			ang=math.acos(x2 / dis)
+			ang=math.acos(x2/dis)
 		elseif x2 > 0 && y2 <= 0 then
-			ang=-math.asin(y2 / dis)
+			ang=-math.asin(y2/dis)
 		elseif x2 <= 0 && y2 > 0 then
-			ang=math.asin(y2 / dis)+math.pi
+			ang=math.asin(y2/dis)+math.pi
 		else
-			ang=math.pi*2-math.acos(x2 / dis)
+			ang=math.pi*2-math.acos(x2/dis)
 		end
-		return math.floor((1-(ang-math.pi / 2-math.pi / total) / (math.pi*2) % 1)*total)+1
+		return math.floor((1-(ang-math.pi/2-math.pi/total)/(math.pi*2) % 1)*total)+1
 	end
 end
 
@@ -136,7 +136,7 @@ function GM:DrawRadialMenu()
 		local total=#ments
 		local w=math.min(sw*0.45, sh*0.45)
 		local h=w
-		local sx, sy=sw / 2, sh / 2
+		local sx, sy=sw/2, sh/2
 
 		local selected=getSelected() or -1
 
@@ -145,7 +145,7 @@ function GM:DrawRadialMenu()
 			circleVertex={}
 			local max=50
 			for i=0, max do
-				local vx, vy=math.cos((math.pi*2)*i / max), math.sin((math.pi*2)*i / max)
+				local vx, vy=math.cos((math.pi*2)*i/max), math.sin((math.pi*2)*i/max)
 
 				table.insert(circleVertex, {x=sx+w* 1*vx, y= sy+h* 1*vy})
 			end
@@ -161,13 +161,13 @@ function GM:DrawRadialMenu()
 		end
 		surface.DrawPoly(circleVertex)
 
-		local add=math.pi*1.5+math.pi / total
-		local add2=math.pi*1.5-math.pi / total
+		local add=math.pi*1.5+math.pi/total
+		local add2=math.pi*1.5-math.pi/total
 
 		for k,ment in pairs(ments) do
-			local x,y=math.cos((k-1) / total*math.pi*2+math.pi*1.5), math.sin((k-1) / total*math.pi*2+math.pi*1.5)
+			local x,y=math.cos((k-1)/total*math.pi*2+math.pi*1.5), math.sin((k-1)/total*math.pi*2+math.pi*1.5)
 
-			local lx, ly=math.cos((k-1) / total*math.pi*2+add), math.sin((k-1) / total*math.pi*2+add)
+			local lx, ly=math.cos((k-1)/total*math.pi*2+add), math.sin((k-1)/total*math.pi*2+add)
 
 			local textCol=defaultTextCol
 			if(ment.Code=="villain")then
@@ -182,16 +182,16 @@ function GM:DrawRadialMenu()
 					prevSelected=selected
 					vertexes={}
 					prevSelectedVertex=vertexes
-					local lx2, ly2=math.cos((k-1) / total*math.pi*2+add2), math.sin((k-1) / total*math.pi*2+add2)
+					local lx2, ly2=math.cos((k-1)/total*math.pi*2+add2), math.sin((k-1)/total*math.pi*2+add2)
 
 					table.insert(vertexes, {x=sx, y=sy})
 
 					table.insert(vertexes, {x=sx+w* 1*lx2, y= sy+h* 1*ly2})
 
-					local max=math.floor(50 / total)
+					local max=math.floor(50/total)
 					for i=0, max do
-						local addv=(add-add2)*i / max+add2
-						local vx, vy=math.cos((k-1) / total*math.pi*2+addv), math.sin((k-1) / total*math.pi*2+addv)
+						local addv=(add-add2)*i/max+add2
+						local vx, vy=math.cos((k-1)/total*math.pi*2+addv), math.sin((k-1)/total*math.pi*2+addv)
 
 						table.insert(vertexes, {x=sx+w* 1*vx, y= sy+h* 1*vy})
 					end
@@ -217,8 +217,8 @@ function GM:DrawRadialMenu()
 				end
 			end
 			local Main,Sub=translate["voice" .. ment.TransCode],translate["voice" .. ment.TransCode .. "Description" ]
-			drawShadow(Main, "MersRadial_QM", sx+w*0.6*x, sy+h*0.6*y-fontHeight / 3,textCol, 1)
-			drawShadow(Sub, "MersRadialSmall_QM", sx+w*0.6*x, sy+h*0.6*y+fontHeight / 2, textCol, 1)
+			drawShadow(Main, "MersRadial_QM", sx+w*0.6*x, sy+h*0.6*y-fontHeight/3,textCol, 1)
+			drawShadow(Sub, "MersRadialSmall_QM", sx+w*0.6*x, sy+h*0.6*y+fontHeight/2, textCol, 1)
 		end
 
 		--[[

@@ -35,21 +35,21 @@ local function addPlayerItem(self, mlist, ply, pteam)
 			if((showAdmins)and(ply:IsAdmin()))then
 				surface.SetMaterial(admin)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				surface.DrawTexturedRect(s+4, h/2-16, 32, 32)
 				s=s+32
 			end
 
 			if ply:IsSpeaking() then
 				surface.SetMaterial(talking)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				surface.DrawTexturedRect(s+4, h/2-16, 32, 32)
 				s=s+32
 			end
 
 			if ply:IsMuted() then
 				surface.SetMaterial(muted)
 				surface.SetDrawColor(color_white)
-				surface.DrawTexturedRect(s+4, h / 2-16, 32, 32)
+				surface.DrawTexturedRect(s+4, h/2-16, 32, 32)
 				s=s+32
 			end
 

@@ -3,25 +3,25 @@ AddCSLuaFile()
 
 DEFINE_BASECLASS( "base_anim" )
 
-ENT.PrintName = "Bouncy Ball"
-ENT.Author = "Garry Newman"
-ENT.Information = "An edible bouncy ball"
-ENT.Category = "Fun + Games"
+ENT.PrintName="Bouncy Ball"
+ENT.Author="Garry Newman"
+ENT.Information="An edible bouncy ball"
+ENT.Category="Fun+Games"
 
-ENT.Editable = true
-ENT.Spawnable = true
-ENT.AdminOnly = false
-ENT.RenderGroup = RENDERGROUP_TRANSLUCENT
+ENT.Editable=true
+ENT.Spawnable=true
+ENT.AdminOnly=false
+ENT.RenderGroup=RENDERGROUP_TRANSLUCENT
 
-ENT.MinSize = 4
-ENT.MaxSize = 128
+ENT.MinSize=4
+ENT.MaxSize=128
 
 ENT.HmcdGas=true
 
 function ENT:SetupDataTables()
 
-	self:NetworkVar( "Float", 0, "BallSize", { KeyName = "ballsize", Edit = { type = "Float", min = self.MinSize, max = self.MaxSize, order = 1 } } )
-	self:NetworkVar( "Vector", 0, "BallColor", { KeyName = "ballcolor", Edit = { type = "VectorColor", order = 2 } } )
+	self:NetworkVar( "Float", 0, "BallSize", { KeyName="ballsize", Edit={ type="Float", min=self.MinSize, max=self.MaxSize, order=1 } } )
+	self:NetworkVar( "Vector", 0, "BallColor", { KeyName="ballcolor", Edit={ type="VectorColor", order=2 } } )
 
 	self:NetworkVarNotify( "BallSize", self.OnBallSizeChanged )
 
@@ -84,7 +84,7 @@ end
 
 function ENT:RebuildPhysics( value )
 
-	local size = math.Clamp( value or self:GetBallSize(), self.MinSize, self.MaxSize ) / 2.1
+	local size=math.Clamp( value or self:GetBallSize(), self.MinSize, self.MaxSize )/2.1
 	self:PhysicsInitSphere( size, "metal_bouncy" )
 	self:SetCollisionBounds( Vector( -.1, -.1, -.1 ), Vector( .1, .1, .1 ) )
 
@@ -110,7 +110,7 @@ end
 --[[---------------------------------------------------------
 	Name: PhysicsCollide
 -----------------------------------------------------------]]
-local BounceSound = Sound( "garrysmod/balloon_pop_cute.wav" )
+local BounceSound=Sound( "garrysmod/balloon_pop_cute.wav" )
 
 function ENT:PhysicsCollide( data, physobj )
 
@@ -118,14 +118,14 @@ function ENT:PhysicsCollide( data, physobj )
 	--[[
 	if ( data.Speed > 60 && data.DeltaTime > 0.2 ) then
 
-		local pitch = 32 + 128 - math.Clamp( self:GetBallSize(), self.MinSize, self.MaxSize )
-		sound.Play( BounceSound, self:GetPos(), 75, math.random( pitch - 10, pitch + 10 ), math.Clamp( data.Speed / 150, 0, 1 ) )
+		local pitch=32+128 - math.Clamp( self:GetBallSize(), self.MinSize, self.MaxSize )
+		sound.Play( BounceSound, self:GetPos(), 75, math.random( pitch - 10, pitch+10 ), math.Clamp( data.Speed/150, 0, 1 ) )
 
 	end
 	--]]
 
 	-- Bounce like a crazy bitch
-	local NewVelocity = physobj:GetVelocity()
+	local NewVelocity=physobj:GetVelocity()
 	NewVelocity:Normalize()
 
 	physobj:SetVelocity( NewVelocity*50*self.Repulsion )
@@ -153,20 +153,20 @@ end
 
 if ( SERVER ) then return end -- We do NOT want to execute anything below in this FILE on SERVER
 
-local matBall = Material("particle/smokestack")
---local matBall = Material( "sprites/sent_ball" )
+local matBall=Material("particle/smokestack")
+--local matBall=Material( "sprites/sent_ball" )
 function ENT:Draw()
 	--[[
 	render.SetMaterial( matBall )
 
-	local pos = self:GetPos()
-	local lcolor = render.ComputeLighting( pos, Vector( 0, 0, 1 ) )
+	local pos=self:GetPos()
+	local lcolor=render.ComputeLighting( pos, Vector( 0, 0, 1 ) )
 
-	lcolor.x = ( math.Clamp( lcolor.x, 0, 1 ) + 0.5 ) * 255
-	lcolor.y = ( math.Clamp( lcolor.y, 0, 1 ) + 0.5 ) * 255
-	lcolor.z = ( math.Clamp( lcolor.z, 0, 1 ) + 0.5 ) * 255
+	lcolor.x=( math.Clamp( lcolor.x, 0, 1 )+0.5 )*255
+	lcolor.y=( math.Clamp( lcolor.y, 0, 1 )+0.5 )*255
+	lcolor.z=( math.Clamp( lcolor.z, 0, 1 )+0.5 )*255
 
-	local size = 5
+	local size=5
 	render.DrawSprite( pos, size, size, Color( lcolor.x, lcolor.y, lcolor.z, 255 ) )
 	--]]
 
@@ -176,10 +176,10 @@ function ENT:Draw()
 		local Time=CurTime()
 		render.SetMaterial( matBall )
 
-		local pos = self:GetPos()
-		local lcolor = render.ComputeLighting( pos, Vector( 0, 0, 1 ) )
+		local pos=self:GetPos()
+		local lcolor=render.ComputeLighting( pos, Vector( 0, 0, 1 ) )
 
-		local a,size = math.Clamp(((self.DieTime-Time)/self.LifeTime)*255,0,255),(1-((self.DieTime-Time)/self.LifeTime))*300
+		local a,size=math.Clamp(((self.DieTime-Time)/self.LifeTime)*255,0,255),(1-((self.DieTime-Time)/self.LifeTime))*300
 		render.DrawSprite( pos, size, size, Color( lcolor.x, lcolor.y, lcolor.z, a ) )
 		size=math.Clamp(size+FrameTime()/100,0,200)
 	end

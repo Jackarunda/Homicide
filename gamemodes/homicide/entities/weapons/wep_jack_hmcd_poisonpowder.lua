@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 65
+	SWEP.ViewModelFOV=65
 
-	SWEP.Slot = 3
-	SWEP.SlotPos = 2
+	SWEP.Slot=3
+	SWEP.SlotPos=2
 
 	killicon.AddFont("wep_jack_hmcd_poisonpowder", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -26,10 +26,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/Items/Flare.mdl"
-SWEP.WorldModel = "models/Items/Flare.mdl"
+SWEP.ViewModel="models/Items/Flare.mdl"
+SWEP.WorldModel="models/Items/Flare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisonpowder");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponPoisonPowder
+SWEP.PrintName=translate.weaponPoisonPowder
 SWEP.Instructions	= translate.weaponPoisonPowderDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -62,12 +62,12 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 SWEP.HomicideSWEP=true
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
-	self.PrintName = translate.weaponPoisonPowder
+	self.PrintName=translate.weaponPoisonPowder
 	self.Instructions	= translate.weaponPoisonPowderDesc
 end
 

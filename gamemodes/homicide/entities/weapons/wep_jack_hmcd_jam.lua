@@ -1,13 +1,13 @@
 if(SERVER)then
 	AddCSLuaFile()
 elseif(CLIENT)then
-	SWEP.DrawAmmo = false
-	SWEP.DrawCrosshair = false
+	SWEP.DrawAmmo=false
+	SWEP.DrawCrosshair=false
 
-	SWEP.ViewModelFOV = 55
+	SWEP.ViewModelFOV=55
 
-	SWEP.Slot = 5
-	SWEP.SlotPos = 5
+	SWEP.Slot=5
+	SWEP.SlotPos=5
 
 	killicon.AddFont("wep_jack_hmcd_phone", "HL2MPTypeDeath", "5", Color(0, 0, 255, 255))
 
@@ -30,10 +30,10 @@ end
 
 SWEP.Base="weapon_base"
 
-SWEP.ViewModel = "models/props_junk/wood_pallet001a_chunka1.mdl"
-SWEP.WorldModel = "models/props_junk/wood_pallet001a_chunka1.mdl"
+SWEP.ViewModel="models/props_junk/wood_pallet001a_chunka1.mdl"
+SWEP.WorldModel="models/props_junk/wood_pallet001a_chunka1.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_jam");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName = translate.weaponJam
+SWEP.PrintName=translate.weaponJam
 SWEP.Instructions	= translate.weaponJamDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
@@ -69,7 +69,7 @@ SWEP.Secondary.Cone			= 0
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic   	= false
-SWEP.Secondary.Ammo         = "none"
+SWEP.Secondary.Ammo        ="none"
 
 SWEP.ENT="ent_jack_hmcd_jam"
 SWEP.DownAmt=0
@@ -78,7 +78,7 @@ SWEP.HomicideSWEP=true
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
-	self.PrintName = translate.weaponJam
+	self.PrintName=translate.weaponJam
 	self.Instructions	= translate.weaponJamDesc
 end
 function SWEP:PrimaryAttack()

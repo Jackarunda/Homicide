@@ -48,11 +48,11 @@ function GM:RenderSpectate()
 	if self:IsCSpectating() then
 
 		if IsValid(self:GetCSpectatee()) && self:GetCSpectatee():IsPlayer() then
-			drawTextShadow(translate.spectating, "MersRadial", ScrW() / 2, 50, Color(20,120,255), 1)
+			drawTextShadow(translate.spectating, "MersRadial", ScrW()/2, 50, Color(20,120,255), 1)
 		
 			local h=draw.GetFontHeight("MersRadial")
 
-			--drawTextShadow(self:GetCSpectatee():Nick(), "MersRadialSmall", ScrW() / 2, ScrH()-100+h, Color(190, 190, 190), 1)
+			--drawTextShadow(self:GetCSpectatee():Nick(), "MersRadialSmall", ScrW()/2, ScrH()-100+h, Color(190, 190, 190), 1)
 
 			local Time=CurTime()
 			if(nextTipSwitch<Time)then
