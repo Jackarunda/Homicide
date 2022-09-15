@@ -118,8 +118,8 @@ function ENT:PhysicsCollide( data, physobj )
 	--[[
 	if ( data.Speed > 60 && data.DeltaTime > 0.2 ) then
 
-		local pitch=32+128 - math.Clamp( self:GetBallSize(), self.MinSize, self.MaxSize )
-		sound.Play( BounceSound, self:GetPos(), 75, math.random( pitch - 10, pitch+10 ), math.Clamp( data.Speed/150, 0, 1 ) )
+		local pitch=32+128-math.Clamp( self:GetBallSize(), self.MinSize, self.MaxSize )
+		sound.Play( BounceSound, self:GetPos(), 75, math.random( pitch-10, pitch+10 ), math.Clamp( data.Speed/150, 0, 1 ) )
 
 	end
 	--]]
