@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/v_jnife_j.mdl"
 SWEP.WorldModel="models/weapons/w_jnife_jj.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_pocketknife");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="CRKT M16-13Z"
-SWEP.Instructions	= "This is a carbon-steel safety-liner-lock folding pocket-knife. Use it as you see fit to attack or defend.\n\nLMB to slash."
+SWEP.PrintName=translate.weaponPocketKnife
+SWEP.Instructions	= translate.weaponPocketKnifeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -79,6 +79,8 @@ function SWEP:Initialize()
 	self:SetNextIdle(CurTime()+1)
 	self:SetHoldType("normal")
 	self.NextDownTime=CurTime()
+	self.PrintName=translate.weaponPocketKnife
+	self.Instructions	= translate.weaponPocketKnifeDesc
 end
 
 function SWEP:SetupDataTables()

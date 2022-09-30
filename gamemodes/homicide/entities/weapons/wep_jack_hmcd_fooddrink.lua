@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/foodnhouseholditems/mcdburgerbox.mdl"
 SWEP.WorldModel="models/foodnhouseholditems/mcdburgerbox.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_fooddrink");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Small Consumable"
-SWEP.Instructions	= "This is an item that you can eat/drink. Doing so grants a stamina-regeneration boost as well as some slow health regeneration.\n\nLMB to eat/drink."
+SWEP.PrintName=translate.weaponSmallConsumable
+SWEP.Instructions	= translate.weaponConsumableDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -81,6 +81,8 @@ function SWEP:Initialize()
 	if(SERVER)then
 		if not(self:GetRandomModel())then self:SetRandomModel("models/foodnhouseholditems/mcdburgerbox.mdl") end
 	end
+	self.PrintName=translate.weaponSmallConsumable
+	self.Instructions	= translate.weaponConsumableDesc
 end
 
 function SWEP:SetupDataTables()

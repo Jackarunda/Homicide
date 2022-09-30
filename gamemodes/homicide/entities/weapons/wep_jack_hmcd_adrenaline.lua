@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/w_models/w_jyringe_jroj.mdl"
 SWEP.WorldModel="models/weapons/w_models/w_jyringe_jroj.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_adrenaline");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Epinephrine Autoinjector"
-SWEP.Instructions	= "This is a self-contained adrenaline injector for stopping allergic reactions. Use it to give yourself a serious stamina boost when murdering.\n\nLBM to inject drug."
+SWEP.PrintName=translate.weaponAdrenaline
+SWEP.Instructions	= translate.weaponAdrenalineDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -68,6 +68,8 @@ SWEP.HomicideSWEP=true
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponAdrenaline
+	self.Instructions	= translate.weaponAdrenalineDesc
 end
 
 function SWEP:SetupDataTables()

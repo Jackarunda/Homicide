@@ -1040,6 +1040,7 @@ if ( SERVER ) then
 	resource.AddFile( "models/w_models/weapons/w_eq_molotov.mdl" )
 	resource.AddFile( "models/w_models/weapons/w_eq_painpills.mdl" )
 	resource.AddFile( "models/w_models/weapons/w_jj_pipebomb.mdl" )
+	resource.AddFile( "resource/fonts/coolvetica_rg.ttf" )
 	resource.AddFile( "sound/snds_jack_hmcd_breathing/f1.wav" )
 	resource.AddFile( "sound/snds_jack_hmcd_breathing/f2.wav" )
 	resource.AddFile( "sound/snds_jack_hmcd_breathing/f3.wav" )

@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/j_jnife_j.mdl"
 SWEP.WorldModel="models/props/cs_militia/axe.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_hatchet");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Hatchet"
-SWEP.Instructions	= "This is a small utility hatchet, similar in size and weight to a Tomahawk. Throw it at your enemies for a decent chance of doing a lot of damage.\n\nLMB to throw."
+SWEP.PrintName=translate.weaponHatchet
+SWEP.Instructions	= translate.weaponHatchetDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -81,6 +81,8 @@ function SWEP:Initialize()
 	self:SetHoldType("melee")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
+	self.PrintName=translate.weaponHatchet
+	self.Instructions	= translate.weaponHatchetDesc
 end
 
 function SWEP:SetupDataTables()

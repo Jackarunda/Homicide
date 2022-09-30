@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/v_knije_t.mdl"
 SWEP.WorldModel="models/weapons/w_knije_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_baseballbat");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Baseball Bat"
-SWEP.Instructions	= "This is a typical wooden baseball bat. Use it as you see fit (attack/defend etc). Can not be holstered.\nLBM to swing."
+SWEP.PrintName=translate.weaponBaseballBat
+SWEP.Instructions	= translate.weaponBaseballBatDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -80,6 +80,8 @@ function SWEP:Initialize()
 	self:SetHoldType("melee2")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
+	self.PrintName=translate.weaponBaseballBat
+	self.Instructions	= translate.weaponBaseballBatDesc
 end
 
 function SWEP:SetupDataTables()

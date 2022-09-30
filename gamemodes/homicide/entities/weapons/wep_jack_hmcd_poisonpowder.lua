@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/Items/Flare.mdl"
 SWEP.WorldModel="models/Items/Flare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisonpowder");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Cyanide Capsule"
-SWEP.Instructions	= "This is some potassium cyanide powder in a capsule. Mix it into food or drink for covert murder.\n\nLMB to mix into consumable.\nSomeone must then eat it.\nTakes time to work.\nSingle-use."
+SWEP.PrintName=translate.weaponPoisonPowder
+SWEP.Instructions	= translate.weaponPoisonPowderDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -67,6 +67,8 @@ SWEP.HomicideSWEP=true
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponPoisonPowder
+	self.Instructions	= translate.weaponPoisonPowderDesc
 end
 
 function SWEP:SetupDataTables()

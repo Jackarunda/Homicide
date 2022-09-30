@@ -27,7 +27,7 @@ if(SERVER)then
 	end
 	function ENT:PickUp(ply)
 		if(not(ply.HasFlashlight)or(ply.Murderer))then -- the murderer can destroy lights
-			if((ply.Murderer)and(ply.HasFlashlight))then ply:PrintMessage(HUD_PRINTTALK,"You hide the additional flashlight.") end
+			if((ply.Murderer)and(ply.HasFlashlight))then ply:PrintMessage(HUD_PRINTTALK,translate.additionalFlashlight) end
 			ply.HasFlashlight=true -- he can also pretend that he can't pick one up
 			self:EmitSound("snd_jack_hmcd_flashlight.wav",65,100) -- all for the sake of plausible deniability
 			self:Remove() -- so people can't use anything to prove innocence

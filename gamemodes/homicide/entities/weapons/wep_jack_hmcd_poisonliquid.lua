@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/Items/Flare.mdl"
 SWEP.WorldModel="models/Items/Flare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisonliquid");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="VX Vial"
-SWEP.Instructions	= "This is a tiny vial of stolen oily-liquid VX nerve agent, arguably the most deadly nerve agent ever synthesized.\n\nLMB to smear onto an object.\nAnyone who grabs or picks up the object will be poisoned."
+SWEP.PrintName=translate.weaponPoisonLiq
+SWEP.Instructions	= translate.weaponPoisonLiqDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -67,6 +67,8 @@ SWEP.HomicideSWEP=true
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponPoisonLiq
+	self.Instructions	= translate.weaponPoisonLiqDesc
 end
 
 function SWEP:SetupDataTables()

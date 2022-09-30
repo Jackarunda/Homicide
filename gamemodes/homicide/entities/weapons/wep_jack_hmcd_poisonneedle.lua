@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/w_models/w_jyringe_proj.mdl"
 SWEP.WorldModel="models/weapons/w_models/w_jyringe_proj.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisonneedle");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Tetrodotoxin Needle"
-SWEP.Instructions	= "This is a tiny improvised syringe with an extremely small, sharp needle and a few milligrams of deadly pufferfish neurotoxin. Use it to kill very discreetly.\n\nLMB to prick someone.\nSingle-use.\nTakes time to work.\nMust be behind victim."
+SWEP.PrintName=translate.weaponPoisonNeedle
+SWEP.Instructions	= translate.weaponPoisonNeedleDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -67,6 +67,8 @@ SWEP.HomicideSWEP=true
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponPoisonNeedle
+	self.Instructions	= translate.weaponPoisonNeedleDesc
 end
 
 function SWEP:SetupDataTables()
@@ -118,7 +120,7 @@ function SWEP:AttackFront()
 			HMCD_Poison(Ent,self.Owner)
 			self:Remove()
 		else
-			self.Owner:PrintMessage(HUD_PRINTCENTER,"Must be behind!")
+			self.Owner:PrintMessage(HUD_PRINTCENTER,translate.weaponPoisonNeedleBehind)
 		end
 	else
 		sound.Play("snd_jack_hmcd_tinyswish.wav",self.Owner:GetShootPos(),50,math.random(90,110))

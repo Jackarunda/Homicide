@@ -302,7 +302,7 @@ function EntityMeta:IsUsingValidModel()
 		if(ValidModel==Mod)then return true end
 	end
 	if((GAMEMODE.ZOMBIE)and(Mod=="models/player/zombie_classic.mdl"))then return true end
-	if(self:IsPlayer())then self:PrintMessage(HUD_PRINTTALK,"WANRING: unsupported playermodel") end
+	if(self:IsPlayer())then self:PrintMessage(HUD_PRINTTALK,translate.miscUnsupportedPM) end
 	return false
 end
 

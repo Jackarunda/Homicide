@@ -20,10 +20,10 @@ elseif(CLIENT)then
 		--
 	end
 end
-SWEP.PrintName	= "Grappling Hook"
+SWEP.PrintName	= translate.weaponGrapl
 -- This was imported from BFS2114
 --SWEP.Author		= "Jackarunda :3"
-SWEP.Instructions	= "This is a heavy steel grappling hook with an attached rope. Use it to reach high/far places or safely descend from high places. \n\nLMB to swing/throw\nLMB to pull rope taut\nLMB to pull rope in\nRMB to let rope out\nR to release rope"
+SWEP.Instructions	= translate.weaponGraplDesc
 SWEP.Base="weapon_base"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_grapl");SWEP.BounceWeaponIcon=false end
 SWEP.ViewModel="models/weapons/c_models/c_grappling_hook/c_grappling_hook.mdl"
@@ -87,6 +87,8 @@ function SWEP:Initialize()
 	self:SetCurrentState("Hidden")
 	self:SetHidden(100)
 	self:SetShouldHideWorldModel(false)
+	self.PrintName	= translate.weaponGrapl
+	self.Instructions	= translate.weaponGraplDesc
 end
 function SWEP:OnDrop()
 	if(self:GetCurrentState()!="Nothing")then

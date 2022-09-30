@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/v_jnife_t.mdl"
 SWEP.WorldModel="models/weapons/w_knife_t.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_knife");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="SOG M37 Seal Pup"
-SWEP.Instructions	= "This is your trusty carbon-steel fixed-blade knife. Use it to take the lives of the innocent.\n\nLMB to stab.\nBackstabs do more damage."
+SWEP.PrintName=translate.weaponKnife
+SWEP.Instructions	= translate.weaponKnifeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -75,6 +75,8 @@ SWEP.CarryWeight=500
 function SWEP:Initialize()
 	self:SetNextIdle(CurTime()+1)
 	self:SetHoldType("knife")
+	self.PrintName=translate.weaponKnife
+	self.Instructions	= translate.weaponKnifeDesc
 end
 
 function SWEP:SetupDataTables()

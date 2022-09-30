@@ -23,7 +23,7 @@ SWEP.BobScale=3
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
-SWEP.Instructions	= "These are your zombified hands. They're no energy sword, but they still pack a wallop.\n\nLMB clobber.\nRMB to direct fellow zombies.\nRELOAD to recall fellow zombies."
+SWEP.Instructions	= translate.weaponZombHandsDesc
 
 SWEP.Spawnable			= false
 SWEP.AdminOnly		= true
@@ -69,6 +69,8 @@ function SWEP:Initialize()
 		end)
 	end
 	--]]
+	self.PrintName			= translate and translate.hands or "Hands"
+	self.Instructions	= translate.weaponZombHandsDesc
 end
 
 function SWEP:Deploy()

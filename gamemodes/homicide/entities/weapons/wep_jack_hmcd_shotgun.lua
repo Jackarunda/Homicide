@@ -5,8 +5,8 @@ else
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_shotgun")
 end
 SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "Remington 870"
-SWEP.Instructions	= "This is a typical civilian pump-action hunting shotgun. It has a 6-round magazine and fires 12-guage 2-3/4 inch cartridges.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts."
+SWEP.PrintName		= translate.weaponshotgun
+SWEP.Instructions	= translate.weaponshotgunDesc
 SWEP.Primary.ClipSize			= 6
 SWEP.SlotPos=2
 SWEP.ViewModel		= "models/weapons/v_shot_m3juper90.mdl"

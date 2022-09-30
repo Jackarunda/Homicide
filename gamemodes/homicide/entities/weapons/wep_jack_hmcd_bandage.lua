@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/bandages.mdl"
 SWEP.WorldModel="models/bandages.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_bandage");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Small Bandage"
-SWEP.Instructions	= "This is some cotton cloth that can be wrapped around a wound to help stop bleeding and restore medical stability.\n\nLMB to bandage self\nRMB to bandage another"
+SWEP.PrintName=translate.weaponSmallBandage
+SWEP.Instructions	= translate.weaponBandageDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -78,6 +78,8 @@ SWEP.CarryWeight=300
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
+	self.PrintName=translate.weaponSmallBandage
+	self.Instructions	= translate.weaponBandageDesc
 end
 
 function SWEP:SetupDataTables()

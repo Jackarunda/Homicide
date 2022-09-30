@@ -36,7 +36,7 @@ local function getSelected()
 		else
 			ang=math.pi*2-math.acos(x2/dis)
 		end
-		return math.floor((1-(ang-math.pi/2-math.pi/total)/(math.pi*2)%1)*total)+1
+		return math.floor((1-(ang-math.pi/2-math.pi/total)/(math.pi*2) % 1)*total)+1
 	end
 end
 
@@ -91,12 +91,12 @@ concommand.Add("+menu", function (client, com, args, full)
 		addElement("Morose", "morose")
 		addElement("Response", "response")
 		if(((client.HeadArmor)and(client.HeadArmor!=""))or((client.ChestArmor)and(client.ChestArmor!=""))or(client.HasFlashlight))then
-			addElement("Drop Equipment","drop_equipment")
+			addElement("DropEquipment","drop_equipment")
 		end
 		local Wep=client:GetActiveWeapon()
 		if(IsValid(Wep))then
 			if((Wep.CommandDroppable)and not((GAMEMODE.SHTF)and(Wep.SHTF_NoDrop)))then
-				addElement("Drop Item","drop_item")
+				addElement("Drop","drop_item")
 			end
 			local Num=0
 			for amm,fuck in pairs(HMCD_AmmoWeights)do
@@ -104,7 +104,7 @@ concommand.Add("+menu", function (client, com, args, full)
 				Num=Num+Amt
 			end
 			if(Num>0)then
-				addElement("Drop Ammo","drop_ammo")
+				addElement("DropAmmo","drop_ammo")
 			end
 			if(LocalPlayer().Murderer)then
 				addElement("Villain","villain")
@@ -217,13 +217,6 @@ function GM:DrawRadialMenu()
 				end
 			end
 			local Main,Sub=translate["voice" .. ment.TransCode],translate["voice" .. ment.TransCode .. "Description" ]
-			if(ment.TransCode=="Drop Item")then
-				Main="Drop Item";Sub="drop currently held item"
-			elseif(ment.TransCode=="Drop Equipment")then
-				Main="Drop Equipment";Sub="drop worn items"
-			elseif(ment.TransCode=="Drop Ammo")then
-				Main="Drop Ammo";Sub="choose ammo to drop"
-			end
 			drawShadow(Main, "MersRadial_QM", sx+w*0.6*x, sy+h*0.6*y-fontHeight/3,textCol, 1)
 			drawShadow(Sub, "MersRadialSmall_QM", sx+w*0.6*x, sy+h*0.6*y+fontHeight/2, textCol, 1)
 		end

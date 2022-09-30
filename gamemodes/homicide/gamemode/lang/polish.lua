@@ -69,7 +69,7 @@ pt.adminPanel="Panel administratora"
 pt.spectating="Oglądanie"
 
 pt.adMelonbomberWhy="Czemu by nie spróbować: "
-pt.adMelonbomberBy="-moda stworzonego przez twórcę Murder?"
+pt.adMelonbomberBy=" - moda stworzonego przez twórcę Murder?"
 
 pt.voiceHelp="Pomoc"
 pt.voiceHelpDescription="Krzycz o pomoc"
@@ -104,6 +104,6 @@ pt.startHelpMurderer={
 pt.murdererFog="Twoje zło wewnętrzne jest widoczne"
 pt.murdererFogSub="Zabij kogokolwiek, aby je ukryć"
 
-pt.pressEToDisguiseFor1Loot="[E]-przebierz się w zamian"
+pt.pressEToDisguiseFor1Loot="[E] - przebierz się w zamian"
 
 pt.playerStatusDead="Martwy"

@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/lt_c/tech/cellphone.mdl"
 SWEP.WorldModel="models/lt_c/tech/cellphone.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_phone");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Cellular Telephone"
-SWEP.Instructions	= "This is an android smartphone that can be used to call the police, causing them to arrive sooner.\n\nLMB to dial 911"
+SWEP.PrintName=translate.weaponPhone
+SWEP.Instructions	= translate.weaponPhoneDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -79,6 +79,8 @@ function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
 	self:SetCalling(false)
+	self.PrintName=translate.weaponPhone
+	self.Instructions	= translate.weaponPhoneDesc
 end
 
 function SWEP:SetupDataTables()
@@ -114,7 +116,7 @@ function SWEP:PrimaryAttack()
 			if((IsValid(self.Owner))and(self.Owner:Alive()))then
 				self.Owner:ConCommand("hmcd_taunt help")
 				if(self.Owner.Murderer)then
-					self.Owner:PrintMessage(HUD_PRINTTALK,"You pretend to call the police.")
+					self.Owner:PrintMessage(HUD_PRINTTALK,translate.weaponPhonePretend)
 				else
 					local Until=GAMEMODE.PoliceTime-CurTime()
 					if(Until>0)then
@@ -130,27 +132,55 @@ function SWEP:PrimaryAttack()
 					if(GAMEMODE.SHTF)then
 						if(DatTime)then
 							if(DatTime>60)then
-								self.Owner:PrintMessage(HUD_PRINTTALK,"The national guard will be here in "..math.ceil(DatTime/60).." minutes.")
+								local argh=Translator:AdvVarTranslate(translate.guardIn, {
+									mins={text=math.ceil(DatTime/60)}
+								})
+								aargh=""
+								for k, msg in pairs(argh) do
+									aargh=aargh..msg.text
+								end
+								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							else
-								self.Owner:PrintMessage(HUD_PRINTTALK,"The national guard will be here in "..math.ceil(DatTime).." seconds.")
+								local argh=Translator:AdvVarTranslate(translate.guardInSeconds, {
+									secs={text=math.ceil(DatTime)}
+								})
+								aargh=""
+								for k, msg in pairs(argh) do
+									aargh=aargh..msg.text
+								end
+								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							end
 						end
 						for key,ply in pairs(team.GetPlayers(2))do
 							if(ply.Murderer)then
-								ply:PrintMessage(HUD_PRINTTALK,"Someone called the national guard!")
+								ply:PrintMessage(HUD_PRINTTALK,translate.weaponPhoneCalledGuard)
 							end
 						end
 					else
 						if(DatTime)then
 							if(DatTime>60)then
-								self.Owner:PrintMessage(HUD_PRINTTALK,"The police will be here in "..math.ceil(DatTime/60).." minutes.")
+								local argh=Translator:AdvVarTranslate(translate.policeIn, {
+									mins={text=math.ceil(DatTime/60)}
+								})
+								aargh=""
+								for k, msg in pairs(argh) do
+									aargh=aargh..msg.text
+								end
+								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							else
-								self.Owner:PrintMessage(HUD_PRINTTALK,"The police will be here in "..math.ceil(DatTime).." seconds.")
+								local argh=Translator:AdvVarTranslate(translate.policeInSeconds, {
+									secs={text=math.ceil(DatTime)}
+								})
+								aargh=""
+								for k, msg in pairs(argh) do
+									aargh=aargh..msg.text
+								end
+								self.Owner:PrintMessage(HUD_PRINTTALK,aargh)
 							end
 						end
 						for key,ply in pairs(team.GetPlayers(2))do
 							if(ply.Murderer)then
-								ply:PrintMessage(HUD_PRINTTALK,"Someone called the police!")
+								ply:PrintMessage(HUD_PRINTTALK,translate.weaponPhoneCalledPolice)
 							end
 						end
 					end

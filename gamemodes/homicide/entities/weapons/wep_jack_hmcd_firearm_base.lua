@@ -126,6 +126,9 @@ function SWEP:Initialize()
 	self:SetReady(true)
 	if(self.CustomColor)then self:SetColor(self.CustomColor) end
 	self:SetReloading(false)
+	local a=string.Explode("_", self:GetClass())
+	self.PrintName=translate["weapon"..a[4]]
+	self.Instructions=translate["weapon"..a[4].."Desc"]
 end
 
 function SWEP:PreDrawViewModel()

@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/w_models/weapons/w_eq_painpills.mdl"
 SWEP.WorldModel="models/w_models/weapons/w_eq_painpills.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_painpills");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Pain Killers"
-SWEP.Instructions	= "A few non-steroidal anti-inflammatory drug (ibuprofen, acetaminophen, aspirin) pills in a plastic bottle. These allow a person to perform well (move, jump, etc) while injured.\n\nLMB to take pills"
+SWEP.PrintName=translate.weaponPills
+SWEP.Instructions	= translate.weaponPillsDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -78,6 +78,8 @@ SWEP.CarryWeight=200
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
+	self.PrintName=translate.weaponPills
+	self.Instructions	= translate.weaponPillsDesc
 end
 
 function SWEP:SetupDataTables()

@@ -55,6 +55,45 @@ function Translator:ChangeLanguage(lang)
 	print("Changed language to " .. self:GetLanguage())
 	hook.Run("TranslatorOnLanguageChanged", self:GetLanguage())
 
+	HMCD_Tips=translate.table.tips
+	HMCD_DamageTypes={
+		[DMG_SLASH]=translate.attSlash,
+		[DMG_CLUB]=translate.attClub,
+		[DMG_BURN]=translate.attBurn,
+		[DMG_DIRECT]=translate.attDirect,
+		[DMG_CRUSH]=translate.attCrush,
+		[DMG_GENERIC]=translate.attGeneric,
+		[DMG_SHOCK]=translate.attShock,
+		[DMG_BULLET]=translate.attBullet,
+		[DMG_BUCKSHOT]=translate.attBuckshot,
+		[DMG_POISON]=translate.attPoison,
+		[DMG_BLAST]=translate.attBlast,
+		[DMG_DROWN]=translate.attDrown
+	}
+	HMCD_AmmoNames={
+		["AlyxGun"]=translate.ammoAlyxGun,
+		["Pistol"]=translate.ammoPistol,
+		["357"]=translate.ammo357,
+		["SMG1"]=translate.ammoSMG1,
+		["Buckshot"]=translate.ammoBuckshot,
+		["AR2"]=translate.ammoAR2,
+		["XBowBolt"]=translate.ammoXBowBolt,
+		["AirboatGun"]=translate.ammoAirboatGun
+		--["Battery"]="14x50mm Alkaline Battery"
+		--["StriderMinigun"]="2x50mm Strike-Anywhere Match"
+	}
+	GAMEMODE:CreateTeams()
+	HitLocationPhrases={
+		[HITGROUP_HEAD]=translate.attHead,
+		[HITGROUP_RIGHTARM]=translate.attRArm,
+		[HITGROUP_LEFTARM]=translate.attLArm,
+		[HITGROUP_LEFTLEG]=translate.attLLeg,
+		[HITGROUP_RIGHTLEG]=translate.attRLeg,
+		[HITGROUP_CHEST]=translate.attChest,
+		[HITGROUP_STOMACH]=translate.attAbdomen,
+		[HITGROUP_GEAR]="",
+		[HITGROUP_GENERIC]=""
+	}
 
 	if SERVER then
 		self:NetworkLanguage()

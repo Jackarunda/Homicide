@@ -55,7 +55,7 @@ function GM:PlayerSpawn( ply )
 		if not(ply.RoundsSpectator)then ply.RoundsSpectator=0 end
 		ply.RoundSpectator=ply.RoundsSpectator+1
 		if(ply.RoundsSpectator>=3)then
-			if not(ply:IsListenServerHost())then ply:Kick("Spectating too long") else ply:Kill() end
+			if not(ply:IsListenServerHost())then ply:Kick(translate.kickSpectate) else ply:Kill() end
 			return
 		end
 	else
@@ -163,9 +163,23 @@ function GM:PlayerSpawn( ply )
 		if((ply)and(IsValid(ply))and(ply:Alive())and(ply.Murderer))then
 			local mins=math.ceil((self.PoliceTime-CurTime())/60)
 			if(self.SHTF)then
-				ply:PrintMessage(HUD_PRINTTALK,"The national guard will be here in "..tostring(mins).." minutes.")
+				local argh=Translator:AdvVarTranslate(translate.guardIn, {
+					mins={text=mins}
+				})
+				aargh=""
+				for k, msg in pairs(argh) do
+					aargh=aargh..msg.text
+				end
+				ply:PrintMessage(HUD_PRINTTALK,aargh)
 			else
-				ply:PrintMessage(HUD_PRINTTALK,"The police will be here in "..tostring(mins).." minutes.")
+				local argh=Translator:AdvVarTranslate(translate.policeIn, {
+					mins={text=mins}
+				})
+				aargh=""
+				for k, msg in pairs(argh) do
+					aargh=aargh..msg.text
+				end
+				ply:PrintMessage(HUD_PRINTTALK,aargh)
 			end
 		end
 	end)
@@ -304,18 +318,6 @@ function GM:PlayerSetModel(ply)
 	ply.ClothingMatIndex=playerModel.clothes
 end
 
-local HitLocationPhrases={
-	[HITGROUP_HEAD]="in the head",
-	[HITGROUP_RIGHTARM]="in the right arm",
-	[HITGROUP_LEFTARM]="in the left arm",
-	[HITGROUP_LEFTLEG]="in the left leg",
-	[HITGROUP_RIGHTLEG]="in the right leg",
-	[HITGROUP_CHEST]="in the chest",
-	[HITGROUP_STOMACH]="in the abdomen",
-	[HITGROUP_GEAR]="",
-	[HITGROUP_GENERIC]=""
-}
-
 function GM:DoPlayerDeath(ply,attacker,dmginfo)
 	local Infl=dmginfo:GetInflictor()
 	if((Infl)and(Infl:IsVehicle())and(Infl:GetDriver()))then attacker=Infl:GetDriver() end
@@ -411,13 +413,13 @@ function GM:DoPlayerDeath(ply,attacker,dmginfo)
 	
 	local DeathString,ServerDeathString="",""
 	local Att=ply.LastAttackerName
-	local Typ=ply.LastDamageType or "damaged"
+	local Typ=ply.LastDamageType or translate.attGeneric
 	if(ply.LastBled)then
-		ServerDeathString=ply:Nick().." bled to death after being "
-		DeathString="You bled to death after being "
+		ServerDeathString=ply:Nick()..translate.attTheyBledToDeath
+		DeathString=translate.attYouBledToDeath
 	else
-		ServerDeathString=ply:Nick().." was "
-		DeathString="You were "
+		ServerDeathString=ply:Nick()..translate.attHeWas
+		DeathString=translate.attYouWere
 	end
 	ServerDeathString=ServerDeathString..Typ.." "
 	DeathString=DeathString..Typ.." "
@@ -427,9 +429,9 @@ function GM:DoPlayerDeath(ply,attacker,dmginfo)
 	end
 	if((Att)and not(Att==""))then
 		local ServerAtt=Att
-		if(Att==ply:GetBystanderName())then Att="yourself";ServerAtt="himself" end
-		ServerDeathString=ServerDeathString.."by "..ServerAtt
-		DeathString=DeathString.."by "..Att
+		if(Att==ply:GetBystanderName())then Att=translate.attYourself;ServerAtt=translate.attHimself end
+		ServerDeathString=ServerDeathString..translate.attBy..ServerAtt
+		DeathString=DeathString..translate.attBy..Att
 	end
 	if((SERVER)and(HMCD_DebugPrint))then print(ServerDeathString) end
 	ply:PrintMessage(HUD_PRINTTALK,DeathString)
@@ -602,13 +604,13 @@ function GM:ScalePlayerDamage(ply,hitgroup,dmginfo)
 		Mul=Mul*.2
 		ply.TempSpeedMul=.1
 		umsg.Start("HMCD_StatusEffect",ply)
-		umsg.String("IMMOBILIZED")
+		umsg.String(translate.statusEffectImmobilized)
 		umsg.End()
 	elseif((hitgroup==HITGROUP_RIGHTARM)or(hitgroup==HITGROUP_LEFTARM)or(hitgroup==HITGROUP_GEAR))then
 		Mul=Mul*.2
 		ply:SelectWeapon("wep_jack_hmcd_hands")
 		umsg.Start("HMCD_StatusEffect",ply)
-		umsg.String("DISARMED")
+		umsg.String(translate.statusEffectDisarmed)
 		umsg.End()
 	elseif(hitgroup==HITGROUP_STOMACH)then
 		Mul=Mul*.5
@@ -652,6 +654,12 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 	if((IsValid(Inflictor))and(Inflictor:GetClass()=="ent_jack_hmcd_grapl"))then attacker=Inflictor.Owner end
 	self:DoRoundDeaths(ply, attacker)
 
+	if (attacker.ModelSex == "male") then
+		s=translate.ms
+	else
+		s=translate.fs
+	end
+
 	if !ply.Murderer then
 
 		self.MurdererLastKill=CurTime()
@@ -670,23 +678,27 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 				local col,msgs,col2=attacker:GetPlayerColor(),nil,ply:GetPlayerColor()
 				if(ply.Innocent)then
 					if(self.SHTF)then
-						msgs=Translator:AdvVarTranslate("{player} killed an innocent.", {
-							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
+						msgs=Translator:AdvVarTranslate(translate.killedTeamKillInnocent, {
+							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
+							s={text=s}
 						})
 					else
 						msgs=Translator:AdvVarTranslate(translate.killedTeamKill, {
-							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
+							player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
+							s={text=s}
 						})
 					end
 				else
-					msgs=Translator:AdvVarTranslate("{player} killed an aggressive troublemaker.", {
-						player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
+					msgs=Translator:AdvVarTranslate(translate.killedTeamKillAggressive, {
+						player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=s}
 					})
 				end
 				if(self.DEATHMATCH)then
-					msgs=Translator:AdvVarTranslate("{player} killed {ded}", {
+					msgs=Translator:AdvVarTranslate(translate.killedDM, {
 						player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
-						ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)}
+						ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)},
+						s={text=s}
 					})
 				end
 				if(self:GetRound()==1)then
@@ -709,33 +721,39 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 			local msgs,RealName,GameName=nil,attacker:Nick(),attacker:GetBystanderName()
 			if(RealName==GameName)then
 				if(self.ZOMBIE)then
-					msgs=Translator:AdvVarTranslate("{player} killed the alpha zombie", {
-						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+					msgs=Translator:AdvVarTranslate(translate.killedZombie, {
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=s}
 					})
 				elseif(self.SHTF)then
-					msgs=Translator:AdvVarTranslate("{player} killed the traitor", {
-						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=s}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+						player={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=s}
 					})
 				end
 			else
 				if(self.SHTF)then
-					msgs=Translator:AdvVarTranslate("{player} killed the traitor", {
-						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+					msgs=Translator:AdvVarTranslate(translate.killedTraitor, {
+						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=translate.ms}
 					})
 				else
 					msgs=Translator:AdvVarTranslate(translate.killedMurderer, {
-						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+						player={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+						s={text=translate.ms}
 					})
 				end
 			end
 			if(self.DEATHMATCH)then
-				msgs=Translator:AdvVarTranslate("{player} killed {ded}", {
+				msgs=Translator:AdvVarTranslate(translate.killedDM, {
 					player={text=attacker:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)},
-					ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)}
+					ded={text=ply:GetBystanderName(), color=Color(col2.x*255, col2.y*255, col2.z*255)},
+					s={text=s}
 				})
 			end
 			local ct=ChatText()
@@ -744,17 +762,17 @@ function GM:PlayerDeath(ply, Inflictor, attacker )
 		elseif(attacker!=ply && IsValid(attacker) && attacker:IsNPC())then
 			local ct=ChatText()
 			if(self.ZOMBIE)then
-				ct:Add("The alpha zombie was shot by the national guard.")
+				ct:Add(translate.guardShotZombie)
 			elseif(self.SHTF)then
-				ct:Add("The traitor was shot by the national guard.")
+				ct:Add(translate.guardShotTraitor)
 			else
-				ct:Add("The murderer was shot by the police.")
+				ct:Add(translate.policeShotMurderer)
 			end
 			ct:SendAll()
 		else
 			local ct=ChatText()
 			if(self.SHTF)then
-				ct:Add("The traitor died in mysterious circumstances.")
+				ct:Add(translate.traitorDeathUnknown)
 			else
 				ct:Add(translate.murdererDeathUnknown)
 			end
@@ -953,8 +971,8 @@ function GM:PlayerCanSeePlayersChat( text, teamOnly, listener, speaker )
 	return canhear
 end
 
-local HardFrics,SoftFrics={"t","f","p","s","ck","k"},{"d","v","b","z","g","g"}
-local Alphabet={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
+local HardFrics,SoftFrics=translate.table.hardFrics,translate.table.softFrics
+local Alphabet=translate.table.alphabet
 function GM:PlayerSay(ply,text,teem)
 	if ply:Team()==2 && ply:Alive() && self:GetRound()!=0 then
 		if(string.lower(text)=="*drop")then
@@ -977,7 +995,7 @@ function GM:PlayerSay(ply,text,teem)
 				end
 				if(((Wall)or(Playa)or(Still))and not(ply:InVehicle())and not(ply.HiddenInContainer))then
 					ply.Unstickable=false
-					ply:PrintMessage(HUD_PRINTTALK,"Player is stuck. Moving...")
+					ply:PrintMessage(HUD_PRINTTALK,translate.stuck)
 					local Tr=util.TraceLine({
 						start=ply:GetShootPos(),
 						endpos=ply:GetShootPos()+ply:GetAimVector()*500,
@@ -999,10 +1017,10 @@ function GM:PlayerSay(ply,text,teem)
 						ply:SetPos(ply:GetShootPos()+ply:GetAimVector()*500)
 					end
 				else
-					ply:PrintMessage(HUD_PRINTTALK,"Unable to confirm stuck player.")
+					ply:PrintMessage(HUD_PRINTTALK,translate.stuckUnable)
 				end
 			else
-				ply:PrintMessage(HUD_PRINTTALK,"You already used *unstick this round.")
+				ply:PrintMessage(HUD_PRINTTALK,translate.stuckAlready)
 			end
 		elseif(ply.Seizuring)then
 			local Chars=string.Explode("",string.lower(text))
@@ -1027,7 +1045,7 @@ function GM:PlayerSay(ply,text,teem)
 			if(can)then
 				local ct=ChatText()
 				if((WalkieTalkie)and not(ply2==ply))then
-					ct:Add("Walkie Talkie",color_white)
+					ct:Add(translate.weaponWalkieTalkie,color_white)
 				else
 					ct:Add(ply:GetBystanderName(), Color(col.x*255, col.y*255, col.z*255))
 				end
@@ -1037,7 +1055,7 @@ function GM:PlayerSay(ply,text,teem)
 			end
 		end
 		local Extra=""
-		if(WalkieTalkie)then Extra=" (radio)" end
+		if(WalkieTalkie)then Extra=translate.radio end
 		if(SERVER)then print(ply:Nick()..": "..text..Extra) end
 		return false
 	end
@@ -1060,7 +1078,7 @@ function GM:PlayerUse(ply,ent)
 	end
 	if(ent.ContactPoisoned)then
 		if(ply.Murderer)then
-			ply:PrintMessage(HUD_PRINTTALK,"This is poisoned!")
+			ply:PrintMessage(HUD_PRINTTALK,translate.poisoned)
 			return false
 		else
 			ent.ContactPoisoned=false
@@ -1119,7 +1137,7 @@ end
 
 function PlayerMeta:EnterContainer(ent)
 	if((ent.PlayerHiddenInside)and(IsValid(ent.PlayerHiddenInside)))then
-		self:PrintMessage(HUD_PRINTCENTER,"This container already has someone in it")
+		self:PrintMessage(HUD_PRINTCENTER,translate.someonesInside)
 	else
 		ent:EmitSound("Body.ImpactSoft")
 		self.ContainingContainer=ent
@@ -1178,30 +1196,30 @@ function PlayerMeta:AntiCheat()
 	if(Weps)then
 		for key,wep in pairs(Weps)do
 			if not(wep.HomicideSWEP)then
-				self:PrintMessage(HUD_PRINTTALK,wep:GetClass().." not allowed with sv_cheats 0!")
+				self:PrintMessage(HUD_PRINTTALK,wep:GetClass()..translate.notAllowedWithSVC0)
 				SafeRemoveEntity(wep)
 			end
 		end
 	end
 	if(self:GetMoveType()==MOVETYPE_NOCLIP)then
 		self:SetMoveType(MOVETYPE_WALK)
-		self:PrintMessage(HUD_PRINTTALK,"Noclip not allowed with sv_cheats 0!")
+		self:PrintMessage(HUD_PRINTTALK,translate.notAllowedNoclip)
 	end
 	if(self:HasGodMode())then
 		self:GodDisable()
-		self:PrintMessage(HUD_PRINTTALK,"Godmode not allowed with sv_cheats 0!")
+		self:PrintMessage(HUD_PRINTTALK,translate.notAllowedGodmode)
 	end
 	local Health=self:Health()
 	if((Health)and(Health>105))then
 		self:SetHealth(100)
-		self:PrintMessage(HUD_PRINTTALK,"Extra health not allowed with sv_cheats 0!")
+		self:PrintMessage(HUD_PRINTTALK,translate.notAllowedAdditionalHealth)
 	end
 	local Armor=self:Armor()
 	if((Armor)and(Armor>0))then
 		self:SetArmor(0)
-		self:PrintMessage(HUD_PRINTTALK,"HL2 armor not allowed with sv_cheats 0!")
+		self:PrintMessage(HUD_PRINTTALK,translate.notAllowedHL2Armor)
 	end
-	if not(self:HasWeapon("wep_jack_hmcd_hands"))then
+	if not(self:HasWeapon("wep_jack_hmcd_hands")) and not(self:HasWeapon("wep_jack_hmcd_zombhands")) then
 		self:Give("wep_jack_hmcd_hands")
 		self:GetWeapon("wep_jack_hmcd_hands").HmcdSpawned=true
 	end
@@ -1326,7 +1344,7 @@ function PlayerMeta:MurdererHideIdentity()
 	self.LowerBody=1
 	self.ModelSex="male" -- i just
 	self.ClothingMatIndex=0
-	if(GAMEMODE.SHTF)then self:SetBystanderName("Traitor") else self:SetBystanderName("Murderer") end
+	if(GAMEMODE.SHTF)then self:SetBystanderName(translate.traitor) else self:SetBystanderName(translate.murderer) end
 	self:SetPlayerColor(Vector(.25,0,0))
 	self:ManipulateBoneScale(self:LookupBone("ValveBiped.Bip01_R_UpperArm"),Vector(1,.8,.8))
 	self:ManipulateBoneScale(self:LookupBone("ValveBiped.Bip01_L_UpperArm"),Vector(1,.8,.8))
@@ -1473,8 +1491,8 @@ function PlayerMeta:GodCheck()
 				net.Start("hmcd_seizure")
 				net.WriteBit(true)
 				net.Send(self)
-				self:PrintMessage(HUD_PRINTTALK,"You are having a seizure.")
-				self:PrintMessage(HUD_PRINTCENTER,"SEIZURE")
+				self:PrintMessage(HUD_PRINTTALK,translate.youAreHavingASeizure)
+				self:PrintMessage(HUD_PRINTCENTER,translate.seizure)
 				local LifeID=self.LifeID
 				timer.Simple(30,function()
 					if(self)then

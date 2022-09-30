@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/j_knife_t.mdl"
 SWEP.WorldModel="models/props/cs_militia/axe.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_axe");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Woodcutting Axe"
-SWEP.Instructions	= "This is a typical woodcutter's axe with a sharp steel head. Murder the innocent like the a true psycopath.\n\nLBM to swing.\nCan also bust down doors and destroy fortifications."
+SWEP.PrintName=translate.weaponAxe
+SWEP.Instructions	= translate.weaponAxeDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -81,6 +81,8 @@ function SWEP:Initialize()
 	self:SetHoldType("melee2")
 	self:SetWindUp(0)
 	self.NextWindThink=CurTime()
+	self.PrintName=translate.weaponAxe
+	self.Instructions	= translate.weaponAxeDesc
 end
 
 function SWEP:SetupDataTables()

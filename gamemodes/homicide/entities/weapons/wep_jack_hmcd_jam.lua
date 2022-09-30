@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/props_junk/wood_pallet001a_chunka1.mdl"
 SWEP.WorldModel="models/props_junk/wood_pallet001a_chunka1.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_jam");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Door Wedge"
-SWEP.Instructions	= "This is a heavy-duty commercial door wedge. It can be kicked into place to stop a door from moving.\n\nLeft click to jam a door.\nPress E to pick up wedge again."
+SWEP.PrintName=translate.weaponJam
+SWEP.Instructions	= translate.weaponJamDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -78,6 +78,8 @@ SWEP.HomicideSWEP=true
 function SWEP:Initialize()
 	self:SetHoldType("slam")
 	self.DownAmt=20
+	self.PrintName=translate.weaponJam
+	self.Instructions	= translate.weaponJamDesc
 end
 function SWEP:PrimaryAttack()
 	if(self.Owner:KeyDown(IN_SPEED))then return end

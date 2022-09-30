@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/props_junk/jlare.mdl"
 SWEP.WorldModel="models/props_junk/jlare.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_smokebomb");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Saltpeter Smoke Bomb"
-SWEP.Instructions	= "This is a home-cooked KNO3-sugar smoke bomb, useful for visual concealment while murdering people.\n\nLMB to light and throw.\nSmoke will fill a room and last a while."
+SWEP.PrintName=translate.weaponSmokeBomb
+SWEP.Instructions	= translate.weaponSmokeBombDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -68,6 +68,8 @@ SWEP.CarryWeight=800
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponSmokeBomb
+	self.Instructions	= translate.weaponSmokeBombDesc
 end
 
 function SWEP:SetupDataTables()

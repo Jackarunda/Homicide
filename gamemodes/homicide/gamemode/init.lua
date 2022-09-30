@@ -102,7 +102,7 @@ end
 concommand.Add("homicide_scope_fix",ThesePeopleAreFuckingIdiots)
 
 local function ChangeDebugPrinting(ply,cmd,args)
-	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,"You are not an admin.") return end
+	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,translate.youAreNoAdmin) return end
 	if(args[1]=="1")then
 		HMCD_DebugPrint=true
 	elseif(args[1]=="0")then
@@ -113,7 +113,7 @@ end
 concommand.Add("homicide_debugprint",ChangeDebugPrinting)
 
 local function SpecSHTF(ply,cmd,args)
-	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,"You are not an admin.") return end
+	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,translate.youAreNoAdmin) return end
 	if(args[1]=="1")then
 		GAMEMODE.SHTF_MODE_ENGAGED=true
 		GAMEMODE.PUSSY_MODE_ENGAGED=false
@@ -340,7 +340,7 @@ function GM:SpawnCop(pos)
 	Cop:SetKeyValue("additionalequipment","wep_jack_hmcd_npc_pistol")
 	Cop:SetKeyValue("squadname","homicidal_police")
 	Cop:SetCurrentWeaponProficiency(WEAPON_PROFICIENCY_POOR)
-	Cop:SetBystanderName("Police")
+	Cop:SetBystanderName(translate.police)
 	Cop:SetPlayerColor(Vector(.1,.125,.2))
 	Cop:SetPos(pos)
 	Cop:SetAngles(Angle(0,math.random(0,360),0))
@@ -373,7 +373,7 @@ function GM:SpawnGuardsman(pos)
 	dude:SetCurrentWeaponProficiency(WEAPON_PROFICIENCY_PERFECT)
 	dude:SetKeyValue("additionalequipment","wep_jack_hmcd_npc_rifle")
 	dude:SetKeyValue("squadname","homicide_guardsmen")
-	dude:SetBystanderName("Soldier")
+	dude:SetBystanderName(translate.nationalguardsman)
 	dude:SetPlayerColor(Vector(.15,.2,.1))
 	dude:SetPos(pos)
 	dude:SetAngles(Angle(0,math.random(0,360),0))
@@ -398,7 +398,7 @@ function GM:SpawnZombie(pos)
 	local Typ=table.Random(ZombTypes)
 	local dude=ents.Create(Typ)
 	dude.HmcdSpawned=true
-	dude:SetBystanderName("Zombie")
+	dude:SetBystanderName(translate.zombieSimple)
 	dude:SetPlayerColor(Vector(.3,.1,.1))
 	dude:SetPos(pos)
 	dude:SetAngles(Angle(0,math.random(0,360),0))
@@ -646,9 +646,9 @@ function GM:Think()
 			self.PoliceNotified=true
 			for key,playah in pairs(player.GetAll())do
 				if(self.SHTF)then
-					playah:PrintMessage(HUD_PRINTTALK,"The national guard has arrived!")
+					playah:PrintMessage(HUD_PRINTTALK,translate.arrivalNationalGuard)
 				else
-					playah:PrintMessage(HUD_PRINTTALK,"The police have arrived!")
+					playah:PrintMessage(HUD_PRINTTALK,translate.arrivalPolice)
 				end
 			end
 		end
@@ -707,7 +707,7 @@ function GM:Think()
 		end
 		if((ply:Team()==2)and(ply:Alive())and(self.DEATHMATCH))then
 			if(self.RoundTime+20>CurTime())then
-				if((self.RoundTime+20-CurTime())<10)then ply:PrintMessage(HUD_PRINTCENTER,"Battle starts in "..tostring(math.Round(self.RoundTime+20-CurTime()))) end
+				if((self.RoundTime+20-CurTime())<10)then ply:PrintMessage(HUD_PRINTCENTER,translate.battleStartsIn..tostring(math.Round(self.RoundTime+20-CurTime()))) end
 			end
 		end
 		for key,wep in pairs(ply:GetWeapons())do
@@ -902,7 +902,7 @@ function GM:PlayerNoClip(ply)
 	if((ply:GetMoveType()==MOVETYPE_NOCLIP)or(GetConVar("sv_cheats"):GetBool()))then
 		return true
 	else
-		ply:PrintMessage(HUD_PRINTTALK,"No noclip with sv_cheats 0!")
+		ply:PrintMessage(HUD_PRINTTALK,translate.notAllowedNoclip)
 	end
 end
 
@@ -988,7 +988,7 @@ function GM:EntityTakeDamage(ent,dmginfo)
 			ent.TempSpeedMul=dmginfo:GetInflictor().AttackSlowDown
 			if(dmginfo:GetInflictor().AttackSlowDown<1)then
 				umsg.Start("HMCD_StatusEffect",ent)
-				umsg.String("IMMOBILIZED")
+				umsg.String(translate.statusEffectImmobilized)
 				umsg.End()
 			end
 		end
@@ -997,21 +997,21 @@ function GM:EntityTakeDamage(ent,dmginfo)
 			if(Att:IsPlayer())then
 				if((Att.Murderer)and not(Att==ent))then
 					if(self.SHTF)then
-						ent.LastAttackerName="the Traitor"
+						ent.LastAttackerName=translate.attTraitor
 					else
-						ent.LastAttackerName="the Murderer"
+						ent.LastAttackerName=translate.attMurderer
 					end
 				else
 					ent.LastAttackerName=Att:GetBystanderName()
 				end
 			elseif(Class=="npc_metropolice")then
-				ent.LastAttackerName="a policeman"
+				ent.LastAttackerName=translate.attPolice
 			elseif(Class=="npc_combine_s")then
-				ent.LastAttackerName="a guardsman"
+				ent.LastAttackerName=translate.attGuardsman
 			elseif((Class=="prop_physics")or(Class=="prop_physics_multiplayer"))then
-				ent.LastAttackerName="an object"
+				ent.LastAttackerName=translate.attObject
 			elseif(dmginfo:IsFallDamage())then
-				ent.LastAttackerName="the ground"
+				ent.LastAttackerName=translate.attGround
 			end
 			if((Att:IsPlayer())and(GetConVar("sv_cheats"):GetInt()==0)and not(ent==Att)and not(Att.Murderer)and(self:GetRound()==1)and not(self.DEATHMATCH))then
 				if((Att.LastDamager)and(Att.LastDamager==ent)and((Att.LastDamagedTime+3)>CurTime()))then
@@ -1187,13 +1187,13 @@ function HMCD_Poison(vic,murd,fast)
 			if((Victim)and(IsValid(Victim))and(Victim:Alive())and(Victim.LifeID==LifeID))then
 				HMCD_PainMoan(Victim,true)
 				umsg.Start("HMCD_StatusEffect",Victim)
-				umsg.String("POISONED")
+				umsg.String(translate.statusEffectPoisoned)
 				umsg.End()
 				timer.Simple(math.random(2,4),function()
 					if((IsValid(Victim))and(Victim:Alive())and(Victim.LifeID==LifeID))then
 						HMCD_PainMoan(Victim,true)
 						umsg.Start("HMCD_StatusEffect",Victim)
-						umsg.String("POISONED")
+						umsg.String(translate.statusEffectPoisoned)
 						umsg.End()
 						Victim.TempSpeedMul=.1
 						timer.Simple(math.random(2,4),function()
@@ -1218,19 +1218,19 @@ function HMCD_Poison(vic,murd,fast)
 			if((Victim)and(IsValid(Victim))and(Victim:Alive())and(Victim.LifeID==LifeID))then
 				HMCD_PainMoan(Victim)
 				umsg.Start("HMCD_StatusEffect",Victim)
-				umsg.String("POISONED")
+				umsg.String(translate.statusEffectPoisoned)
 				umsg.End()
 				timer.Simple(math.random(2,4),function()
 					if((IsValid(Victim))and(Victim:Alive())and(Victim.LifeID==LifeID))then
 						HMCD_PainMoan(Victim)
 						umsg.Start("HMCD_StatusEffect",Victim)
-						umsg.String("POISONED")
+						umsg.String(translate.statusEffectPoisoned)
 						umsg.End()
 						Victim.TempSpeedMul=.1
 						timer.Simple(math.random(2,4),function()
 							if((IsValid(Victim))and(Victim:Alive())and(Victim.LifeID==LifeID))then
 								umsg.Start("HMCD_StatusEffect",Victim)
-								umsg.String("ASPHYXIATING")
+								umsg.String(translate.statusEffectAsphyxiating)
 								umsg.End()
 								Victim:Freeze(true)
 								timer.Simple(math.random(2,4),function()
@@ -1482,7 +1482,7 @@ end)
 --]]
 
 concommand.Add("homicide_player_speed_mul",function(ply,cmd,args)
-	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,"You are not an admin.") return end
+	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,translate.youAreNoAdmin) return end
 	local Num=tonumber(args[1])
 	if(Num)then
 		GAMEMODE.PLAYER_SPEED_MUL=Num
@@ -1492,7 +1492,7 @@ concommand.Add("homicide_player_speed_mul",function(ply,cmd,args)
 end)
 
 concommand.Add("homicide_loot_spawn_mul",function(ply,cmd,args)
-	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,"You are not an admin.") return end
+	if((ply.IsAdmin)and not(ply:IsAdmin()))then ply:PrintMessage(HUD_PRINTTALK,translate.youAreNoAdmin) return end
 	local Num=tonumber(args[1])
 	if(Num)then
 		GAMEMODE.LOOT_SPAWN_MUL=Num
@@ -1500,3 +1500,15 @@ concommand.Add("homicide_loot_spawn_mul",function(ply,cmd,args)
 		ply:PrintMessage(HUD_PRINTTALK,"Loot spawn rate multiplier set: "..tostring(GAMEMODE.LOOT_SPAWN_MUL))
 	end
 end)
+
+HitLocationPhrases={
+	[HITGROUP_HEAD]=translate.attHead,
+	[HITGROUP_RIGHTARM]=translate.attRArm,
+	[HITGROUP_LEFTARM]=translate.attLArm,
+	[HITGROUP_LEFTLEG]=translate.attLLeg,
+	[HITGROUP_RIGHTLEG]=translate.attRLeg,
+	[HITGROUP_CHEST]=translate.attChest,
+	[HITGROUP_STOMACH]=translate.attAbdomen,
+	[HITGROUP_GEAR]="",
+	[HITGROUP_GENERIC]=""
+}

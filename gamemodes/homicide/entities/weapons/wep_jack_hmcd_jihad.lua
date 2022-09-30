@@ -42,8 +42,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/props_junk/cardboard_jox004a.mdl"
 SWEP.WorldModel="models/props_junk/cardboard_jox004a.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_jihad");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Explosive Belt"
-SWEP.Instructions	= "This is a concealed belt rigged with military-grade explosives surrounded by nails and ball bearings, and a detonator. Use it to end your pathetic life with one final aloha snackbar.\n\nLMB to suicide"
+SWEP.PrintName=translate.weaponJihad
+SWEP.Instructions	= translate.weaponJihadDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -81,6 +81,8 @@ SWEP.CarryWeight=3500
 
 function SWEP:Initialize()
 	self:SetHoldType("normal")
+	self.PrintName=translate.weaponJihad
+	self.Instructions	= translate.weaponJihadDesc
 end
 
 function SWEP:SetupDataTables()

@@ -1,11 +1,14 @@
 local menu
 
+local ext=(translate.nocoolvetica == "<nocoolvetica>")
+
 surface.CreateFont( "ScoreboardPlayer" , {
-	font="coolvetica",
-	size=32,
+	font="Coolvetica Rg",
+	size=35,
 	weight=500,
 	antialias=true,
-	italic=false
+	italic=false,
+	extended=ext
 })
 
 local muted=Material("icon32/muted.png")
@@ -50,11 +53,11 @@ local function addPlayerItem(self, mlist, ply, pteam)
 				s=s+32
 			end
 
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-9, 9, color_black, 2)
-			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-10, 8, color_white, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-9, 4, color_black, 2)
+			draw.DrawText(ply:Ping(), "ScoreboardPlayer", w-10, 3, color_white, 2)
 
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+11, 9, color_black, 0)
-			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+10, 8, color_white, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+11, 4, color_black, 0)
+			draw.DrawText(ply:Nick(), "ScoreboardPlayer", s+10, 3, color_white, 0)
 
 			
 		end

@@ -200,16 +200,24 @@ function GM:EndTheRound(reason, murderer)
 		ply:SetFOV(90,0)
 	end
 
+	if murderer then
+		if (murderer.ModelSex == "male") then
+			s=translate.ms
+		else
+			s=translate.fs
+		end
+	end
+
 	if(reason==4)then
 		if murderer then
 			local col=murderer:GetPlayerColor()
 			local msgs
 			if(self.SHTF)then
-				msgs=Translator:AdvVarTranslate("The murderer lost the will to murder, it was {murderer}.\nEveryone lived happily ever after.", {
+				msgs=Translator:AdvVarTranslate(translate.murdererLostWill, {
 					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			else
-				msgs=Translator:AdvVarTranslate("The traitor lost the will to murder, it was {murderer}.\nEveryone lived happily ever after.", {
+				msgs=Translator:AdvVarTranslate(translate.traitorLostWill, {
 					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			end
@@ -225,7 +233,7 @@ function GM:EndTheRound(reason, murderer)
 			local col=murderer:GetPlayerColor()
 			local msgs
 			if(self.SHTF)then
-				msgs=Translator:AdvVarTranslate("The traitor rage quit, it was {murderer}", {
+				msgs=Translator:AdvVarTranslate(translate.traitorDisconnectKnown, {
 					murderer={text=murderer:Nick() .. ", " .. murderer:GetBystanderName(), color=Color(col.x*255, col.y*255, col.z*255)}
 				})
 			else
@@ -240,7 +248,7 @@ function GM:EndTheRound(reason, murderer)
 		else
 			if(self.SHTF)then
 				local ct=ChatText()
-				ct:Add("The traitor rage quit")
+				ct:Add(translate.traitorDisconnect)
 				ct:SendAll()
 			else
 				local ct=ChatText()
@@ -253,28 +261,32 @@ function GM:EndTheRound(reason, murderer)
 		local msgs,RealName,GameName=nil,murderer:Nick(),murderer:GetBystanderName()
 		if(RealName==GameName)then
 			if(self.SHTF)then
-				msgs=Translator:AdvVarTranslate("The traitor was, {murderer}",{
-					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+				msgs=Translator:AdvVarTranslate(translate.winInnocentsTraitorWas,{
+					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+					s={text=s}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.winBystandersMurdererWas, {
-					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+					murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+					s={text=s}
 				})
 			end
 		else
 			if(self.SHTF)then
-				msgs=Translator:AdvVarTranslate("The traitor was {murderer}", {
-					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+				msgs=Translator:AdvVarTranslate(translate.winInnocentsTraitorWas, {
+					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+					s={text=translate.ms}
 				})
 			else
 				msgs=Translator:AdvVarTranslate(translate.winBystandersMurdererWas, {
-					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+					murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+					s={text=translate.ms}
 				})
 			end
 		end
 		local ct=ChatText()
 		if(self.SHTF)then
-			ct:Add("Innocents win! ", Color(20, 120, 255))
+			ct:Add(translate.winInnocents, Color(20, 120, 255))
 		else
 			ct:Add(translate.winBystanders, Color(20, 120, 255))
 		end
@@ -287,18 +299,20 @@ function GM:EndTheRound(reason, murderer)
 		local msgs,RealName,GameName=nil,murderer:Nick(),murderer:GetBystanderName()
 		if(RealName==GameName)then
 			msgs=Translator:AdvVarTranslate(translate.winMurdererMurdererWas, {
-				murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+				murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+				s={text=s}
 			})
 		else
 			msgs=Translator:AdvVarTranslate(translate.winMurdererMurdererWas, {
-				murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+				murderer={text=RealName .. ", " .. GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+				s={text=translate.ms}
 			})
 		end
 		local ct=ChatText()
 		if(self.ZOMBIE)then
-			ct:Add("The zombies win!", Color(190, 20, 20))
+			ct:Add(translate.winZombies, Color(190, 20, 20))
 		elseif(self.SHTF)then
-			ct:Add("The traitor wins!", Color(190, 20, 20))
+			ct:Add(translate.winTraitor, Color(190, 20, 20))
 		else
 			ct:Add(translate.winMurderer, Color(190, 20, 20))
 		end
@@ -309,19 +323,20 @@ function GM:EndTheRound(reason, murderer)
 		murderer:AddMerit(5)
 		local col=murderer:GetPlayerColor()
 		local msgs,RealName,GameName=nil,murderer:Nick(),murderer:GetBystanderName()
-		msgs=Translator:AdvVarTranslate("{murderer} wins!", {
-			murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)}
+		msgs=Translator:AdvVarTranslate(translate.winDM, {
+			murderer={text=GameName, color=Color(col.x*255, col.y*255, col.z*255)},
+			s={text=s}
 		})
 		local ct=ChatText()
 		ct:AddParts(msgs)
 		ct:SendAll()
 	elseif(reason==6)then
-		msgs=Translator:AdvVarTranslate("Everyone died. The end",{})
+		msgs=Translator:AdvVarTranslate(translate.endroundEveryoneDied,{})
 		local ct=ChatText()
 		ct:AddParts(msgs)
 		ct:SendAll()
 	elseif(reason==7)then
-		msgs=Translator:AdvVarTranslate("Match over, time up",{})
+		msgs=Translator:AdvVarTranslate(translate.endroundTimesUp,{})
 		local ct=ChatText()
 		ct:AddParts(msgs)
 		ct:SendAll()
@@ -473,7 +488,7 @@ function GM:StartNewRound()
 	end
 
 	local ct,DaText=ChatText(),translate.roundStarted
-	if(GetConVar("sv_cheats"):GetInt()==1)then DaText=DaText.."\nWARNING: teamkill penalties are disabled!" end
+	if(GetConVar("sv_cheats"):GetInt()==1)then DaText=DaText..translate.miscTKPenaltiesDisabled end
 	ct:Add(DaText)
 	ct:SendAll()
 
@@ -542,7 +557,7 @@ function GM:StartNewRound()
 		end
 		
 		if((self.ZOMBIE)and(dude.Murderer))then
-			dude:SetBystanderName("Alpha Zombie")
+			dude:SetBystanderName(translate.zombie)
 			dude:SetPlayerColor(Vector(.5,0,0))
 		end
 	end

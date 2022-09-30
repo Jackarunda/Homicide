@@ -24,8 +24,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/v_snij_awp.mdl"
 SWEP.WorldModel="models/weapons/w_snij_awp.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_bow");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Hunting Bow"
-SWEP.Instructions	= "This is a modern aluminum-fiberglass compound bow with a draw force of 290 newtons, used (with broadhead arrows) to take medium-sized north-american game.\n\nRMB to draw/aim.\nLMB to fire."
+SWEP.PrintName=translate.weaponBow
+SWEP.Instructions	= translate.weaponBowDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -72,6 +72,8 @@ SWEP.CarryWeight=3500
 function SWEP:Initialize()
 	self:SetHoldType("ar2")
 	self:SetAiming(0)
+	self.PrintName=translate.weaponBow
+	self.Instructions	= translate.weaponBowDesc
 end
 function SWEP:SetupDataTables()
 	self:NetworkVar("Int",0,"Aiming")

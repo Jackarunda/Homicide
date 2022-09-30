@@ -24,8 +24,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/weapons/v_jj_fraggrenade.mdl"
 SWEP.WorldModel="models/weapons/w_jj_fraggrenade.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_oldgrenade");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Type 59 Grenade"
-SWEP.Instructions	= "This is a cheap Chinese clone of an old Soviet RGD-5 offensive hand grenade. It has a lethality radius of 3 meters and casualty radius of 9 meters.\n\nLeft click to arm and throw.\nRight click place on a surface and rig as a booby trap."
+SWEP.PrintName=translate.weaponGrenade
+SWEP.Instructions	= translate.weaponGrenadeDescDM
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -62,6 +62,8 @@ SWEP.CarryWeight=1000
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
+	self.PrintName=translate.weaponGrenade
+	self.Instructions	= translate.weaponGrenadeDescDM
 end
 function SWEP:SetupDataTables()
 	--

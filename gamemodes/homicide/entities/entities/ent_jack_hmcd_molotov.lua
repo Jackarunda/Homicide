@@ -30,7 +30,7 @@ if(SERVER)then
 		if(self.Armed)then return end
 		if(self.ContactPoisoned)then
 			if(ply.Murderer)then
-				ply:PrintMessage(HUD_PRINTTALK,"This is poisoned!")
+				ply:PrintMessage(HUD_PRINTTALK,translate.poisoned)
 				return
 			else
 				self.ContactPoisoned=false

@@ -29,8 +29,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/jordfood/jtun.mdl"
 SWEP.WorldModel="models/jordfood/jtun.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_poisoncanister");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Cyanide Canister"
-SWEP.Instructions	= "This is some black-market adsorbed hydrogen-cyanide gas re-sealed in an original WWII Nazi Zyklon-B canister. Once opened, the gas will contaminate a small area for a few minutes and poison all within.\n\nLMB to open and drop\nLeave the area immediately after opening."
+SWEP.PrintName=translate.weaponPoisonCan
+SWEP.Instructions	= translate.weaponPoisonCanDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -69,6 +69,8 @@ SWEP.CommandDroppable=false
 
 function SWEP:Initialize()
 	self:SetHoldType("slam")
+	self.PrintName=translate.weaponPoisonCan
+	self.Instructions	= translate.weaponPoisonCanDesc
 end
 
 function SWEP:SetupDataTables()

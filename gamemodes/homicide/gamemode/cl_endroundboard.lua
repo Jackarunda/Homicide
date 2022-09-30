@@ -41,50 +41,64 @@ function GM:DisplayEndRoundBoard(data)
 	winner:SetFont("MersRadialBig")
 	winner:SetAutoStretchVertical(true)
 
+	if (data.murderer.ModelSex == "male") then
+		s=translate.ms
+	else
+		s=translate.fs
+	end
+
 	if(data.reason==4)then
 		if(self.ZOMBIE)then
-			winner:SetText("Survivors win! The alpha zombie gave up")
+			winner:SetText(translate.endroundZombieGaveUp)
 		elseif(self.SHTF)then
-			winner:SetText("Innocents win! The traitor gave up")
+			winner:SetText(translate.endroundTraitorGaveUp)
 		else
-			winner:SetText("Bystanders win! The murderer gave up")
+			winner:SetText(translate.endroundMurdererGaveUp)
 		end
 		winner:SetTextColor(Color(255, 255, 255))
 	elseif data.reason == 3 then
 		if(self.ZOMBIE)then
-			winner:SetText("Survivors win! The alpha zombie rage-quit")
+			winner:SetText(translate.endroundZombieQuit)
 		elseif(self.SHTF)then
-			winner:SetText("Innocents win! The traitor rage-quit")
+			winner:SetText(translate.endroundTraitorQuit)
 		else
 			winner:SetText(translate.endroundMurdererQuit)
 		end
 		winner:SetTextColor(Color(255, 255, 255))
 	elseif data.reason == 2 then
 		if(self.ZOMBIE)then
-			winner:SetText("Survivors win!")
+			winner:SetText(translate.endroundSurvivorsWin)
 		elseif(self.SHTF)then
-			winner:SetText("Innocents win!")
+			winner:SetText(translate.endroundInnocentsWin)
 		else
 			winner:SetText(translate.endroundBystandersWin)
 		end
 		winner:SetTextColor(Color(20, 120, 255))
 	elseif data.reason == 1 then
 		if(self.ZOMBIE)then
-			winner:SetText("The zombies win!")
+			winner:SetText(translate.endroundZombiesWin)
 		elseif(self.SHTF)then
-			winner:SetText("The traitor wins!")
+			winner:SetText(translate.endroundTraitorWins)
 		else
 			winner:SetText(translate.endroundMurdererWins)
 		end
 		winner:SetTextColor(Color(190, 20, 20))
 	elseif data.reason == 5 then
-		winner:SetText(data.murdererName.." wins!")
+		local argh=Translator:AdvVarTranslate(translate.endroundDMWins, {
+			murderer={text=data.murdererName},
+			s={text=s}
+		})
+		local aargh=""
+		for k, msg in pairs(argh) do
+			aargh=aargh..msg.text
+		end
+		winner:SetText(aargh)
 		winner:SetTextColor(Color(200, 200, 200))
 	elseif data.reason == 6 then
-		winner:SetText("Everyone died. The end")
+		winner:SetText(translate.endroundEveryoneDied)
 		winner:SetTextColor(Color(100, 100, 100))
 	elseif data.reason == 7 then
-		winner:SetText("Time up, match over.")
+		winner:SetText(translate.endroundTimesUp)
 		winner:SetTextColor(Color(100, 100, 100))
 	end
 
@@ -99,12 +113,14 @@ function GM:DisplayEndRoundBoard(data)
 		local col=data.murdererColor
 		local msgs
 		if(self.SHTF)then
-			msgs=Translator:AdvVarTranslate("The traitor was {murderer}", {
-				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)}
+			msgs=Translator:AdvVarTranslate(translate.endroundTraitorWas, {
+				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)},
+				s={text=s}
 			})
 		else
 			msgs=Translator:AdvVarTranslate(translate.endroundMurdererWas, {
-				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)}
+				murderer={text=data.murdererName, color=Color(col.x*255, col.y*255, col.z*255)},
+				s={text=s}
 			})
 		end
 
@@ -131,7 +147,7 @@ function GM:DisplayEndRoundBoard(data)
 	desc:Dock(TOP)
 	desc:SetFont("MersRadial")
 	desc:SetAutoStretchVertical(true)
-	desc:SetText("Players")
+	desc:SetText(translate.teamPlayers)
 	desc:SetTextColor(color_white)
 	
 	local lootList=vgui.Create("DPanelList", lootPnl)
@@ -263,7 +279,7 @@ function GM:DisplayEndRoundBoard(data)
 		Bottom:ShowCloseButton(false)
 		Bottom:SetSize(600,75)
 		Bottom:SetPos(ScrW()*.05,ScrH()*.05)
-		Bottom:SetTitle("                         MVP: "..Dude:GetBystanderName())
+		Bottom:SetTitle(translate.endroundMVP..Dude:GetBystanderName())
 		Bottom:MakePopup()
 		Bottom:SetKeyboardInputEnabled(false)
 		--Bottom:SetDeleteOnClose(false)

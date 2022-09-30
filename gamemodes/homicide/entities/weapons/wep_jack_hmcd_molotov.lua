@@ -24,8 +24,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/w_models/weapons/w_eq_molotov.mdl"
 SWEP.WorldModel="models/w_models/weapons/w_eq_molotov.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_molotov");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Molotov Cocktail"
-SWEP.Instructions	= "This improvised incendiary device is a glass bottle filled with a motor-oil/gasoline mixture and stopped with a rag. When lit and thrown, the glass will shatter on a hard surface and spread burning mixture abroad.\n\nLMB to light and throw."
+SWEP.PrintName=translate.weaponMolotov
+SWEP.Instructions	= translate.weaponMolotovDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -65,6 +65,8 @@ SWEP.CarryWeight=1000
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
+	self.PrintName=translate.weaponMolotov
+	self.Instructions	= translate.weaponMolotovDesc
 end
 function SWEP:SetupDataTables()
 	--

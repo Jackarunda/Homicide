@@ -76,7 +76,7 @@ local function SendIdentity(data)
 			local DatName,DatAccessory=string.Replace(RawData[1]," ","_"),string.Replace(RawData[10]," ","_")
 			LocalPlayer():ConCommand("homicide_identity "..DatName.." "..RawData[2].." "..RawData[3].." "..RawData[4].." "..RawData[5].." "..RawData[6].." "..RawData[7].." "..RawData[8].." "..RawData[9].." "..DatAccessory)
 		else
-			LocalPlayer():ChatPrint("Homicide: incorrect number of lines in homicide_identity.txt! Need 10 lines")
+			LocalPlayer():ChatPrint(translate.identityIncorrectLines)
 		end
 	end
 end
@@ -90,7 +90,7 @@ usermessage.Hook("HMCD_PlayerAct",Act)
 
 local function FixGlitch(data) -- i hate you, garry
 	if not(LocalPlayer().ConCommand)then return end
-	print("Starting a recording in order to fix the stupid disappearing-viewmodel glitch. Take it up with Garry.")
+	print(translate.miscExplanation)
 	LocalPlayer():ConCommand("record HOMICIDE_FIXGLITCH_DELETEME")
 	timer.Simple(.01,function()
 		LocalPlayer():ConCommand("stop")

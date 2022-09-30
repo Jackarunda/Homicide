@@ -43,7 +43,7 @@ SWEP.BobScale=3
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
-SWEP.Instructions	= "These are your hands. Use them however you see fit. Defend yourself, attack people, move objects, etc.\n\nLMB to raise fists/punch.\nRELOAD to lower fists.\nWhen fists are down, press RMB to carry things.\nWhen fists are up, press RMB to block attacks."
+SWEP.Instructions	= translate.weaponHandsDesc
 
 SWEP.Spawnable			= false
 SWEP.AdminOnly		= true
@@ -85,6 +85,8 @@ function SWEP:Initialize()
 	self:SetHoldType(self.HoldType)
 	self:SetFists(false)
 	self:SetBlocking(false)
+	self.PrintName			= translate and translate.hands or "Hands"
+	self.Instructions	= translate.weaponHandsDesc
 end
 
 function SWEP:Deploy()
@@ -133,7 +135,7 @@ function SWEP:SecondaryAttack()
 			if(Dist<self.ReachDistance)then
 				if(tr.Entity.ContactPoisoned)then
 					if(self.Owner.Murderer)then
-						self.Owner:PrintMessage(HUD_PRINTTALK,"This is poisoned!")
+						self.Owner:PrintMessage(HUD_PRINTTALK,translate.poisoned)
 						return
 					else
 						tr.Entity.ContactPoisoned=false
@@ -164,7 +166,7 @@ function SWEP:ApplyForce()
 	if IsValid(phys) then
 		local TargetPos=phys:GetPos()
 		if(self.CarryPos)then TargetPos=self.CarryEnt:LocalToWorld(self.CarryPos) end
-		local vec=target-TargetPos
+		local vec=target - TargetPos
 		local len,mul=vec:Length(),self.CarryEnt:GetPhysicsObject():GetMass()
 		if((len>self.ReachDistance)or(mul>170))then
 			self:SetCarrying()

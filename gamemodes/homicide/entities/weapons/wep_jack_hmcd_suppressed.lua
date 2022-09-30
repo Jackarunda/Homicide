@@ -5,8 +5,8 @@ else
 	SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_suppressed")
 end
 SWEP.Base="wep_jack_hmcd_firearm_base"
-SWEP.PrintName		= "Walther P22"
-SWEP.Instructions	= "This is a semi-auto plinking pistol with a ten-round magazine and a homemade suppressor. It fires .22LR. Use it to kill innocents discreetly.\n\nLMB to fire.\nRMB to aim.\nRELOAD to reload.\nShot placement counts.\nCrouching helps stability.\nBullets can ricochet and penetrate."
+SWEP.PrintName		= translate.weaponsuppressed
+SWEP.Instructions	= translate.weaponsuppressedDesc
 SWEP.Primary.ClipSize			= 10
 SWEP.SlotPos=2
 SWEP.ViewModel		= "models/weapons/v_pist_j228.mdl"

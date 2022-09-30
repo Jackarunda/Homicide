@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/jaanus/w_shuriken.mdl"
 SWEP.WorldModel="models/jaanus/w_shuriken.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_shuriken");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Six-Pointed Hira Shuriken"
-SWEP.Instructions	= "This is a heavy steel star with six sharp tips. Throw it to hurt people from afar. Does not do as much damage as a knife stab, but it's something.\n\nHold LMB to throw.\nYou will auto-recover the shuriken after some time."
+SWEP.PrintName=translate.weaponShuriken
+SWEP.Instructions	= translate.weaponShurikenDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -73,6 +73,8 @@ SWEP.CarryWeight=300
 function SWEP:Initialize()
 	self:SetHoldType("grenade")
 	self.Thrown=false
+	self.PrintName=translate.weaponShuriken
+	self.Instructions	= translate.weaponShurikenDesc
 end
 
 function SWEP:SetupDataTables()

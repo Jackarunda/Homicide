@@ -33,8 +33,8 @@ SWEP.Base="weapon_base"
 SWEP.ViewModel="models/sirgibs/ragdoll/css/terror_arctic_radio.mdl"
 SWEP.WorldModel="models/sirgibs/ragdoll/css/terror_arctic_radio.mdl"
 if(CLIENT)then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_walkietalkie");SWEP.BounceWeaponIcon=false end
-SWEP.PrintName="Walkie Talkie"
-SWEP.Instructions	= "This is an average consumer-grade medium-range walkie talkie. Use it to communicate (or to spy on communications).\n\nWith this in hand, anything you say in chat is broadcast to all individuals who also have a walkie talkie in their possession, regardless of distance or line-of-sight."
+SWEP.PrintName=translate.weaponWalkieTalkie
+SWEP.Instructions	= translate.weaponWalkieTalkieDesc
 SWEP.Author			= ""
 SWEP.Contact		= ""
 SWEP.Purpose		= ""
@@ -80,6 +80,8 @@ SWEP.CommandDroppable=true
 function SWEP:Initialize()
 	self:SetHoldType("normal")
 	self.DownAmt=20
+	self.PrintName=translate.weaponWalkieTalkie
+	self.Instructions	= translate.weaponWalkieTalkieDesc
 end
 
 function SWEP:SetupDataTables()

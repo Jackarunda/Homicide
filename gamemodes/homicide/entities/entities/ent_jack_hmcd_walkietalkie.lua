@@ -28,7 +28,7 @@ if(SERVER)then
 			ply:GetWeapon(self.SWEP).HmcdSpawned=self.HmcdSpawned
 			self:Remove()
 			ply:SelectWeapon(SWEP)
-			if((ply.Murderer)and(ply:HasWeapon(self.SWEP)))then ply:PrintMessage(HUD_PRINTTALK,"You hide the additional walkie talkie.") end
+			if((ply.Murderer)and(ply:HasWeapon(self.SWEP)))then ply:PrintMessage(HUD_PRINTTALK,translate.weaponWalkieTalkieHide) end
 		end
 	end
 elseif(CLIENT)then

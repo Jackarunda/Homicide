@@ -36,7 +36,7 @@ function GM:RenderRespawnText()
 	local client=LocalPlayer()
 	local sw,sh=ScrW(),ScrH()
 	if((client.ForgiveTime)and(client.ForgiveTime>CurTime()))then
-		draw.DrawText("You have been wrongfully killed.\nYou may press F to forgive your attackers.","MersRadialSemiSuperS",sw/2,sh-150,Color(255,255,255,128),1)
+		draw.DrawText(translate.wrongfullyKilled,"MersRadialSemiSuperS",sw/2,sh-150,Color(255,255,255,128),1)
 	end
 end
 
